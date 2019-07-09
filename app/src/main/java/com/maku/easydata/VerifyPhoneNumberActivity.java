@@ -1,7 +1,9 @@
 package com.maku.easydata;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.maku.easydata.Constants.Constants;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,6 +33,9 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
     private static final String TAG = "VerifyPhoneNumberActivi";
     //It is the verification id that will be sent to the user
     private String mVerificationId;
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
 
     String mobile;
     private TextView number;
@@ -45,6 +51,8 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
 
         //first we intialized the FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         number = findViewById(R.id.num);
         buttonVerify = findViewById(R.id.btn_verify_login);
@@ -59,7 +67,11 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
         //if the automatic sms detection worked,
         sendVerificationCode(mobile);
         buttonVerify.setOnClickListener(this);
-//        addToSharedPreferences(fullNumber);
+        addToSharedPreferences(mobile);
+    }
+
+    private void addToSharedPreferences(String fullNumber) {
+        mEditor.putString(Constants.PREFERENCES_ID_PHONE_NUMBER, fullNumber).apply();
     }
 
     @Override

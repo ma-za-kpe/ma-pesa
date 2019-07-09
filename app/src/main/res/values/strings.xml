@@ -13,6 +13,9 @@
     <string name="tag_fragment_view_profile">View Profile</string>
     <string name="tag_fragment_chat">Chat</string>
     <string name="tag_fragment_agreement">Agreement</string>
+    <string name="tag_fragment_settings">Setting</string>
+    <string name="tag_fragment_share">Share</string>
+    <string name="tag_fragment_signout">SignOut</string>
 
     <!-- Dialog Messages -->
     <string name="first_time_user_message">
