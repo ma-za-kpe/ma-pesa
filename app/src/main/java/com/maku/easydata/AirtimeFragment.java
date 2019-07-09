@@ -10,17 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+public class AirtimeFragment extends Fragment {
 
-public class DataFragment extends Fragment {
-    private static final String TAG = "DataFragment";
+    private static final String TAG = "AirtimeFragment";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_data, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_airtime, container, false);
     }
 
 }
