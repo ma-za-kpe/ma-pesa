@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -113,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private ImageView mHeaderImage;
     private DrawerLayout mDrawerLayout;
     private String mPhone;
+    private EditText editTextName;
+    private String mName;
+
 
 
     @Override
@@ -121,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_main);
 
         mBottomNavigationViewEx = findViewById(R.id.bottom_nav_view);
+        editTextName = findViewById(R.id.input_name);
+
         mBottomNavigationViewEx.setOnNavigationItemSelectedListener(this);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         View headerView = navigationView.getHeaderView(0);
@@ -129,10 +135,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPhone = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NUMBER, null);
+        mName = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NAME, null);
 
-        //email
+        //number
         TextView number = (TextView) headerView.findViewById(R.id.header_title);
         number.setText(mPhone);
+
+        //name
+        TextView name = (TextView) headerView.findViewById(R.id.header_title);
+        name.setText(mName);
 
         initBottomNavigationView();
         setHeaderImage();

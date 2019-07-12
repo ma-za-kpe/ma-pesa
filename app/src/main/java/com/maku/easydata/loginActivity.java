@@ -21,6 +21,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "loginActivity";
 
     private EditText editTextNumber;
+    private EditText editTextName;
     private CountryCodePicker ccp;
     private Button buttonLogin;
     private FirebaseAuth mAuth;
@@ -28,7 +29,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
-    String fullNumber;
+    private String fullNumber;
+    private String fullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         mAuth = FirebaseAuth.getInstance();
 
         editTextNumber = findViewById(R.id.input_number);
+        editTextName = findViewById(R.id.input_name);
+
         ccp = findViewById(R.id.ccp);
         buttonLogin = findViewById(R.id.btn_login);
         buttonLogin.setOnClickListener(this);
@@ -68,6 +72,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         if (v == buttonLogin) {
             String selected_country_code = ccp.getSelectedCountryCodeWithPlus();
             String mobile = editTextNumber.getText().toString();
+            String name = editTextName.getTransitionName();
 
             //check weather number is not null
             if (mobile.isEmpty() || mobile.length() < 9) {
@@ -80,6 +85,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
                 Intent intent = new Intent(loginActivity.this, VerifyPhoneNumberActivity.class);
                 intent.putExtra("mobile", fullNumber);
+                intent.putExtra("name", fullName);
                 startActivity(intent);
 
             }

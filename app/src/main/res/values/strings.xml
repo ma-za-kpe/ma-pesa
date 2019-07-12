@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TabianDating</string>
+    <string name="app_name">Easy Data</string>
     <string name="search_hint">Start typing a name...</string>
 
     <!-- Navigation Drawer -->

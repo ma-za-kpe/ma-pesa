@@ -34,6 +34,25 @@
             android:textSize="16dip"/>
 
         <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:ems="12"
+                android:gravity="center_vertical"
+                android:hint="Name..."
+                android:inputType="text"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="360dp"
             android:layout_height="wrap_content"

@@ -37,8 +37,10 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
 
-    String mobile;
+    private String mobile;
+    private String name;
     private TextView number;
+    private  TextView textViewName;
     private Button buttonVerify;
     private EditText editTextCode;
 
@@ -55,23 +57,27 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
         mEditor = mSharedPreferences.edit();
 
         number = findViewById(R.id.num);
+        textViewName = findViewById(R.id.name);
         buttonVerify = findViewById(R.id.btn_verify_login);
         editTextCode = findViewById(R.id.input_code);
 
         Intent intent = getIntent();
         mobile = intent.getStringExtra("mobile");
+        name = intent.getStringExtra("name");
         number.setText(mobile);
+        editTextCode.setText(name);
 
         Log.d(TAG, "Test user mobile " + mobile);
 
         //if the automatic sms detection worked,
         sendVerificationCode(mobile);
         buttonVerify.setOnClickListener(this);
-        addToSharedPreferences(mobile);
+        addToSharedPreferences(mobile, name);
     }
 
-    private void addToSharedPreferences(String fullNumber) {
+    private void addToSharedPreferences(String fullNumber, String name) {
         mEditor.putString(Constants.PREFERENCES_ID_PHONE_NUMBER, fullNumber).apply();
+        mEditor.putString(Constants.PREFERENCES_ID_PHONE_NAME, name).apply();
     }
 
     @Override
