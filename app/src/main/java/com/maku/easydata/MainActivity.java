@@ -18,6 +18,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -67,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 transaction.replace(R.id.main_content_frame, settingsFragment, getString(R.string.tag_fragment_settings));
                 transaction.addToBackStack(getString(R.string.tag_fragment_settings));
                 transaction.commit();
+                break;
+            }
+
+            case R.id.mapesa: {
+                Log.d(TAG, "onNavigationItemSelected: MA-pesa.");
+                Intent launchNewIntent = new Intent(MainActivity.this,MapesaActivity.class);
+                startActivityForResult(launchNewIntent, 0);
                 break;
             }
 
@@ -124,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(TAG, "onCreate: starting main activity");
+
         mBottomNavigationViewEx = findViewById(R.id.bottom_nav_view);
         editTextName = findViewById(R.id.input_name);
 
@@ -142,13 +157,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         number.setText(mPhone);
 
         //name
-        TextView name = (TextView) headerView.findViewById(R.id.header_title);
+        TextView name = (TextView) headerView.findViewById(R.id.header_name);
         name.setText(mName);
 
         initBottomNavigationView();
         setHeaderImage();
         setNavigationViewListener();
         init();
+
     }
 
     private void setNavigationViewListener() {

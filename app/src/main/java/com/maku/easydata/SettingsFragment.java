@@ -36,7 +36,7 @@ public class SettingsFragment extends Fragment {
         TextView number = (TextView) view.findViewById(R.id.number);
         number.setText(mPhone);
 
-        TextView name = (TextView) view.findViewById(R.id.input_name);
+        TextView name = (TextView) view.findViewById(R.id.name);
         name.setText(mName);
 
         return view;

@@ -6,4 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".NetworkActivity">
 
+    <TextView
+        android:id="@+id/code"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="country code"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="CHOOSE NETWORK:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/code"
+        app:layout_constraintStart_toStartOf="@+id/code"
+        app:layout_constraintTop_toBottomOf="@+id/code" />
+
+    <Button
+        android:text="MTN"
+        android:id="@+id/net1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/net2"
+        android:text="AIRTEL"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/net1"
+        app:layout_constraintStart_toStartOf="@+id/net1"
+        app:layout_constraintTop_toBottomOf="@+id/net1" />
+
+    <Button
+        android:id="@+id/net3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="AFRICEL"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/net2"
+        app:layout_constraintStart_toStartOf="@+id/net2"
+        app:layout_constraintTop_toBottomOf="@+id/net2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
