@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bottom_nav_home"
+        android:icon="@drawable/ic_data"
+        android:layout_centerVertical="true"
+        android:title="DATA"/>
+    <item
+        android:id="@+id/bottom_nav_connections"
+        android:icon="@drawable/ic_airtime"
+        android:layout_centerVertical="true"
+        android:title="AIRTIME"/>
+
+</menu>
