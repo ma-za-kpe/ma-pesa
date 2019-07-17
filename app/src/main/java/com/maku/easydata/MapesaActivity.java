@@ -2,8 +2,11 @@ package com.maku.easydata;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +17,10 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.maku.easydata.Constants.Constants;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapesaActivity extends AppCompatActivity implements RewardedVideoAdListener {
 
@@ -34,6 +41,11 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
     private Button retryButton;
     private Button showVideoButton;
     private long timeRemaining;
+
+    //shared preferences
+    private SharedPreferences mSharedPreferences;
+    private String mPhone;
+    private String mCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +82,16 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
         // Display current coin count to user.
         coinCountText = findViewById(R.id.coin_count_text);
         coinCount = 0;
-        coinCountText.setText("Coins: " + coinCount);
+        coinCountText.setText("Airtime of 5Kshs wil be sent to you after watching videos.");
 
         startGame();
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mPhone = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NUMBER, null);
+        mCode = mSharedPreferences.getString(Constants.PREFERENCES_ID_COUNTRY_CODE, null);
+
+        Log.d(TAG, "onCreate: mobile number is: " + mPhone);
+        Log.d(TAG, "onCreate: country code is: " + mCode);
 
     }
 
@@ -111,7 +130,8 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
 
     private void addCoins(int coins) {
         coinCount += coins;
-        coinCountText.setText("Coins: " + coinCount);
+//        coinCountText.setText("Airtime of 5Kshs wil be sent to you after watching videos " + coinCount );
+        coinCountText.setText("Continue: " );
     }
 
     private void startGame() {
@@ -135,7 +155,7 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
             @Override
             public void onTick(long millisUnitFinished) {
                 timeRemaining = ((millisUnitFinished / 1000) + 1);
-                textView.setText("seconds remaining: " + timeRemaining);
+                textView.setText("Watch in: " + timeRemaining);
             }
 
             @Override
@@ -143,7 +163,7 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
                 if (rewardedVideoAd.isLoaded()) {
                     showVideoButton.setVisibility(View.VISIBLE);
                 }
-                textView.setText("You Lose!");
+                textView.setText("");
                 addCoins(GAME_OVER_REWARD);
                 retryButton.setVisibility(View.VISIBLE);
                 gameOver = true;
@@ -203,5 +223,59 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
     @Override
     public void onRewardedVideoCompleted() {
         Toast.makeText(this, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show();
+
+        if (mCode.equals("+254") || mCode.equals("+255") || mCode.equals("+256")) {
+            Log.d(TAG, "onRewardedVideoCompleted: country code : " + mCode);
+
+        }
+
+        // here, we send the 5shs airtime to the user
+
+        // Create a HashMap object called capitalCities
+        HashMap<String, String> countryCode = new HashMap<String, String>();
+
+        // Add keys and values (Country, City)
+        countryCode.put("+254" , "KES");
+        countryCode.put("+256" , "UGX");
+        countryCode.put("+255" , "TZS");
+
+//        for (Map.Entry<String, String> entry : countryCode.entrySet()) {
+//            Log.d(TAG, "onRewardedVideoCompleted: " + entry.getKey() + " = " + entry.getValue());
+//
+//            if (entry.getKey().equals(mCode)) {
+//                Log.d(TAG, "onRewardedVideoCompleted: value is" + entry.getValue());
+//                break;
+//            }
+//        }
+
+        String countryCodevalue = countryCode.get(mCode); // value = "y"
+
+        Log.d(TAG, "onRewardedVideoCompleted: country code to send data to after video watched is: " + countryCodevalue);
+
+    //bring in Africas Talking Api
+
+        /* Set your app credentials */
+        String username = "sandbox";
+        String apiKey = "d36a57c32d37b8bb558fb3776e190d9cec80a0a8c4be28b5d77e1c84a322eb3e";
+
+//        /* Initialize the SDK */
+//        AfricasTalking.initialize(username, apiKey);
+//        /* Get airtime service */
+//        AirtimeService airtime = AfricasTalking.getService(AfricasTalking.SERVICE_AIRTIME);
+//
+        /* Set the phone number, currency code and amount */
+        String phoneNumber = mPhone;
+        String currencyCode = mCode;
+        float amount = 1;
+//
+//        try {
+//            /* That's it, hit send and we'll take care of the rest */
+//            AirtimeResponse response = airtime.send(phoneNumber, currencyCode, amount);
+//            System.out.println(response.toString());
+//        } catch(Exception ex) {
+//            ex.printStackTrace();
+//        }
+
+
     }
 }
