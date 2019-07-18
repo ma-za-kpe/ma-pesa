@@ -17,6 +17,10 @@
 
     <group
         android:id="@+id/group2">
+
+        <item android:id="@+id/mapesa"
+            android:title="mapesa"
+            android:icon="@drawable/ic_ma_pesa"/>
         <item android:id="@+id/agreement"
             android:title="@string/agreement"
             android:icon="@drawable/ic_contact"/>

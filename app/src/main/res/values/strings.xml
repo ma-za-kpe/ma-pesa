@@ -2,6 +2,12 @@
     <string name="app_name">Easy Data</string>
     <string name="search_hint">Start typing a name...</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="impossible_game">ma-pesa</string>
+    <string name="retry_button_text">Watch</string>
+    <string name="watch_video_button_text">Watch Video for 5 additional Kshs</string>
+    <string name="default_coin_text">Reward: 0</string>
+
     <!-- Navigation Drawer -->
     <string name="home">Home</string>
     <string name="settings">Settings</string>
@@ -12,6 +18,7 @@
     <string name="tag_fragment_airtime">Photo</string>
     <string name="tag_fragment_view_profile">View Profile</string>
     <string name="tag_fragment_chat">Chat</string>
+    <string name="tag_fragment_mapesa">ma-pesa</string>
     <string name="tag_fragment_agreement">Agreement</string>
     <string name="tag_fragment_settings">Setting</string>
     <string name="tag_fragment_share">Share</string>

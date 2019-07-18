@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NetworkActivity"></activity>
+        <activity android:name=".MapesaActivity"></activity>
+        <activity android:name=".NetworkActivity" />
         <activity android:name=".VerifyPhoneNumberActivity" />
         <activity
             android:name=".loginActivity"
@@ -29,6 +30,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1222362664019591~8722623706" />
     </application>
 
 </manifest>

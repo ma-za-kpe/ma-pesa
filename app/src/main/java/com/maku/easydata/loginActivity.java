@@ -61,7 +61,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         //we will close this activity
         //and take the user to profile activity
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, NetworkActivity.class));
             finish();
         }
     }
@@ -72,7 +72,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         if (v == buttonLogin) {
             String selected_country_code = ccp.getSelectedCountryCodeWithPlus();
             String mobile = editTextNumber.getText().toString();
-            String name = editTextName.getTransitionName();
+            String name = editTextName.getText().toString();
 
             //check weather number is not null
             if (mobile.isEmpty() || mobile.length() < 9) {
@@ -83,15 +83,21 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                 fullNumber = selected_country_code + mobile;
                 Log.d(TAG, "Test user mobile " + fullNumber);
 
+                addToSharedPreferences(selected_country_code);
+
                 Intent intent = new Intent(loginActivity.this, VerifyPhoneNumberActivity.class);
                 intent.putExtra("mobile", fullNumber);
-                intent.putExtra("name", fullName);
+                intent.putExtra("name", name);
                 startActivity(intent);
 
             }
 
         }
 
+    }
+
+    private void addToSharedPreferences(String selected_country_code) {
+        mEditor.putString(Constants.PREFERENCES_ID_COUNTRY_CODE, selected_country_code).apply();
     }
 
 }
