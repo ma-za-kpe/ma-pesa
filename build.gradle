@@ -24,7 +24,8 @@ allprojects {
         }
         maven { url "https://jitpack.io" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        maven { url 'http://jcenter.bintray.com' }
+        maven { url 'http://jcenter.bintray.com'}
+        maven { url  "http://dl.bintray.com/africastalking/android"}
         
     }
 }
