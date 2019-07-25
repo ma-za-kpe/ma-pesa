@@ -82,7 +82,10 @@ dependencies {
 
     implementation 'com.africastalking:client:3.0.6'
     // or
-    implementation 'com.africastalking:client-ui:3.0.6' // w
+    implementation 'com.africastalking:client-ui:3.0.6'
+
+    //    implementation 'com.jraska:console:0.4.3'
+    //    implementation 'com.jraska:console-timber-tree:0.4.3'
 
 }
 

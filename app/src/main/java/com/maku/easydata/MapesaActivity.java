@@ -184,5 +184,26 @@ public class MapesaActivity extends AppCompatActivity implements RewardedVideoAd
     public void onRewardedVideoCompleted() {
         Log.d(TAG, "onRewardedVideoCompleted: ");
 
+        if (mCode.equals("+254") || mCode.equals("+255") || mCode.equals("+256")) {
+            Log.d(TAG, "onRewardedVideoCompleted: country code : " + mCode);
+
+        }
+
+        // here, we send the 5shs airtime to the user
+
+        // Create a HashMap object called capitalCities
+        HashMap<String, String> countryCode = new HashMap<String, String>();
+
+        // Add keys and values (Country, City)
+        countryCode.put("+254" , "KES");
+        countryCode.put("+256" , "UGX");
+        countryCode.put("+255" , "TZS");
+
+        String countryCodevalue = countryCode.get(mCode); // value = "y"
+
+        Log.d(TAG, "onRewardedVideoCompleted: country code to send data to after video watched is: " + countryCodevalue);
+        Toast.makeText(this, "Country code:" + countryCodevalue, Toast.LENGTH_SHORT).show();
+
+
     }
 }
