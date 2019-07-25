@@ -65,7 +65,7 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
         mobile = intent.getStringExtra("mobile");
         name = intent.getStringExtra("name");
         number.setText(mobile);
-        editTextCode.setText(name);
+//        editTextCode.setText(name);
 
         Log.d(TAG, "Test user mobile " + mobile);
 
