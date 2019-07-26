@@ -23,4 +23,9 @@ public class DataFragment extends Fragment {
         return view;
     }
 
+//    public void scrollToTop(){
+//        mRecyclerView.smoothScrollToPosition(0);
+//    }
+
+
 }

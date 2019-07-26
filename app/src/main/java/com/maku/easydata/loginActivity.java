@@ -61,7 +61,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         //we will close this activity
         //and take the user to profile activity
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(this, NetworkActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
         }
     }

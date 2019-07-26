@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.maku.easydata.interfaces.IMainActivity;
 
 
 public class AgreementFragment extends Fragment implements View.OnClickListener {
@@ -29,7 +30,7 @@ public class AgreementFragment extends Fragment implements View.OnClickListener 
     private RelativeLayout mBackArrow;
 
     //vars
-//    private IMainActivity mInterface;
+    private IMainActivity mInterface;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,14 +67,14 @@ public class AgreementFragment extends Fragment implements View.OnClickListener 
 
         if(view.getId() == R.id.back_arrow){
             Log.d(TAG, "onClick: navigating back.");
-
+            mInterface.onBackPressed();
         }
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        mInterface = (IMainActivity) getActivity();
+        mInterface = (IMainActivity) getActivity();
     }
 
 }

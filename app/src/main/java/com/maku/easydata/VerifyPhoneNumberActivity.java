@@ -157,7 +157,7 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 //                            verification successful we will start the Network activity
-                            Intent intent = new Intent(VerifyPhoneNumberActivity.this, NetworkActivity.class);
+                            Intent intent = new Intent(VerifyPhoneNumberActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 

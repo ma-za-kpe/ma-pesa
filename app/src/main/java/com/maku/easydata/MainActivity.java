@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +30,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.maku.easydata.Constants.Constants;
+import com.maku.easydata.interfaces.IMainActivity;
+import com.maku.easydata.models.FragmentM;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationViewEx.OnNavigationItemSelectedListener ,
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements IMainActivity, BottomNavigationViewEx.OnNavigationItemSelectedListener ,
         NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
@@ -43,63 +49,94 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
 
-
             case R.id.bottom_nav_home: {
                 Log.d(TAG, "onNavigationItemSelected: DataFragment.");
-                DataFragment dataFragment = new DataFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_content_frame, dataFragment, getString(R.string.tag_fragment_data));
-                transaction.addToBackStack(getString(R.string.tag_fragment_data));
-                transaction.commit();
-                item.setChecked(true);
+
+                if (mDataFragment == null) {
+                    mDataFragment = new DataFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.main_content_frame, mDataFragment, getString(R.string.tag_fragment_data));
+                    transaction.commit();
+                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
+                    mFragments.add(new FragmentM(mDataFragment, getString(R.string.tag_fragment_data)));
+                }
+                else {
+                    mFragmentsTags.remove(getString(R.string.tag_fragment_data));
+                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
+                }
+                setFragmentVisibilities(getString(R.string.tag_fragment_data));
                 break;
             }
 
             case R.id.bottom_nav_connections: {
-                Log.d(TAG, "onNavigationItemSelected: AirtimeFragment.");
-                AirtimeFragment airtimeFragment = new AirtimeFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_content_frame, airtimeFragment, getString(R.string.tag_fragment_airtime));
-                transaction.addToBackStack(getString(R.string.tag_fragment_airtime));
-                transaction.commit();
-                item.setChecked(true);
+
+                if (mAirtimeFragment == null) {
+                    mAirtimeFragment = new AirtimeFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.main_content_frame, mAirtimeFragment, getString(R.string.tag_fragment_airtime));
+                    transaction.commit();
+                    mFragmentsTags.add(getString(R.string.tag_fragment_airtime));
+                    mFragments.add(new FragmentM(mAirtimeFragment, getString(R.string.tag_fragment_airtime)));
+                }
+                else {
+                    mFragmentsTags.remove(getString(R.string.tag_fragment_airtime));
+                    mFragmentsTags.add(getString(R.string.tag_fragment_airtime));
+                }
+                setFragmentVisibilities(getString(R.string.tag_fragment_airtime));
                 break;
             }
 
             case R.id.settings: {
-                Log.d(TAG, "onNavigationItemSelected: Settings.");
-                SettingsFragment settingsFragment = new SettingsFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_content_frame, settingsFragment, getString(R.string.tag_fragment_settings));
-                transaction.addToBackStack(getString(R.string.tag_fragment_settings));
-                transaction.commit();
-                break;
-            }
 
-            case R.id.mapesa: {
-                Log.d(TAG, "onNavigationItemSelected: MA-pesa.");
-                Intent launchNewIntent = new Intent(MainActivity.this,MapesaActivity.class);
-                startActivityForResult(launchNewIntent, 0);
+                if (mSettingsFragment == null) {
+                    mSettingsFragment = new SettingsFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.main_content_frame, mSettingsFragment, getString(R.string.tag_fragment_settings));
+                    transaction.commit();
+                    mFragmentsTags.add(getString(R.string.tag_fragment_settings));
+                    mFragments.add(new FragmentM(mSettingsFragment, getString(R.string.tag_fragment_settings)));
+                }
+                else {
+                    mFragmentsTags.remove(getString(R.string.tag_fragment_settings));
+                    mFragmentsTags.add(getString(R.string.tag_fragment_settings));
+                }
+                setFragmentVisibilities(getString(R.string.tag_fragment_settings));
                 break;
             }
 
             case R.id.agreement: {
-                Log.d(TAG, "onNavigationItemSelected: Agreement.");
-                AgreementFragment homeFragment = new AgreementFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_content_frame, homeFragment, getString(R.string.tag_fragment_agreement));
-                transaction.addToBackStack(getString(R.string.tag_fragment_agreement));
-                transaction.commit();
+
+                if (mAgreementFragment == null) {
+                    mAgreementFragment = new AgreementFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.main_content_frame, mAgreementFragment, getString(R.string.tag_fragment_agreement));
+                    transaction.commit();
+                    mFragmentsTags.add(getString(R.string.tag_fragment_agreement));
+                    mFragments.add(new FragmentM(mAgreementFragment, getString(R.string.tag_fragment_agreement)));
+                }
+                else {
+                    mFragmentsTags.remove(getString(R.string.tag_fragment_agreement));
+                    mFragmentsTags.add(getString(R.string.tag_fragment_agreement));
+                }
+                setFragmentVisibilities(getString(R.string.tag_fragment_agreement));
                 break;
             }
 
             case R.id.Share: {
-                Log.d(TAG, "onNavigationItemSelected: share.");
-                ShareFragment shareFragment = new ShareFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_content_frame, shareFragment, getString(R.string.tag_fragment_share));
-                transaction.addToBackStack(getString(R.string.tag_fragment_share));
-                transaction.commit();
+
+                if (mShareFragment == null) {
+                    mShareFragment = new ShareFragment();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.add(R.id.main_content_frame, mShareFragment, getString(R.string.tag_fragment_share));
+                    transaction.commit();
+                    mFragmentsTags.add(getString(R.string.tag_fragment_share));
+                    mFragments.add(new FragmentM(mShareFragment, getString(R.string.tag_fragment_share)));
+                }
+                else {
+                    mFragmentsTags.remove(getString(R.string.tag_fragment_share));
+                    mFragmentsTags.add(getString(R.string.tag_fragment_share));
+                }
+                setFragmentVisibilities(getString(R.string.tag_fragment_share));
                 break;
             }
 
@@ -129,6 +166,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private String mPhone;
     private EditText editTextName;
     private String mName;
+
+    //constants
+    private static final int DATA_FRAGMENT = 0;
+    private static final int AIRTIME_FRAGMENT = 1;
+
+
+    //Fragments
+    private AirtimeFragment mAirtimeFragment;
+    private DataFragment mDataFragment;
+    private ShareFragment mShareFragment;
+    private SettingsFragment mSettingsFragment;
+    private AgreementFragment  mAgreementFragment;
+
+    //vars
+    private ArrayList<String> mFragmentsTags = new ArrayList<>();
+    private ArrayList<FragmentM> mFragments = new ArrayList<>();
+    private int mExitCount = 0;
 
 
 
@@ -184,16 +238,122 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     private void init(){
-        DataFragment dataFragment = new DataFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_content_frame, dataFragment, getString(R.string.tag_fragment_data));
-        transaction.addToBackStack(getString(R.string.tag_fragment_data));
-        transaction.commit();
+
+        if (mDataFragment == null) {
+            mDataFragment = new DataFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.add(R.id.main_content_frame, mDataFragment, getString(R.string.tag_fragment_data));
+            transaction.commit();
+            mFragmentsTags.add(getString(R.string.tag_fragment_data));
+            mFragments.add(new FragmentM(mDataFragment, getString(R.string.tag_fragment_data)));
+        }
+        else {
+            mFragmentsTags.remove(getString(R.string.tag_fragment_data));
+            mFragmentsTags.add(getString(R.string.tag_fragment_data));
+        }
+        setFragmentVisibilities(getString(R.string.tag_fragment_data));
     }
 
     private void initBottomNavigationView() {
         Log.d(TAG, "initBottomNavigationView: initializing bottom navigation view.");
         mBottomNavigationViewEx.enableAnimation(false);
         mBottomNavigationViewEx.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+
+        int backStackCount = mFragmentsTags.size();
+        if(backStackCount > 1){
+            //remove the fragment at the top
+            String topFragmentTag = mFragmentsTags.get(backStackCount - 1);
+//get the second fragment from the top
+            String newTopFragmentTag = mFragmentsTags.get(backStackCount - 2);
+            setFragmentVisibilities(newTopFragmentTag);
+
+            mFragmentsTags.remove(topFragmentTag);
+
+            mExitCount = 0;
+        }
+        else if( backStackCount == 1){
+            String topFragmentTag = mFragmentsTags.get(backStackCount - 1);
+            if(topFragmentTag.equals(getString(R.string.tag_fragment_data))){
+//                mDataFragment.scrollToTop();
+                mExitCount++;
+                Toast.makeText(this, "1 more click to exit", Toast.LENGTH_SHORT).show();
+            }
+            else{
+                mExitCount++;
+                Toast.makeText(this, "1 more click to exit", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        if(mExitCount >= 2){
+            super.onBackPressed();
+        }
+    }
+
+    private void setNavigationIcon(String tagname) {
+        Menu menu = mBottomNavigationViewEx.getMenu();
+        MenuItem menuItem = null;
+        if (tagname.equals(getString(R.string.tag_fragment_data))) {
+            Log.d(TAG, "setNavigationIcon: Data fragment is visible");
+            menuItem = menu.getItem(DATA_FRAGMENT);
+            menuItem.setChecked(true);
+        }
+        else if (tagname.equals(getString(R.string.tag_fragment_airtime))) {
+            Log.d(TAG, "setNavigationIcon: airtime fragment is visible");
+            menuItem = menu.getItem(AIRTIME_FRAGMENT);
+            menuItem.setChecked(true);
+        }
+    }
+
+    private void setFragmentVisibilities(String tagname){
+        if(tagname.equals(getString(R.string.tag_fragment_data)))
+            showBottomNavigation();
+        else if(tagname.equals(getString(R.string.tag_fragment_airtime)))
+            showBottomNavigation();
+        else if(tagname.equals(getString(R.string.tag_fragment_settings)))
+            hideBottomNavigation();
+        else if(tagname.equals(getString(R.string.tag_fragment_agreement)))
+            hideBottomNavigation();
+        else if(tagname.equals(getString(R.string.tag_fragment_share)))
+            hideBottomNavigation();
+
+        for(int i = 0; i < mFragments.size(); i++){
+            if(tagname.equals(mFragments.get(i).getTag())){
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.show((mFragments.get(i).getFragment()));
+                transaction.commit();
+            }
+            else{
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.hide((mFragments.get(i).getFragment()));
+                transaction.commit();
+            }
+        }
+        setNavigationIcon(tagname);
+
+        printBackStack();
+    }
+
+    private void printBackStack() {
+        Log.d(TAG, "printBackStack: ----------------------------------- ");
+        for (int i = 0; i < mFragmentsTags.size(); i++) {
+            Log.d(TAG, "printBackStack: " + i + ": " + mFragmentsTags.get(i));
+        }
+    }
+
+    private void hideBottomNavigation() {
+        if (mBottomNavigationViewEx != null) {
+            mBottomNavigationViewEx.setVisibility(View.GONE);
+        }
+    }
+
+    private void showBottomNavigation() {
+        if (mBottomNavigationViewEx != null) {
+            mBottomNavigationViewEx.setVisibility(View.VISIBLE);
+        }
     }
 }
