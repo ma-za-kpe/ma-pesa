@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.hbb20.CCPCountry;
 import com.hbb20.CountryCodePicker;
 import com.maku.easydata.Constants.Constants;
 
@@ -31,6 +32,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
     private String fullNumber;
     private String fullName;
+    CCPCountry defaultCCPCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,13 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         ccp = findViewById(R.id.ccp);
         buttonLogin = findViewById(R.id.btn_login);
         buttonLogin.setOnClickListener(this);
+
+        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+            @Override
+            public void onCountrySelected() {
+                Toast.makeText(loginActivity.this, "Updated " + defaultCCPCountry.getFlagID(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();

@@ -21,13 +21,16 @@
             android:title="@string/agreement"
             android:icon="@drawable/ic_contact"/>
 
-        <item android:id="@+id/SignOut"
-            android:title="SignOut"
-            android:icon="@drawable/ic_signout"/>
-
         <item android:id="@+id/Share"
             android:title="Share"
             android:icon="@drawable/ic_share"/>
+    </group>
+
+    <group
+        android:id="@+id/group3">
+        <item android:id="@+id/SignOut"
+            android:title="SignOut"
+            android:icon="@drawable/ic_signout"/>
     </group>
 
 

@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     private String mPhone;
     private EditText editTextName;
     private String mName;
+    private String mCode;
 
     //constants
     private static final int DATA_FRAGMENT = 0;
@@ -205,6 +206,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mPhone = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NUMBER, null);
         mName = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NAME, null);
+        mCode = mSharedPreferences.getString(Constants.PREFERENCES_ID_COUNTRY_CODE, null);
+
+//        array of country codes
+
 
         //number
         TextView number = (TextView) headerView.findViewById(R.id.header_title);
@@ -231,9 +236,9 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
         Log.d(TAG, "setHeaderImage: setting header image for navigation drawer.");
 
         // better to set the header with glide. It's more efficient than setting the source directly
-        Glide.with(this)
-                .load(R.drawable.background_splash)
-                .into(mHeaderImage);
+//        Glide.with(this)
+//                .load(R.drawable.)
+//                .into(mHeaderImage);
     }
 
 

@@ -4,37 +4,35 @@
     android:layout_height="150dp">
 
     <ImageView
+        android:id="@+id/header_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:id="@+id/header_image"/>
+        android:background="@color/white"
+        android:scaleType="centerCrop" />
 
-    <RelativeLayout
-        android:gravity="center"
+    <TextView
+        android:id="@+id/header_name"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp">
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:text="name"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:gravity="center"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/header_title"
-            android:text="Phone number"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:layout_centerHorizontal="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/header_name"
-            android:text="name"
-            android:textSize="15sp"
-            android:textColor="@color/black"/>
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_below="@+id/header_name"
+        android:layout_alignStart="@+id/header_name"
+        android:layout_alignEnd="@+id/header_name"
+        android:text="+25478913645"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
 
 
