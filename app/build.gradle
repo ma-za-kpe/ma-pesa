@@ -13,20 +13,25 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //code added to help us use AT SDK libraries
         ndk {
             abiFilters "armeabi", "x86"
         }
-
-
-//        buildConfigField 'String', 'PRODUCT_NAME', "\"" + properties.getProperty("api.productName") + "\""
-//        buildConfigField 'String', 'RPC_HOST', "\"" + properties.getProperty("rpcHost") + "\""
-//        buildConfigField 'int', 'RPC_PORT', properties.getProperty("rpcPort")
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+//Code added to help us use AT SDK Libraries
+repositories {
+
+    maven {
+        url "http://dl.bintray.com/africastalking/android"
     }
 }
 
@@ -86,6 +91,9 @@ dependencies {
 
     //    implementation 'com.jraska:console:0.4.3'
     //    implementation 'com.jraska:console-timber-tree:0.4.3'
+
+    //Code added to help us use AT SDK Libraries
+    implementation 'com.africastalking:client:3.0.6'
 
 }
 
