@@ -6,4 +6,7 @@
     <color name="splash_background_color">#04A5D5</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
+    <color name="Share">#E60082</color>
+    <color name="Beg">#6307E7</color>
+    <color name="Background">#F5EEFC</color>
 </resources>

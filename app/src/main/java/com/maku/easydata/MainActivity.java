@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +20,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.africastalking.AfricasTalking;
+import com.africastalking.utils.Logger;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
@@ -33,6 +36,7 @@ import com.maku.easydata.Constants.Constants;
 import com.maku.easydata.interfaces.IMainActivity;
 import com.maku.easydata.models.FragmentM;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity, BottomNavigationViewEx.OnNavigationItemSelectedListener ,
@@ -48,8 +52,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
 
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
-
-            case R.id.bottom_nav_home: {
+            case R.id.bottom_nav_data: {
                 Log.d(TAG, "onNavigationItemSelected: DataFragment.");
 
                 if (mDataFragment == null) {
@@ -68,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
                 break;
             }
 
-            case R.id.bottom_nav_connections: {
-
+            case R.id.bottom_nav_airtime: {
+                Log.d(TAG, "onNavigationItemSelected: Airtime ...");
                 if (mAirtimeFragment == null) {
                     mAirtimeFragment = new AirtimeFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -185,7 +188,11 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     private ArrayList<FragmentM> mFragments = new ArrayList<>();
     private int mExitCount = 0;
 
+//Africas talking
 
+    //For the emulator, connecting to local host
+    private final String host = "192.168.1.116";
+    private final int port = 8088;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,11 +226,55 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
         TextView name = (TextView) headerView.findViewById(R.id.header_name);
         name.setText(mName);
 
+         /*
+        Invoke the method that will connect us to our server
+         */
+        connectToServer();
+
         initBottomNavigationView();
         setHeaderImage();
         setNavigationViewListener();
         init();
 
+    }
+
+    /*
+   implementation of connectToServer()
+    */
+    private void connectToServer(){
+
+        //Initialize te sdk, and connect to our server. Do this in a try catch block
+        try{
+
+            /*
+            Put a notice in our log that we are attempting to initialize
+             */
+            Log.e("NOTICE","Attempting to intialize server");
+            AfricasTalking.initialize(host, port,true);
+
+            //Use AT's Logger to get any message
+            AfricasTalking.setLogger(new Logger() {
+                @Override
+                public void log(String message, Object... args) {
+
+                    /*
+                    Log this too
+                     */
+                    Log.e("FROM AT LOGGER",message + " " + args.toString());
+                }
+            });
+
+            /*
+            Final log to tell us if successful
+             */
+            Log.e("SERVER SUCCESS","Managed to connect to server");
+        } catch (IOException e){
+
+            /*
+            Log our failure to connect
+             */
+            Log.e("SERVER ERROR", "Failed to connect to server");
+        }
     }
 
     private void setNavigationViewListener() {
