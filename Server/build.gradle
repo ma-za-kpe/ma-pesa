@@ -13,6 +13,7 @@ dependencies {
 
     //Code to provide us with AT SDK libraries to run our server
     implementation 'com.africastalking:server:3.0.6'
+    implementation 'com.hbb20:ccp:2.2.3'
 }
 
 sourceCompatibility = "7"

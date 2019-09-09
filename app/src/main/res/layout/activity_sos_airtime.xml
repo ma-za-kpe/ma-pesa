@@ -69,10 +69,10 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:gravity="center"
-                    android:text="firstname" />
+                    android:text="name" />
 
-                <EditText
-                    android:id="@+id/firstname"
+                <TextView
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -87,12 +87,19 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:gravity="center"
-                    android:text="lastname" />
+                    android:text="country" />
 
-                <EditText
-                    android:id="@+id/lastname"
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:textSize="15sp"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_textSize="14sp"
+                    tools:layout_editor_absoluteX="44dp"
+                    tools:layout_editor_absoluteY="480dp" />
+
 
             </LinearLayout>
 
@@ -107,27 +114,9 @@
                     android:gravity="center"
                     android:text="phone_number" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <com.hbb20.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:textSize="15sp"
-                        app:ccp_autoDetectCountry="true"
-                        app:ccp_textSize="14sp"
-                        tools:layout_editor_absoluteX="44dp"
-                        tools:layout_editor_absoluteY="480dp" />
-
-
-                    <EditText
+                    <TextView
                         android:id="@+id/input_number"
-                        android:layout_width="130dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="start"
                         android:background="@drawable/background_edit_text"
@@ -138,8 +127,6 @@
                         android:padding="10dp"
                         android:textSize="15sp" />
 
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -147,63 +134,6 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="project code :" />
-
-                    <EditText
-                        android:id="@+id/projectcode"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="DROID7" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="app_version" />
-
-                    <EditText
-                        android:id="@+id/appversion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="number"
-                        android:text="3" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="fcm key :" />
-
-                    <EditText
-                        android:id="@+id/fcmkey"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
 
             </LinearLayout>
             <LinearLayout
@@ -223,105 +153,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/detailsGroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="Device Details" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="fdevice_model" />
-
-                    <TextView
-                        android:id="@+id/devicemodel"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="fdevice_type" />
-
-                    <TextView
-                        android:id="@+id/devicetype"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="hardware" />
-
-                    <TextView
-                        android:id="@+id/hardware"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:gravity="center"
-                        android:text="manufacturer" />
-
-                    <TextView
-                        android:id="@+id/manufacturer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:layout_marginTop="8dp"
                 android:layout_gravity="center"
-                android:layout_width="300dp"
+                android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
@@ -332,6 +166,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="SOS" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:text="Success"
+                    android:id="@+id/successSos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
             </LinearLayout>
 

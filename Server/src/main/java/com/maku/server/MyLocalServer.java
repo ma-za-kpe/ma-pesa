@@ -1,17 +1,20 @@
 package com.maku.server;
 
 import com.africastalking.AfricasTalking;
+import com.africastalking.BuildConfig;
 import com.africastalking.Server;
 
 import java.io.IOException;
 
 public class MyLocalServer {
 
+    private static String countryCode;
     /*
-   First, save our username and API KEY in final, private, static strings. Also, the port (int) that our server will be using on its host machine
+       First, save our username and API KEY in final, private, static strings. Also, the port (int) that our server will be using on its host machine
 
-   [This is for testing. Port number can be anything not greater than 65536]
-    */
+       [This is for testing. Port number can be anything not greater than 65536]
+        */
+
     private static final String userName = "sandbox"; //Sandbox is the testing app
     private static final String APIKey = "1cbb4099b4998d208ecdddb720d4dbdc117d20dcd31c3492404293b402100b65"; //Put your API Key here
 
@@ -22,6 +25,10 @@ public class MyLocalServer {
     Now, to our main method
      */
     public static void main (String[] args) throws IOException {
+
+        countryCode = BuildConfig.NAME; //this will be used to pick apps for particular countries
+
+        System.out.println(countryCode);
 
         //Initialize the SDK, passing in our username and APIKey
         AfricasTalking.initialize(userName,APIKey);
