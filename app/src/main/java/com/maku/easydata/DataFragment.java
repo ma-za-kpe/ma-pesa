@@ -37,10 +37,6 @@ public class DataFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.moreData:
                 Log.d(TAG, "onClick: more ...");
-
-                Intent intent = new Intent(getActivity(), MoreDataActivity.class);
-                startActivity(intent);
-
                 break;
         }
     }

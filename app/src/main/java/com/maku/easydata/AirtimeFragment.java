@@ -15,11 +15,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.africastalking.AfricasTalking;
 import com.africastalking.models.airtime.AirtimeResponse;
 import com.africastalking.services.AirtimeService;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.maku.easydata.Constants.Constants;
 
 import java.io.IOException;
@@ -29,15 +35,24 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "AirtimeFragment";
 
+    /*
+    Google ads
+    * */
+    private AdView mAdView;
 
     /*
     Private member variables to hold references to our active widgets
      */
     private Button mButtonTen;
     private Button mButton20;
-    private Button mButton30;
+    private Button mButton50;
+    private Button mButton100;
+    private Button mButton500;
+    private Button mButton1000;
     private Button mButtonSos;
-     Button mButtonMore;
+    private Button mButtonMore;
+    private EditText mEditTextMore;
+    private Button mButtonshareAirtime;
 
 //    vars
     private String number;
@@ -57,19 +72,40 @@ private SharedPreferences mSharedPreferences;
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         number = mSharedPreferences.getString(Constants.PREFERENCES_ID_PHONE_NUMBER, null);
 
+        /*initialize google ads*/
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdView = view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
 //        initialise the widgets
         mButtonTen = view.findViewById(R.id.ten);
-        mButton20 = view.findViewById(R.id.x20);
-        mButton30 = view.findViewById(R.id.x30);
-        mButtonMore = view.findViewById(R.id.moreAirtime);
+        mButton20 = view.findViewById(R.id.twenty);
+        mButton50 = view.findViewById(R.id.fifty);
+        mButton100 = view.findViewById(R.id.oneHundred);
+        mButton500 = view.findViewById(R.id.fiveHundred);
+        mButton1000 = view.findViewById(R.id.oneThousand);
         mButtonSos = view.findViewById(R.id.sosAirtime);
+        mButtonMore = view.findViewById(R.id.moreAirtimeBtn);
+        mEditTextMore = view.findViewById(R.id.input_number);
+        mButtonshareAirtime = view.findViewById(R.id.shareAirtime);
 
 //        onclick listeners
         mButtonTen.setOnClickListener(this);
         mButton20.setOnClickListener(this);
-        mButton30.setOnClickListener(this);
-        mButtonMore.setOnClickListener(this);
+        mButton50.setOnClickListener(this);
+        mButton100.setOnClickListener(this);
+        mButton500.setOnClickListener(this);
+        mButton1000.setOnClickListener(this);
         mButtonSos.setOnClickListener(this);
+        mButtonMore.setOnClickListener(this);
+        mButtonshareAirtime.setOnClickListener(this);
 
         return view;
     }
@@ -102,7 +138,7 @@ private SharedPreferences mSharedPreferences;
 
                 break;
 
-            case R.id.x20:
+            case R.id.twenty:
 
                  /*
                 Ensure our Button is valid
@@ -125,29 +161,12 @@ private SharedPreferences mSharedPreferences;
 
                 break;
 
-            case R.id.moreAirtime:
-                Log.d(TAG, "onClick: more ...");
-
-                Intent intent = new Intent(getActivity(), MoreAirtimeActivity.class);
-                startActivity(intent);
-
-                break;
-
-            case R.id.sosAirtime:
-                Log.d(TAG, "onClick: more ...");
-
-                Intent intentSos = new Intent(getActivity(), SosAirtimeActivity.class);
-                startActivity(intentSos);
-
-                break;
-
-
-            case R.id.x30:
+            case R.id.fifty:
 
                  /*
                 Ensure our Button is valid
                  */
-                if (TextUtils.isEmpty(mButton30.getText().toString())){
+                if (TextUtils.isEmpty(mButton50.getText().toString())){
                     /*
                     Show a Toast with error message
                      */
@@ -159,9 +178,118 @@ private SharedPreferences mSharedPreferences;
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton30.getText().toString());
+                    recipient.put(number, "KES " + mButton50.getText().toString());
                     sendAirtime(recipient);
                 }
+
+                break;
+
+            case R.id.oneHundred:
+
+                 /*
+                Ensure our Button is valid
+                 */
+                if (TextUtils.isEmpty(mButton100.getText().toString())){
+                    /*
+                    Show a Toast with error message
+                     */
+                    Toast.makeText(getActivity(),"Button is empty",Toast.LENGTH_LONG).show();
+                } else {
+
+                    /*
+                Else, put our values in a Hashmap, with the key as the phone number. Since we are only sending airtime to one person, go direct to
+                call our method to sendAirtime, passing in the Hashmap
+                 */
+                    HashMap<String,String> recipient = new HashMap<>();
+                    recipient.put(number, "KES " + mButton100.getText().toString());
+                    sendAirtime(recipient);
+                }
+
+                break;
+
+            case R.id.fiveHundred:
+
+                 /*
+                Ensure our Button is valid
+                 */
+                if (TextUtils.isEmpty(mButton500.getText().toString())){
+                    /*
+                    Show a Toast with error message
+                     */
+                    Toast.makeText(getActivity(),"Button is empty",Toast.LENGTH_LONG).show();
+                } else {
+
+                    /*
+                Else, put our values in a Hashmap, with the key as the phone number. Since we are only sending airtime to one person, go direct to
+                call our method to sendAirtime, passing in the Hashmap
+                 */
+                    HashMap<String,String> recipient = new HashMap<>();
+                    recipient.put(number, "KES " + mButton500.getText().toString());
+                    sendAirtime(recipient);
+                }
+
+                break;
+
+            case R.id.oneThousand:
+
+                 /*
+                Ensure our Button is valid
+                 */
+                if (TextUtils.isEmpty(mButton1000.getText().toString())){
+                    /*
+                    Show a Toast with error message
+                     */
+                    Toast.makeText(getActivity(),"Button is empty",Toast.LENGTH_LONG).show();
+                } else {
+
+                    /*
+                Else, put our values in a Hashmap, with the key as the phone number. Since we are only sending airtime to one person, go direct to
+                call our method to sendAirtime, passing in the Hashmap
+                 */
+                    HashMap<String,String> recipient = new HashMap<>();
+                    recipient.put(number, "KES " + mButton1000.getText().toString());
+                    sendAirtime(recipient);
+                }
+
+                break;
+
+
+            case R.id.moreAirtimeBtn:
+
+                 /*
+                Ensure our Button is valid
+                 */
+                if (TextUtils.isEmpty(mEditTextMore.getText().toString())){
+                    /*
+                    Show a Toast with error message
+                     */
+                    Toast.makeText(getActivity(),"Please enter amount",Toast.LENGTH_LONG).show();
+                } else {
+
+                    /*
+                Else, put our values in a Hashmap, with the key as the phone number. Since we are only sending airtime to one person, go direct to
+                call our method to sendAirtime, passing in the Hashmap
+                 */
+                    HashMap<String,String> recipient = new HashMap<>();
+                    recipient.put(number, "KES " + mEditTextMore.getText().toString());
+                    sendAirtime(recipient);
+                }
+
+                break;
+
+            case R.id.sosAirtime:
+                Log.d(TAG, "onClick: sos ...");
+
+                Intent intentSos = new Intent(getActivity(), SosAirtimeActivity.class);
+                startActivity(intentSos);
+
+                break;
+
+            case R.id.shareAirtime:
+                Log.d(TAG, "onClick: sos ...");
+
+                Intent intentShareAT = new Intent(getActivity(), ShareAirtimeActivity.class);
+                startActivity(intentShareAT);
 
                 break;
 

@@ -4,11 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/bottom_nav_data"
-        android:icon="@drawable/ic_data"
-        android:layout_centerVertical="true"
-        android:title="DATA"/>
-    <item
         android:id="@+id/bottom_nav_airtime"
         android:icon="@drawable/ic_airtime"
         android:layout_centerVertical="true"

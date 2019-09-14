@@ -7,13 +7,13 @@
     tools:context=".SosAirtimeActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:id="@+id/textView"
         android:text="Click to choose Airtime"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="8dp">
 
@@ -32,117 +33,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <Spinner
-                android:layout_gravity="center"
-                android:background="@drawable/buttonbackgroundwhite"
-                android:id="@+id/spinner"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="2dp"
-                style="@android:style/Widget.Holo.Light.Spinner"
-                android:padding="10dp"
-                android:paddingLeft="4dp"
-                android:layout_marginBottom="2dp"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="user Details" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="name" />
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="country" />
-
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/ccp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:textSize="15sp"
-                    app:ccp_autoDetectCountry="true"
-                    app:ccp_textSize="14sp"
-                    tools:layout_editor_absoluteX="44dp"
-                    tools:layout_editor_absoluteY="480dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="phone_number" />
-
-                    <TextView
-                        android:id="@+id/input_number"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="start"
-                        android:background="@drawable/background_edit_text"
-                        android:ems="12"
-                        android:gravity="center_vertical"
-                        android:hint="mobile_no"
-                        android:inputType="phone"
-                        android:padding="10dp"
-                        android:textSize="15sp" />
-
-            </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/sensitiveData"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/linlaHeaderProgress"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <ProgressBar
                     android:id="@+id/progressBar1"
@@ -152,42 +57,68 @@
                     android:layout_centerHorizontal="true" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_marginTop="8dp"
+            <Spinner
+                android:id="@+id/spinner"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/buttonbackgroundwhite"
+                android:padding="10dp"
+                android:paddingLeft="4dp" />
+
+            <LinearLayout
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <Button
-                    android:background="@drawable/buttonbackground"
-                    android:id="@+id/register"
-                    android:layout_marginBottom="4dp"
+                    android:id="@+id/sosAT"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="SOS" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:text="Success"
-                    android:id="@+id/successSos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/buttonbackground"
+                    android:text="SOS"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

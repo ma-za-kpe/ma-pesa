@@ -45,6 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:ems="12"
+                android:maxLength="6"
                 android:gravity="center_vertical"
                 android:hint="Nick name..."
                 android:inputType="text"
@@ -97,8 +98,6 @@
             android:text="Login"
             android:background="@drawable/background_login_button"
             android:textColor="@color/white"/>
-
-
 
     </LinearLayout>
 </ScrollView>

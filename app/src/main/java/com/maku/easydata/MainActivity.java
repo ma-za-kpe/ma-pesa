@@ -52,24 +52,24 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
 
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
-            case R.id.bottom_nav_data: {
-                Log.d(TAG, "onNavigationItemSelected: DataFragment.");
-
-                if (mDataFragment == null) {
-                    mDataFragment = new DataFragment();
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.main_content_frame, mDataFragment, getString(R.string.tag_fragment_data));
-                    transaction.commit();
-                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
-                    mFragments.add(new FragmentM(mDataFragment, getString(R.string.tag_fragment_data)));
-                }
-                else {
-                    mFragmentsTags.remove(getString(R.string.tag_fragment_data));
-                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
-                }
-                setFragmentVisibilities(getString(R.string.tag_fragment_data));
-                break;
-            }
+//            case R.id.bottom_nav_data: {
+//                Log.d(TAG, "onNavigationItemSelected: DataFragment.");
+//
+//                if (mDataFragment == null) {
+//                    mDataFragment = new DataFragment();
+//                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//                    transaction.add(R.id.main_content_frame, mDataFragment, getString(R.string.tag_fragment_data));
+//                    transaction.commit();
+//                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
+//                    mFragments.add(new FragmentM(mDataFragment, getString(R.string.tag_fragment_data)));
+//                }
+//                else {
+//                    mFragmentsTags.remove(getString(R.string.tag_fragment_data));
+//                    mFragmentsTags.add(getString(R.string.tag_fragment_data));
+//                }
+//                setFragmentVisibilities(getString(R.string.tag_fragment_data));
+//                break;
+//            }
 
             case R.id.bottom_nav_airtime: {
                 Log.d(TAG, "onNavigationItemSelected: Airtime ...");
@@ -295,19 +295,19 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
 
     private void init(){
 
-        if (mDataFragment == null) {
-            mDataFragment = new DataFragment();
+        if (mAirtimeFragment == null) {
+            mAirtimeFragment = new AirtimeFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.add(R.id.main_content_frame, mDataFragment, getString(R.string.tag_fragment_data));
+            transaction.add(R.id.main_content_frame, mAirtimeFragment, getString(R.string.tag_fragment_airtime));
             transaction.commit();
-            mFragmentsTags.add(getString(R.string.tag_fragment_data));
-            mFragments.add(new FragmentM(mDataFragment, getString(R.string.tag_fragment_data)));
+            mFragmentsTags.add(getString(R.string.tag_fragment_airtime));
+            mFragments.add(new FragmentM(mAirtimeFragment, getString(R.string.tag_fragment_airtime)));
         }
         else {
-            mFragmentsTags.remove(getString(R.string.tag_fragment_data));
-            mFragmentsTags.add(getString(R.string.tag_fragment_data));
+            mFragmentsTags.remove(getString(R.string.tag_fragment_airtime));
+            mFragmentsTags.add(getString(R.string.tag_fragment_airtime));
         }
-        setFragmentVisibilities(getString(R.string.tag_fragment_data));
+        setFragmentVisibilities(getString(R.string.tag_fragment_airtime));
     }
 
     private void initBottomNavigationView() {
@@ -353,16 +353,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     private void setNavigationIcon(String tagname) {
         Menu menu = mBottomNavigationViewEx.getMenu();
         MenuItem menuItem = null;
-        if (tagname.equals(getString(R.string.tag_fragment_data))) {
-            Log.d(TAG, "setNavigationIcon: Data fragment is visible");
-            menuItem = menu.getItem(DATA_FRAGMENT);
-            menuItem.setChecked(true);
-        }
-        else if (tagname.equals(getString(R.string.tag_fragment_airtime))) {
-            Log.d(TAG, "setNavigationIcon: airtime fragment is visible");
-            menuItem = menu.getItem(AIRTIME_FRAGMENT);
-            menuItem.setChecked(true);
-        }
+        Log.d(TAG, "setNavigationIcon: airtime fragment is visible");
+
     }
 
     private void setFragmentVisibilities(String tagname){
