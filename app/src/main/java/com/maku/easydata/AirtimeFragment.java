@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +32,9 @@ import com.maku.easydata.Constants.Constants;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class AirtimeFragment extends Fragment implements View.OnClickListener {
 
@@ -54,11 +59,17 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
     private EditText mEditTextMore;
     private Button mButtonshareAirtime;
 
-//    vars
+    //    vars
     private String number;
+    long starttime = 0;
+    private Handler handler;
+    private Runnable handlerTask;
 
-//    shared preferences
-private SharedPreferences mSharedPreferences;
+    //Declare the timer
+    Timer t;
+
+    //    shared preferences
+    private SharedPreferences mSharedPreferences;
 
 
     @Override
@@ -107,6 +118,9 @@ private SharedPreferences mSharedPreferences;
         mButtonMore.setOnClickListener(this);
         mButtonshareAirtime.setOnClickListener(this);
 
+        /**set timer*/
+        t = new Timer();
+
         return view;
     }
 
@@ -134,6 +148,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButtonTen.getText().toString());
                     sendAirtime(recipient);
+                    
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -157,6 +173,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButton20.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -180,6 +198,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButton50.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -203,6 +223,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButton100.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -226,6 +248,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButton500.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -249,6 +273,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mButton1000.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -273,6 +299,8 @@ private SharedPreferences mSharedPreferences;
                     HashMap<String,String> recipient = new HashMap<>();
                     recipient.put(number, "KES " + mEditTextMore.getText().toString());
                     sendAirtime(recipient);
+
+                    disableButtonFiveMinutes(v.getId());
                 }
 
                 break;
@@ -298,6 +326,56 @@ private SharedPreferences mSharedPreferences;
         }
 
     }
+
+    /*this method updates the text on the button that has been clicked to the time left*/
+    private void disableButtonFiveMinutes(final int id) {
+
+        new CountDownTimer(300000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+                if (id == R.id.ten) {
+                    mButtonTen.setText(millisUntilFinished / 1000 + " secs");
+                    mButtonTen.setEnabled(false);
+                } else if (id == R.id.twenty) {
+                    mButton20.setText(millisUntilFinished / 1000 + " secs");
+                    mButton20.setEnabled(false);
+                } else if (id == R.id.fifty) {
+                    mButton50.setText(millisUntilFinished / 1000+ " secs");
+                    mButton50.setEnabled(false);
+                } else if (id == R.id.oneHundred) {
+                    mButton100.setText(millisUntilFinished / 1000+ " secs");
+                    mButton100.setEnabled(false);
+                } else if (id == R.id.fiveHundred) {
+                    mButton500.setText(millisUntilFinished / 1000+ " secs");
+                    mButton500.setEnabled(false);
+                } else if (id == R.id.oneThousand) {
+                    mButton1000.setText(millisUntilFinished / 1000 + " secs");
+                    mButton1000.setEnabled(false);
+                }
+            }
+
+            public void onFinish() {
+                if (id == R.id.ten) {
+                    mButtonTen.setEnabled(true);
+                } else if (id == R.id.twenty) {
+                    mButton20.setEnabled(true);
+                } else if (id == R.id.fifty) {
+                    mButton50.setEnabled(true);
+                } else if (id == R.id.oneHundred) {
+                    mButton100.setEnabled(true);
+                } else if (id == R.id.fiveHundred) {
+                    mButton500.setEnabled(true);
+                } else if (id == R.id.oneThousand) {
+                    mButton1000.setEnabled(true);
+                }
+
+            }
+
+        }.start();
+
+    }
+
 
     /*
    implementation of sendAirtime()
