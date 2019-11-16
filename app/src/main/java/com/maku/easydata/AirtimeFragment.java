@@ -1,23 +1,27 @@
 package com.maku.easydata;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.africastalking.AfricasTalking;
@@ -34,6 +38,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
 public class AirtimeFragment extends Fragment implements View.OnClickListener {
@@ -58,12 +64,11 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
     private Button mButtonMore;
     private EditText mEditTextMore;
     private Button mButtonshareAirtime;
+    private Button mButtonMoreAirtimeBtn;
+    private TextView mTextViewSuccess;
 
     //    vars
     private String number;
-    long starttime = 0;
-    private Handler handler;
-    private Runnable handlerTask;
 
     //Declare the timer
     Timer t;
@@ -71,12 +76,42 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
     //    shared preferences
     private SharedPreferences mSharedPreferences;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        /*check the internet connection of the user*/
+        //detect internet and show the data
+        if(isNetworkStatusAvialable (getActivity())) {
+            Toast.makeText(getActivity(), "Internet detected", Toast.LENGTH_LONG).show();
+
+            /*If there is internet connection, */
+
+
+        } else {
+            Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+    /*check the internet connection*/
+    //check internet connection
+    public static boolean isNetworkStatusAvialable (Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null)
+        {
+            NetworkInfo netInfos = connectivityManager.getActiveNetworkInfo();
+            if(netInfos != null)
+            {
+                return netInfos.isConnected();
+            }
+        }
+        return false;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View view =  inflater.inflate(R.layout.fragment_airtime, container, false);
 
 //        get shared preferences
@@ -106,6 +141,11 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
         mButtonMore = view.findViewById(R.id.moreAirtimeBtn);
         mEditTextMore = view.findViewById(R.id.input_number);
         mButtonshareAirtime = view.findViewById(R.id.shareAirtime);
+        mButtonMoreAirtimeBtn = view.findViewById(R.id.moreAirtimeBtn);
+        mTextViewSuccess = view.findViewById(R.id.success);
+
+        /*hide the success text view */
+        mTextViewSuccess.setVisibility(View.GONE);
 
 //        onclick listeners
         mButtonTen.setOnClickListener(this);
@@ -117,6 +157,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
         mButtonSos.setOnClickListener(this);
         mButtonMore.setOnClickListener(this);
         mButtonshareAirtime.setOnClickListener(this);
+        mButtonMoreAirtimeBtn.setOnClickListener(this);
 
         /**set timer*/
         t = new Timer();
@@ -146,7 +187,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButtonTen.getText().toString());
+                    recipient.put(number, "UGX " + mButtonTen.getText().toString());
                     sendAirtime(recipient);
                     
                     disableButtonFiveMinutes(v.getId());
@@ -171,7 +212,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton20.getText().toString());
+                    recipient.put(number, "UGX " + mButton20.getText().toString());
                     sendAirtime(recipient);
 
                     disableButtonFiveMinutes(v.getId());
@@ -196,7 +237,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton50.getText().toString());
+                    recipient.put(number, "UGX " + mButton50.getText().toString());
                     sendAirtime(recipient);
 
                     disableButtonFiveMinutes(v.getId());
@@ -221,7 +262,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton100.getText().toString());
+                    recipient.put(number, "UGX " + mButton100.getText().toString());
                     sendAirtime(recipient);
 
                     disableButtonFiveMinutes(v.getId());
@@ -246,7 +287,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton500.getText().toString());
+                    recipient.put(number, "UGX " + mButton500.getText().toString());
                     sendAirtime(recipient);
 
                     disableButtonFiveMinutes(v.getId());
@@ -271,7 +312,7 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mButton1000.getText().toString());
+                    recipient.put(number, "UGX " + mButton1000.getText().toString());
                     sendAirtime(recipient);
 
                     disableButtonFiveMinutes(v.getId());
@@ -297,8 +338,19 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 call our method to sendAirtime, passing in the Hashmap
                  */
                     HashMap<String,String> recipient = new HashMap<>();
-                    recipient.put(number, "KES " + mEditTextMore.getText().toString());
+                    recipient.put(number, "UGX " + mEditTextMore.getText().toString());
                     sendAirtime(recipient);
+                    /*empty edittext */
+                    mEditTextMore.setText("");
+
+                    /*Hide keyboard*/
+                    try {
+                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                    /*hide keyboard*/
 
                     disableButtonFiveMinutes(v.getId());
                 }
@@ -306,7 +358,6 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.sosAirtime:
-                Log.d(TAG, "onClick: sos ...");
 
                 Intent intentSos = new Intent(getActivity(), SosAirtimeActivity.class);
                 startActivity(intentSos);
@@ -314,7 +365,6 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.shareAirtime:
-                Log.d(TAG, "onClick: sos ...");
 
                 Intent intentShareAT = new Intent(getActivity(), ShareAirtimeActivity.class);
                 startActivity(intentShareAT);
@@ -352,22 +402,35 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 } else if (id == R.id.oneThousand) {
                     mButton1000.setText(millisUntilFinished / 1000 + " secs");
                     mButton1000.setEnabled(false);
+                } else if (id == R.id.moreAirtimeBtn) {
+                    mButtonMoreAirtimeBtn.setText(millisUntilFinished / 1000 + " secs");
+                    mButtonMoreAirtimeBtn.setEnabled(false);
+//                    mTextViewSuccess.setVisibility(View.VISIBLE);
                 }
             }
 
             public void onFinish() {
                 if (id == R.id.ten) {
                     mButtonTen.setEnabled(true);
+                    mButtonTen.setText("10");
                 } else if (id == R.id.twenty) {
                     mButton20.setEnabled(true);
+                    mButton20.setText("20");
                 } else if (id == R.id.fifty) {
                     mButton50.setEnabled(true);
+                    mButton50.setText("50");
                 } else if (id == R.id.oneHundred) {
                     mButton100.setEnabled(true);
+                    mButton100.setText("100");
                 } else if (id == R.id.fiveHundred) {
                     mButton500.setEnabled(true);
+                    mButton500.setText("500");
                 } else if (id == R.id.oneThousand) {
                     mButton1000.setEnabled(true);
+                    mButton1000.setText("1000");
+                } else if (id == R.id.moreAirtimeBtn) {
+                    mButtonMoreAirtimeBtn.setEnabled(true);
+                    mButton1000.setText("Buy");
                 }
 
             }
@@ -376,17 +439,16 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-
     /*
-   implementation of sendAirtime()
-    */
+    implementation of sendAirtime()
+     */
     private void sendAirtime(final HashMap<String, String> recipient){
 
         /*
         Run our code in a separate thread from the UI thread, using AsyncTask. Required by Android for all Network calls
          */
 
-        @SuppressLint("StaticFieldLeak") AsyncTask<Void, String, Void> taskSendAirtime = new AsyncTask<Void, String, Void>() {
+        @SuppressLint("StaticFieldLeak") AsyncTask <Void, String, Void> taskSendAirtime = new AsyncTask<Void, String, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
 
@@ -398,30 +460,28 @@ public class AirtimeFragment extends Fragment implements View.OnClickListener {
                 /*
                 Log that we are trying to get service
                  */
-                    Log.e("AIRTIME NOTICE", "Trying to get airtime service");
+//                    Log.e("AIRTIME NOTICE", "Trying to get airtime service");
                     AirtimeService service = AfricasTalking.getAirtimeService();
 
                     //Now that we have the service, send the airtime, get the response
-                    AirtimeResponse response = service.send(recipient);
-
+                    final AirtimeResponse response = service.send(recipient);
                     //Log our success message
-                    Log.e("AIRTIME SUCCESS","Sent airtime worth " + response.totalAmount + " to " + number);
 
+                    getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(getActivity(), "Bought Airtime worth " + response.totalAmount, Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                    /*show the success text view when airtime is sent*/
                 } catch (IOException e){
 
                     /*
                     Log our failure
                      */
-                    Log.e("AIRTIME FAILURE","Failed to send airtime with exception " + e.toString());
                 }
 
                 return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                Toast.makeText(getActivity(),"Success ",Toast.LENGTH_LONG).show();
             }
         };
 

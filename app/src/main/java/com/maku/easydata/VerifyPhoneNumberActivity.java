@@ -63,11 +63,10 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
 
         Intent intent = getIntent();
         mobile = intent.getStringExtra("mobile");
+        Log.d(TAG, "onClick: mobile " + mobile);
         name = intent.getStringExtra("name");
         number.setText(mobile);
 //        editTextCode.setText(name);
-
-        Log.d(TAG, "Test user mobile " + mobile);
 
         //if the automatic sms detection worked,
         sendVerificationCode(mobile);
@@ -105,8 +104,9 @@ public class VerifyPhoneNumberActivity extends AppCompatActivity implements View
                 mobile,
                 60,
                 TimeUnit.SECONDS,
-                TaskExecutors.MAIN_THREAD,
+                this,
                 mCallbacks);
+
     }
 
 

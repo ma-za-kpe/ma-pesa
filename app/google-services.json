@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
-          "client_id": "577484612475-si681am221hkuf1nbnvrk5feu74ro410.apps.googleusercontent.com",
+          "client_id": "577484612475-2gh43k0d76d61at7dsalkicb2lraa7qu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.maku.easydata",
             "certificate_hash": "697abd721b4f7c7a1e2411d8116700b15dd9fbd3"
+          }
+        },
+        {
+          "client_id": "577484612475-u24kuqmpjnhp9evmnqvn4ri5g7fjqcd9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maku.easydata",
+            "certificate_hash": "85e82a4d80470864448081b173d12d89535a5135"
           }
         },
         {
@@ -41,7 +49,8 @@
             }
           ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-1222362664019591~8722623706"
     }
   ],
   "configuration_version": "1"

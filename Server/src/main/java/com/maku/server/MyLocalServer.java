@@ -15,8 +15,8 @@ public class MyLocalServer {
        [This is for testing. Port number can be anything not greater than 65536]
         */
 
-    private static final String userName = "sandbox"; //Sandbox is the testing app
-    private static final String APIKey = "1cbb4099b4998d208ecdddb720d4dbdc117d20dcd31c3492404293b402100b65"; //Put your API Key here
+    private static final String userName = "mazakpe"; //Sandbox is the testing app
+    private static final String APIKey = "b0e1ed11fd8b6db970625a5cfe547dbf48426fad0993a9ccff5ce6a22a33582e"; //Put your API Key here
 
     //for our server's port. Will use 8080
     private static final int port = 8088;

@@ -2,13 +2,11 @@ package com.maku.easydata;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,16 +61,13 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Log.d(TAG, "onClick: ");
 
         if(v.getId() == R.id.back_arrow){
-            Log.d(TAG, "onClick: navigating back.");
             mInterface.onBackPressed();
         }
     }
 
     private void initToolbar(){
-        Log.d(TAG, "initToolbar: initializing toolbar.");
         mBackArrow.setOnClickListener(this);
         mFragmentHeading.setText(getString(R.string.tag_fragment_settings));
 

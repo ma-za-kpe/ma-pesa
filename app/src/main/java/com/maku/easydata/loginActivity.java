@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hbb20.CCPCountry;
 import com.hbb20.CountryCodePicker;
@@ -49,12 +49,12 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         buttonLogin = findViewById(R.id.btn_login);
         buttonLogin.setOnClickListener(this);
 
-        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
-            @Override
-            public void onCountrySelected() {
-                Toast.makeText(loginActivity.this, "Updated " + defaultCCPCountry.getFlagID(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        ccp.setOnCountryChangeListener(new CountryCodePicker.OnCountryChangeListener() {
+//            @Override
+//            public void onCountrySelected() {
+//                Toast.makeText(loginActivity.this, "Updated " + defaultCCPCountry.getFlagID(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
@@ -68,7 +68,7 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
         //if the user is already signed in
         //we will close this activity
-        //and take the user to profile activity
+        //and take the user to main activity
         if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(this, MainActivity.class));
             finish();
@@ -90,7 +90,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
             } else {
 
                 fullNumber = selected_country_code + mobile;
-                Log.d(TAG, "Test user mobile " + fullNumber);
 
                 addToSharedPreferences(selected_country_code);
 

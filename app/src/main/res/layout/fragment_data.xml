@@ -55,7 +55,7 @@
             android:background="@drawable/buttonbackgroundwhite"
             android:text="800 mb"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/moreAirtime"
+            app:layout_constraintEnd_toEndOf="@+id/moreData"
             app:layout_constraintStart_toStartOf="@+id/moreData"
             app:layout_constraintTop_toBottomOf="@+id/moreData" />
 

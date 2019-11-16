@@ -1,11 +1,15 @@
 <resources>
     <string name="app_name">ma-pesa</string>
+    <string name="success">SUCCESS !!!</string>
     <string name="search_hint">Start typing a name...</string>
+    <string name="admob_app_id">ca-app-pub-1222362664019591~8722623706</string>
+    <string name="ad_unit_id">ca-app-pub-1222362664019591/7512224638</string>
+    <string name="test_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
 
     <string name="action_settings">Settings</string>
     <string name="impossible_game">ma-pesa</string>
     <string name="retry_button_text">Watch</string>
-    <string name="watch_video_button_text">Watch Video for x Kshs Airtime</string>
+    <string name="watch_video_button_text">Click and watch for More Airtime</string>
     <string name="default_coin_text">Reward: 0</string>
 
     <!-- Navigation Drawer -->

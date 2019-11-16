@@ -1,7 +1,6 @@
 package com.maku.easydata.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.maku.easydata.R;
 import com.maku.easydata.ShareAirtimeActivity;
 import com.maku.easydata.interfaces.APIService;
-import com.maku.easydata.models.serverrequest.SosRequest;
-import com.maku.easydata.models.serverresponse.SosResponse2;
 import com.maku.easydata.models.serverresponse.SosResult;
 import com.maku.easydata.utils.ApiUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,7 +67,6 @@ public class SosAdapter extends RecyclerView.Adapter<SosAdapter.ViewHolder> {
         holder.mButtonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: " + id);
                 ((ShareAirtimeActivity) mContext).onClickCalled(code, phone, amo);
                 int adapterPos = holder.getAdapterPosition();
 
@@ -91,17 +86,14 @@ public class SosAdapter extends RecyclerView.Adapter<SosAdapter.ViewHolder> {
                     public void onResponse(Call<SosResult> call, Response<SosResult> response) {
 
                         if (response.isSuccessful())  {
-                            Log.d(TAG, "onResponse: " + response.message());
                             Toast.makeText(mContext, "Sos removed", Toast.LENGTH_LONG).show();
 //                            process(response);
                         }else{
-                            Log.d(TAG, "onResponse: there is no response"  + response.errorBody());
                         }
                     }
 
                     @Override
                     public void onFailure(Call<SosResult> call, Throwable t) {
-                        Log.e(TAG,t.toString());
                     }
                 });
             }

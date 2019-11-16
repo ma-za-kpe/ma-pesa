@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#7B0488</color>
-    <color name="colorPrimaryDark">#410049</color>
-    <color name="colorAccent">#DA68FA</color>
+    <color name="colorPrimary">#de5b70</color>
+    <color name="colorPrimaryDark">#811cda</color>
+    <color name="colorAccent">#bf4495</color>
     <color name="splash_background_color">#04A5D5</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="Share">#E60082</color>
     <color name="Beg">#6307E7</color>
+    <color name="success">#30E707</color>
     <color name="Background">#F5EEFC</color>
 </resources>
+
+

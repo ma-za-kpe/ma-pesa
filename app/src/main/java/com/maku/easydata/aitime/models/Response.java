@@ -1,5 +1,5 @@
 
-package com.maku.easydata;
+package com.maku.easydata.aitime.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

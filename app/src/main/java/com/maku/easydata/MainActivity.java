@@ -4,11 +4,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,15 +20,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.africastalking.AfricasTalking;
 import com.africastalking.utils.Logger;
-import com.bumptech.glide.Glide;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.gms.ads.rewarded.RewardedAd;
-import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.maku.easydata.Constants.Constants;
 import com.maku.easydata.interfaces.IMainActivity;
@@ -46,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
 
     private SharedPreferences mSharedPreferences;
 
+    private FirebaseAuth mAuth;
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -53,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
         // Handle navigation view item clicks here.
         switch (item.getItemId()) {
 //            case R.id.bottom_nav_data: {
-//                Log.d(TAG, "onNavigationItemSelected: DataFragment.");
 //
 //                if (mDataFragment == null) {
 //                    mDataFragment = new DataFragment();
@@ -72,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
 //            }
 
             case R.id.bottom_nav_airtime: {
-                Log.d(TAG, "onNavigationItemSelected: Airtime ...");
                 if (mAirtimeFragment == null) {
                     mAirtimeFragment = new AirtimeFragment();
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -144,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
             }
 
             case R.id.SignOut: {
-                Log.d(TAG, "onNavigationItemSelected: Signout.");
                 logOut();
                 break;
             }
@@ -154,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     }
 
     private void logOut() {
+//        FirebaseApp.initializeApp(MainActivity.this);
         FirebaseAuth.getInstance().signOut();
         Intent i=new Intent(getApplicationContext(),loginActivity.class);
         startActivity(i);
@@ -199,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d(TAG, "onCreate: starting main activity");
+        mAuth = FirebaseAuth.getInstance();
 
         mBottomNavigationViewEx = findViewById(R.id.bottom_nav_view);
         editTextName = findViewById(R.id.input_name);
@@ -249,7 +242,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
             /*
             Put a notice in our log that we are attempting to initialize
              */
-            Log.e("NOTICE","Attempting to intialize server");
             AfricasTalking.initialize(host, port,true);
 
             //Use AT's Logger to get any message
@@ -260,31 +252,26 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
                     /*
                     Log this too
                      */
-                    Log.e("FROM AT LOGGER",message + " " + args.toString());
                 }
             });
 
             /*
             Final log to tell us if successful
              */
-            Log.e("SERVER SUCCESS","Managed to connect to server");
         } catch (IOException e){
 
             /*
             Log our failure to connect
              */
-            Log.e("SERVER ERROR", "Failed to connect to server");
         }
     }
 
     private void setNavigationViewListener() {
-        Log.d(TAG, "setNavigationViewListener: initializing navigation drawer onclicklistener.");
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     private void setHeaderImage() {
-        Log.d(TAG, "setHeaderImage: setting header image for navigation drawer.");
 
         // better to set the header with glide. It's more efficient than setting the source directly
 //        Glide.with(this)
@@ -311,7 +298,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     }
 
     private void initBottomNavigationView() {
-        Log.d(TAG, "initBottomNavigationView: initializing bottom navigation view.");
         mBottomNavigationViewEx.enableAnimation(false);
         mBottomNavigationViewEx.setOnNavigationItemSelectedListener(this);
     }
@@ -353,7 +339,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     private void setNavigationIcon(String tagname) {
         Menu menu = mBottomNavigationViewEx.getMenu();
         MenuItem menuItem = null;
-        Log.d(TAG, "setNavigationIcon: airtime fragment is visible");
 
     }
 
@@ -387,9 +372,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
     }
 
     private void printBackStack() {
-        Log.d(TAG, "printBackStack: ----------------------------------- ");
         for (int i = 0; i < mFragmentsTags.size(); i++) {
-            Log.d(TAG, "printBackStack: " + i + ": " + mFragmentsTags.get(i));
         }
     }
 
@@ -404,4 +387,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivity, Bo
             mBottomNavigationViewEx.setVisibility(View.VISIBLE);
         }
     }
+
 }

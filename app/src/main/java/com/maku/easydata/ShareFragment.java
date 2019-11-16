@@ -1,12 +1,10 @@
 package com.maku.easydata;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +31,6 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
 
         View view = inflater.inflate(R.layout.fragment_share, container, false);
 
-        Log.d(TAG, "onCreateView: started.");
         mBackArrow = view.findViewById(R.id.back_arrow);
         mFragmentHeading = view.findViewById(R.id.fragment_heading);
 
@@ -43,7 +40,6 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initToolbar(){
-        Log.d(TAG, "initToolbar: initializing toolbar.");
         mBackArrow.setOnClickListener(this);
         mFragmentHeading.setText(getString(R.string.tag_fragment_agreement));
 
@@ -52,10 +48,8 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        Log.d(TAG, "onClick: clicked.");
 
         if(view.getId() == R.id.back_arrow){
-            Log.d(TAG, "onClick: navigating back.");
             mInterface.onBackPressed();
         }
     }

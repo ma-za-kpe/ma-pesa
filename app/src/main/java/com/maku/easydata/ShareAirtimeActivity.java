@@ -3,12 +3,14 @@ package com.maku.easydata;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.africastalking.AfricasTalking;
@@ -17,25 +19,18 @@ import com.africastalking.services.AirtimeService;
 import com.maku.easydata.adapter.SosAdapter;
 import com.maku.easydata.interfaces.APIService;
 import com.maku.easydata.models.serverresponse.SosResult;
-import com.maku.easydata.models.serverresponse.SosResult;
-import com.maku.easydata.models.serverresponse.SosResult;
 import com.maku.easydata.utils.ApiUtils;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ShareAirtimeActivity extends AppCompatActivity {
+public class ShareAirtimeActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG = "ShareAirtimeActivity";
 
@@ -47,6 +42,8 @@ public class ShareAirtimeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private SosAdapter mSosAdapter;
     private APIService mAPIService;
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,14 +57,45 @@ public class ShareAirtimeActivity extends AppCompatActivity {
         mArrayList = new ArrayList<>();
         mRecyclerView = findViewById(R.id.sosPeople);
 
+        /*initialise recyclerview*/
         initRecyclerview();
 
-        fetchJSON();
+        // SwipeRefreshLayout
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+//        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark);
+
+        /**
+         * Showing Swipe Refresh animation on activity create
+         * As animation won't start on onCreate, post runnable is used
+         */
+        mSwipeRefreshLayout.post(new Runnable() {
+
+            @Override
+            public void run() {
+
+                if(mSwipeRefreshLayout != null) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+                // TODO Fetching data from server
+                fetchJSON();
+            }
+        });
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mRecyclerView.setAdapter(null);
+    }
+
     private void initRecyclerview() {
-        Log.d(TAG, "initRecyclerview: ");
         mLinearLayoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
     }
@@ -79,16 +107,16 @@ public class ShareAirtimeActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<SosResult>> call, Response<ArrayList<SosResult>> response) {
 
                 if (response.isSuccessful())  {
-                    Log.d(TAG, "onResponse: " + response.body());
                     process(response);
+                    mSwipeRefreshLayout.setRefreshing(false);
                 }else{
-                    Log.d(TAG, "onResponse: there is no response");
+                    Toast.makeText(getBaseContext(),"Sorry or the inconvinience"+ response.code() +" "+ response.message(),
+                            Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<SosResult>> call, Throwable t) {
-                Log.e(TAG,t.toString());
             }
         });
     }
@@ -97,7 +125,7 @@ public class ShareAirtimeActivity extends AppCompatActivity {
     private void process(Response<ArrayList<SosResult>> response) {
 
         mArrayList =  response.body();
-        Log.d(TAG, "process: " + mArrayList);
+        Collections.reverse(mArrayList);
         mSosAdapter = new SosAdapter(this, mArrayList);
         mRecyclerView.setAdapter(mSosAdapter);
 
@@ -105,10 +133,8 @@ public class ShareAirtimeActivity extends AppCompatActivity {
 
     /*working with onclick share button*/
     public void onClickCalled(String code, String phone, String amount ) {
-        Log.d(TAG, "onClickCalled: " + code + " " + phone + " " + amount);
         switch (code) {
             case "+254":
-                Log.d(TAG, "onClick: Kenya");
 
                 HashMap<String,String> recipient = new HashMap<>();
                 recipient.put(phone, "KES " + amount);
@@ -140,23 +166,19 @@ public class ShareAirtimeActivity extends AppCompatActivity {
                 try {
 
                 /*
-                Log that we are trying to get service
                  */
-                    Log.e("AIRTIME NOTICE", "Trying to get airtime service");
                     AirtimeService service = AfricasTalking.getAirtimeService();
 
                     //Now that we have the service, send the airtime, get the response
                     AirtimeResponse response = service.send(recipient);
 
                     //Log our success message
-                    Log.e("AIRTIME SUCCESS","Sent airtime worth " + response.totalAmount + " to " );
 
                 } catch (IOException e){
 
                     /*
                     Log our failure
                      */
-                    Log.e("AIRTIME FAILURE","Failed to send airtime with exception " + e.toString());
                 }
 
                 return null;
@@ -172,6 +194,22 @@ public class ShareAirtimeActivity extends AppCompatActivity {
         //Execute our task
         taskSendAirtime.execute();
     }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    /**fetch data from the server*/
+ @Override
+    public void onRefresh() {
+     /**
+      * Do not Show Swipe Refresh animation
+      */
+     mSwipeRefreshLayout.setRefreshing(true);
+        fetchJSON();
+    }
+
 }
 
 
