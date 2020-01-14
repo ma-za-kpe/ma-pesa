@@ -1,84 +1,37 @@
 <resources>
     <string name="app_name">ma-pesa</string>
-    <string name="success">SUCCESS !!!</string>
     <string name="search_hint">Start typing a name...</string>
-    <string name="admob_app_id">ca-app-pub-1222362664019591~8722623706</string>
-    <string name="ad_unit_id">ca-app-pub-1222362664019591/7512224638</string>
-    <string name="test_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="impossible_game">ma-pesa</string>
-    <string name="retry_button_text">Watch</string>
-    <string name="watch_video_button_text">Click and watch for More Airtime</string>
-    <string name="default_coin_text">Reward: 0</string>
+    <string name="login_button_text">Login</string>
+    <string name="login_btn">Login</string>
 
-    <!-- Navigation Drawer -->
-    <string name="home">Home</string>
-    <string name="settings">Settings</string>
-    <string name="agreement">Agreement</string>
+    <!--Shared Preference Keys -->
 
-    <!-- Fragment Tags -->
-    <string name="tag_fragment_data">Data</string>
-    <string name="tag_fragment_more_data">More Data</string>
-    <string name="tag_fragment_more_airtime">More Airtime</string>
-    <string name="tag_fragment_airtime">Photo</string>
-    <string name="tag_fragment_view_profile">View Profile</string>
-    <string name="tag_fragment_chat">Chat</string>
-    <string name="tag_fragment_mapesa">ma-pesa</string>
-    <string name="tag_fragment_agreement">Agreement</string>
-    <string name="tag_fragment_settings">Setting</string>
-    <string name="tag_fragment_share">Share</string>
-    <string name="tag_fragment_signout">SignOut</string>
+    <string name="action_logout">LogOut</string>
 
     <!-- Dialog Messages -->
-    <string name="first_time_user_message">
-        I noticed this is your first login. Make sure to input your preferences in the Settings screen so we can find potential matches!
-    </string>
 
     <!-- Intent and Bundle Extras -->
-    <string name="intent_new_camera_photo">intent_new_camera_photo</string>
-    <string name="intent_new_gallery_photo">intent_new_gallery_photo</string>
-    <string name="intent_user">intent_user</string>
-    <string name="intent_message">intent_message</string>
 
     <!-- Spinner Options -->
-    <string name="gender_male">Male</string>
-    <string name="gender_female">Female</string>
-    <string name="gender_none">Do Not Identify</string>
-    <string name="gender_prompt">Choose your gender</string>
-    <string name="interested_in_male">Male</string>
 
-    <string name="interested_in_female">Female</string>
-    <string name="interested_in_anyone">Anyone</string>
-    <string name="interested_in_prompt">What are you looking for?</string>
-    <string name="status_looking">Looking</string>
-    <string name="status_not_looking">Not Looking</string>
-
-    <string name="relationship_prompt">You you looking?</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-        anim id est laborum.
-</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="gender_array">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Do Not Identify</item>
-    </string-array>
-
-
-    <string-array name="interested_in_array">
-        <item>Male</item>
-        <item>Female</item>
-        <item>Anyone</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string-array name="relationship_status_array">
-        <item>Looking</item>
-        <item>Not Looking</item>
-    </string-array>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="your_title">Are you sure you want to Logout ?</string>
+    <string name="your_message">Bye ....</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+
+    <!--    Kenya    -->
+
+    <string name="one">10</string>
+    <string name="two">20</string>
+    <string name="three">50</string>
+    <string name="four">100</string>
+    <string name="five">500</string>
+    <string name="six">1000</string>
+
 </resources>

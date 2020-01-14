@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginActivityFragment">
+    <fragment
+        android:id="@+id/loginActivityFragment"
+        android:name="com.maku.easydata.ui.LoginActivityFragment"
+        android:label="LoginActivityFragment"
+        tools:layout="@layout/fragment_login_activity" >
+        <action
+            android:id="@+id/action_loginActivityFragment_to_airtimeFragment"
+            app:destination="@id/airtimeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/airtimeFragment"
+        android:name="com.maku.easydata.ui.AirtimeFragment"
+        android:label="airtime_fragment"
+        tools:layout="@layout/airtime_fragment" >
+        <action
+            android:id="@+id/action_airtimeFragment_to_loginActivityFragment"
+            app:destination="@id/loginActivityFragment" />
+    </fragment>
+</navigation>

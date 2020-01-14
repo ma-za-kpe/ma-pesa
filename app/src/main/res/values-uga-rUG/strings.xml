@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Uganda    -->
+    <string name="one">500</string>
+    <string name="two">1000</string>
+    <string name="three">2000</string>
+    <string name="four">5000</string>
+    <string name="five">10000</string>
+    <string name="six">20000</string>
+
+</resources>
