@@ -15,6 +15,9 @@
 
     <!-- Spinner Options -->
 
+    <!--  rewarded admob  -->
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="AD_UNIT_ID">ca-app-pub-3940256099942544/5224354917</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_main">MainActivity</string>
@@ -33,5 +36,8 @@
     <string name="four">100</string>
     <string name="five">500</string>
     <string name="six">1000</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -24,7 +24,7 @@
                     android:src="@drawable/ic_action_logout"
                     app:cb_color="@color/white"
                     android:layout_marginStart="32dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="32dp"
                     android:layout_marginTop="16dp"
                     app:cb_pressedRingWidth="8dip" />
 
@@ -44,75 +44,135 @@
                 <Button
                     android:id="@+id/button"
                     style="@style/amountButtons"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="136dp"
+                    android:layout_marginTop="100dp"
                     android:text="@string/one"
                     app:layout_constraintBaseline_toBaselineOf="@+id/button2"
                     app:layout_constraintStart_toStartOf="@+id/text"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    style="@style/amountButtons"
                     android:id="@+id/button2"
-                    android:layout_width="wrap_content"
+                    style="@style/amountButtons"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="124dp"
+                    android:layout_marginTop="100dp"
                     android:text="@string/two"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/logout"
                     app:layout_constraintHorizontal_bias="0.758"
                     app:layout_constraintStart_toEndOf="@+id/button"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    style="@style/amountButtons"
                     android:id="@+id/button3"
-                    android:layout_width="wrap_content"
+                    style="@style/amountButtons"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/three"
                     app:layout_constraintBaseline_toBaselineOf="@+id/button4"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/button"
                     app:layout_constraintTop_toBottomOf="@+id/button" />
 
                 <Button
-                    style="@style/amountButtons"
                     android:id="@+id/button4"
-                    android:layout_width="wrap_content"
+                    style="@style/amountButtons"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="88dp"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginTop="32dp"
                     android:text="@string/four"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/button2"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/button3"
                     app:layout_constraintTop_toBottomOf="@+id/button2" />
 
                 <Button
-                    style="@style/amountButtons"
                     android:id="@+id/button5"
-                    android:layout_width="wrap_content"
+                    style="@style/amountButtons"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
                     android:layout_marginTop="32dp"
                     android:text="@string/five"
                     app:layout_constraintBaseline_toBaselineOf="@+id/button6"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/button3"
                     app:layout_constraintTop_toBottomOf="@+id/button3" />
 
                 <Button
                     android:id="@+id/button6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="88dp"
-                    android:layout_marginEnd="32dp"
-                    android:text="@string/six"
                     style="@style/amountButtons"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/six"
+                    app:layout_constraintEnd_toEndOf="@+id/button4"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/button5"
                     app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center"
+                    android:text="Click to buy more Airtime"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/button6"
+                    app:layout_constraintStart_toStartOf="@+id/button5"
+                    app:layout_constraintTop_toBottomOf="@+id/button5" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/text2"
+                    app:layout_constraintStart_toStartOf="@+id/text2"
+                    app:layout_constraintTop_toBottomOf="@+id/text2">
+
+                    <EditText
+                        android:id="@+id/text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:hint="Enter 10000"
+                        android:inputType="number"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/more"
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="BUY ..." />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="0dp"
+                    android:layout_height="64dp"
+                    android:gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:text="watch for free airtime"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/text2"
+                    app:layout_constraintStart_toStartOf="@+id/text2"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+                <ImageButton
+                    android:id="@+id/video"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/ic_watch"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/text4"
+                    app:layout_constraintHorizontal_bias="0.48"
+                    app:layout_constraintStart_toStartOf="@+id/text4"
+                    app:layout_constraintTop_toBottomOf="@+id/text4"
+                    app:layout_constraintVertical_bias="0.168" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>

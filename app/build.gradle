@@ -145,6 +145,7 @@ dependencies {
 
     //firebase UI dependency
     implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+    implementation 'com.google.firebase:firebase-ads:18.3.0'
 
     //matrial dialogs
     implementation 'com.afollestad.material-dialogs:core:3.1.1'
@@ -156,7 +157,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //circular button
-    compile 'com.github.markushi:circlebutton:1.1'
+    implementation 'com.github.markushi:circlebutton:1.1'
 
 }
 
