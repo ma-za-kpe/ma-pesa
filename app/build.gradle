@@ -15,8 +15,8 @@ android {
         applicationId "com.maku.easydata"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 17
-        versionName "roze"
+        versionCode 18
+        versionName "ugLoco"
         ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // Enabling multidex support.
