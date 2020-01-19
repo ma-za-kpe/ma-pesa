@@ -1,44 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ma-pesa</string>
-    <string name="search_hint">Start typing a name...</string>
+<!--    Kenya    -->
+<string name="one">10</string>
+<string name="two">20</string>
+<string name="three">50</string>
+<string name="four">100</string>
+<string name="five">500</string>
+<string name="six">1000</string>
 
-    <string name="login_button_text">Login</string>
-    <string name="login_btn">Login</string>
+<string name="app_name">ma-pesa</string>
+<string name="search_hint">Start typing a name...</string>
 
-    <!--Shared Preference Keys -->
+<string name="login_button_text">Login</string>
+<string name="login_btn">Login</string>
 
-    <string name="action_logout">LogOut</string>
+<!--Shared Preference Keys -->
 
-    <!-- Dialog Messages -->
+<string name="action_logout">LogOut</string>
 
-    <!-- Intent and Bundle Extras -->
+<!-- Dialog Messages -->
 
-    <!-- Spinner Options -->
+<!-- Intent and Bundle Extras -->
 
-    <!--  rewarded admob  -->
+<!-- Spinner Options -->
+
+    <!--  rewarded admob test  -->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="AD_UNIT_ID">ca-app-pub-3940256099942544/5224354917</string>
+
+    <!--  rewarded admob prod  -->
+<!--    <string name="admob_app_id">ca-app-pub-1222362664019591~8722623706</string>-->
 <!--    <string name="AD_UNIT_ID">ca-app-pub-1222362664019591/7512224638</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_activity_main">MainActivity</string>
+<string name="title_activity_main">MainActivity</string>
 
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="your_title">Are you sure you want to Logout ?</string>
-    <string name="your_message">Bye ....</string>
-    <string name="yes">YES</string>
-    <string name="no">NO</string>
 
-    <!--    Kenya    -->
-
-    <string name="one">10</string>
-    <string name="two">20</string>
-    <string name="three">50</string>
-    <string name="four">100</string>
-    <string name="five">500</string>
-    <string name="six">1000</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<string name="title_activity_login">LoginActivity</string>
+<string name="your_title">Are you sure you want to Logout ?</string>
+<string name="your_message">Bye ....</string>
+<string name="yes">YES</string>
+<string name="no">NO</string>
 
 </resources>
