@@ -17,26 +17,26 @@
                     android:id="@+id/logout"
                     android:layout_width="64dip"
                     android:layout_height="64dip"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:src="@drawable/ic_action_logout"
+                    app:cb_color="@color/white"
+                    app:cb_pressedRingWidth="8dip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/ic_action_logout"
-                    app:cb_color="@color/white"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginTop="16dp"
-                    app:cb_pressedRingWidth="8dip" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/text"
-                    android:gravity="center"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="16dp"
-                    android:textSize="24sp"
+                    android:gravity="center"
                     android:text="Click to buy Airtime"
+                    android:textSize="24sp"
                     app:layout_constraintEnd_toStartOf="@+id/logout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -153,8 +153,8 @@
                     android:id="@+id/text4"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
-                    android:gravity="center"
                     android:layout_marginTop="16dp"
+                    android:gravity="center"
                     android:text="watch for free airtime"
                     android:textSize="24sp"
                     app:layout_constraintEnd_toEndOf="@+id/text2"
@@ -173,6 +173,19 @@
                     app:layout_constraintStart_toStartOf="@+id/text4"
                     app:layout_constraintTop_toBottomOf="@+id/text4"
                     app:layout_constraintVertical_bias="0.168" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="28dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/text4"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/video"
+                    app:layout_constraintTop_toBottomOf="@+id/text4"
+                    app:layout_constraintVertical_bias="0.35" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>

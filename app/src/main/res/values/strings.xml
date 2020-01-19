@@ -18,6 +18,7 @@
     <!--  rewarded admob  -->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="AD_UNIT_ID">ca-app-pub-3940256099942544/5224354917</string>
+<!--    <string name="AD_UNIT_ID">ca-app-pub-1222362664019591/7512224638</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_main">MainActivity</string>

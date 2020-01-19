@@ -35,13 +35,13 @@ class AirtimeFragment : Fragment(), RewardedVideoAdListener {
 
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-    private var mIsLoading = false
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.airtime_fragment, container, false)
+
+        binding.progressBar.visibility = View.GONE
 
         // rewarded ads
         MobileAds.initialize(activity, "ca-app-pub-3940256099942544~3347511713")
@@ -76,8 +76,7 @@ class AirtimeFragment : Fragment(), RewardedVideoAdListener {
     private fun loadRewardedVideoAd() {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
-            mIsLoading = true
-
+            binding.progressBar.setVisibility(View.VISIBLE)
             mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
@@ -107,10 +106,13 @@ override fun onRewardedVideoAdClosed() {
 
 override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
     Toast.makeText(activity, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show()
+    binding.progressBar.visibility = View.GONE
 }
 
 override fun onRewardedVideoAdLoaded() {
     Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
+    binding.progressBar.visibility =  View.GONE
+    mRewardedVideoAd.show()
 }
 
 override fun onRewardedVideoAdOpened() {
@@ -123,6 +125,7 @@ override fun onRewardedVideoStarted() {
 
 override fun onRewardedVideoCompleted() {
     Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
+    binding.progressBar.setVisibility(View.GONE)
 }
 
     override fun onPause() {
