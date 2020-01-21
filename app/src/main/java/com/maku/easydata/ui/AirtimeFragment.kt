@@ -19,6 +19,9 @@ import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.google.android.gms.ads.rewarded.RewardedAd
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 
 import com.maku.easydata.R
 import com.maku.easydata.databinding.AirtimeFragmentBinding
@@ -44,7 +47,7 @@ class AirtimeFragment : Fragment(), RewardedVideoAdListener {
         binding.progressBar.visibility = View.GONE
 
         // rewarded ads
-        MobileAds.initialize(activity, "ca-app-pub-3940256099942544~3347511713")
+        MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
         // Use an activity context to get the rewarded video instance.
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity)
         mRewardedVideoAd.rewardedVideoAdListener = this
@@ -77,7 +80,7 @@ class AirtimeFragment : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/7512224638",
                     AdRequest.Builder().build())
 
         }
