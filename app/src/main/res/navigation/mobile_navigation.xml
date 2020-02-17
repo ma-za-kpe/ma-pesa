@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/loginActivityFragment">
+    <fragment
+        android:id="@+id/loginActivityFragment"
+        android:name="com.maku.easydata.ui.LoginActivityFragment"
+        android:label="LoginActivityFragment"
+        tools:layout="@layout/fragment_login_activity" >
+        <action
+            android:id="@+id/action_loginActivityFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adsFragment"
+        android:name="com.maku.easydata.ui.firstFive.AdsFragment"
+        android:label="fragment_ads"
+        tools:layout="@layout/fragment_ads" />
+    <fragment
+        android:id="@+id/fragmentOne"
+        android:name="com.maku.easydata.ui.firstFive.FragmentOne"
+        android:label="FragmentOne"
+        tools:layout="@layout/fragment_fragment_one" >
+        <action
+            android:id="@+id/action_fragmentOne_to_fragmentTwo"
+            app:destination="@id/fragmentTwo" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.maku.easydata.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_fragmentOne"
+            app:destination="@id/fragmentOne" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTwo"
+        android:name="com.maku.easydata.ui.firstFive.FragmentTwo"
+        android:label="FragmentTwo"
+        tools:layout="@layout/fragment_fragment_two" >
+        <action
+            android:id="@+id/action_fragmentTwo_to_fragmentThree"
+            app:destination="@id/fragmentThree" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentThree"
+        android:name="com.maku.easydata.ui.firstFive.FragmentThree"
+        android:label="FragmentThree"
+        tools:layout="@layout/fragment_fragment_three"  >
+        <action
+            android:id="@+id/action_fragmentThree_to_adsFragment"
+            app:destination="@id/adsFragment" />
+    </fragment>
+</navigation>

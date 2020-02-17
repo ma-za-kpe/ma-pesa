@@ -1,0 +1,57 @@
+{
+  "project_info": {
+    "project_number": "577484612475",
+    "firebase_url": "https://easydata-23502.firebaseio.com",
+    "project_id": "easydata-23502",
+    "storage_bucket": "easydata-23502.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577484612475:android:920ef6de6164534d",
+        "android_client_info": {
+          "package_name": "com.maku.easydata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577484612475-2gh43k0d76d61at7dsalkicb2lraa7qu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maku.easydata",
+            "certificate_hash": "697abd721b4f7c7a1e2411d8116700b15dd9fbd3"
+          }
+        },
+        {
+          "client_id": "577484612475-u24kuqmpjnhp9evmnqvn4ri5g7fjqcd9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.maku.easydata",
+            "certificate_hash": "85e82a4d80470864448081b173d12d89535a5135"
+          }
+        },
+        {
+          "client_id": "577484612475-e0os95kq9nkr4esev3p5sbk9inp2l5dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5R5dlCjx2hynOHpzQtUP6RVoGbrp1aNA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577484612475-e0os95kq9nkr4esev3p5sbk9inp2l5dn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-1222362664019591~8722623706"
+    }
+  ],
+  "configuration_version": "1"
+}

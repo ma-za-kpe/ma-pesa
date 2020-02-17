@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#de5b70</color>
+    <color name="colorPrimaryDark">#811cda</color>
+    <color name="colorAccent">#bf4495</color>
+    <color name="white">#ffffff</color>
+
+    <color name="red_100">#F44336</color>
+    <color name="red_300">#3F51B5</color>
+    <color name="red_500">#9C27B0</color>
+    <color name="red_700">#2196F3</color>
+    <color name="blue_100">#00BCD4</color>
+    <color name="blue_300">#7BAAF7</color>
+    <color name="blue_500">#009688</color>
+    <color name="blue_700">#3367D6</color>
+    <color name="green_100">#CDDC39</color>
+    <color name="green_300">#57BB8A</color>
+    <color name="green_500">#673AB7</color>
+    <color name="green_700">#0B8043</color>
+
+    <!--    snackbar-->
+    <color name="snackbar_action_text_color">#00574B</color>
+
+</resources>
+
+

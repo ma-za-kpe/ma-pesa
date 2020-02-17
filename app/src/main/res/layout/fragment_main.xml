@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titleIntro"
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="CHOOSE HOW MUCH AIRTIME YOU WANT TO EARN."
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/fifty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/fifty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/titleIntro"
+                app:layout_constraintStart_toStartOf="@+id/titleIntro"
+                app:layout_constraintTop_toBottomOf="@+id/titleIntro">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="152dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Watch 4 vidoes for 50Shs"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:id="@+id/fiftyBtn"
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="START" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Coming Soon"
+                        android:textSize="24sp" />
+
+                    <Button
+                        android:enabled="false"
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="START" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+<!--            SECOND STUFF-->
+
+
+            <LinearLayout
+                android:id="@+id/fifty1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/fifty"
+                app:layout_constraintStart_toStartOf="@+id/fifty"
+                app:layout_constraintTop_toBottomOf="@+id/fifty">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="152dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Coming Soon"
+                        android:textSize="24sp" />
+
+                    <Button
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:enabled="false"
+                        android:text="START" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Coming Soon"
+                        android:textSize="24sp" />
+
+                    <Button
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:enabled="false"
+                        android:text="START" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--     THIRD STUFF       -->
+
+
+            <LinearLayout
+                android:id="@+id/fifty2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/fifty1"
+                app:layout_constraintStart_toStartOf="@+id/fifty1"
+                app:layout_constraintTop_toBottomOf="@+id/fifty1">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="152dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Coming Soon"
+                        android:textSize="24sp" />
+
+                    <Button
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:enabled="false"
+                        android:text="START" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Coming Soon"
+                        android:textSize="24sp" />
+
+                    <Button
+                        style="@style/amountButtons"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:enabled="false"
+                        android:text="START" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>
