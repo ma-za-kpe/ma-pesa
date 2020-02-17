@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
         //onclick
         // start again button
         binding.fiftyBtn.setOnClickListener { view ->
-            navController.navigate(R.id.adsFragment)
+            navController.navigate(R.id.fragmentOne)
         }
         return binding.root
     }

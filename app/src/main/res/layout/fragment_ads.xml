@@ -43,9 +43,10 @@
                 android:layout_width="230dp"
                 android:layout_height="230dp"
                 android:layout_marginStart="56dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/ic_watch"
-                app:layout_constraintEnd_toEndOf="@+id/text"
+                app:layout_constraintEnd_toEndOf="@+id/logout"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/text4"
                 app:layout_constraintTop_toBottomOf="@+id/text4" />
 
@@ -64,26 +65,26 @@
                 style="@style/amountButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="184dp"
+                android:layout_marginBottom="244dp"
                 android:padding="16dp"
                 android:text="START AGAIN"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/video"
-                app:layout_constraintHorizontal_bias="0.576"
+                app:layout_constraintHorizontal_bias="0.56"
                 app:layout_constraintStart_toStartOf="@+id/video" />
 
             <TextView
                 android:id="@+id/goback"
                 android:layout_width="255dp"
                 android:layout_height="108dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="112dp"
                 android:gravity="center"
                 android:text="Watch video FULLY to continue ..."
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/video"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/video" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.maku.easydata.ui.firstFive
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
@@ -80,20 +83,19 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
         //logout
         binding.logout.setOnClickListener { view ->
-            sendAirtime()
             //material dialog
-//            MaterialDialog(requireContext()).show {
-//                title(R.string.your_title)
-//                message(R.string.your_message)
-//                positiveButton(R.string.yes){ dialog ->
-//                    AuthUI.getInstance().signOut(requireContext())
-////                    view.findNavController().navigate(R.id.action_airtimeFragment_to_loginActivityFragment)
-//                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
-//                }
-//                negativeButton(R.string.no){ dialog ->
-//                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+            MaterialDialog(requireContext()).show {
+                title(R.string.your_title)
+                message(R.string.your_message)
+                positiveButton(R.string.yes){ dialog ->
+                    AuthUI.getInstance().signOut(requireContext())
+//                    view.findNavController().navigate(R.id.action_airtimeFragment_to_loginActivityFragment)
+                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
+                }
+                negativeButton(R.string.no){ dialog ->
+                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
 
@@ -115,11 +117,22 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         //reward user with airtime
 //        sendAirtime()
         // Reward the user.
+        sendAirtime()
         Toast.makeText(activity, "Congratulations, you have received 50shs",
                 Toast.LENGTH_SHORT).show()
+
+        updateViews()
+
+    }
+
+    private fun updateViews() {
+        //disable button for 5 minutes
+        Handler().postDelayed({
+            binding.video.isEnabled = false
+        }, 1000)
+
         binding.button7.visibility = View.VISIBLE
         binding.goback.visibility = View.GONE
-
     }
 
     override fun onRewardedVideoAdLeftApplication() {
