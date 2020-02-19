@@ -1,7 +1,5 @@
 package com.maku.easydata.ui
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,7 +34,7 @@ class MainFragment : Fragment() {
         //onclick
         // start again button
         binding.fiftyBtn.setOnClickListener { view ->
-            navController.navigate(R.id.adsFragment)
+            navController.navigate(R.id.fragmentOne)
         }
         return binding.root
     }

@@ -46,5 +46,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click_watch_for_free_airtime"><![CDATA[Click & watch completely for free airtime]]></string>
+    <string name="saved_phone_number" />
 
 </resources>

@@ -91,7 +91,7 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/7512224638",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/1022969060",
                     AdRequest.Builder().build())
 
         }
@@ -100,7 +100,7 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "watch 2 more videos to redeem the 50shs",
+        Toast.makeText(activity, "2 more videos togo",
                 Toast.LENGTH_SHORT).show()
         // Reward the user.
         binding.next.visibility = View.VISIBLE
@@ -109,11 +109,11 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
     }
 
     override fun onRewardedVideoAdLeftApplication() {
-        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdClosed() {
-        Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
@@ -122,21 +122,21 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
     }
 
     override fun onRewardedVideoAdLoaded() {
-        Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility =  View.GONE
         mRewardedVideoAd.show()
     }
 
     override fun onRewardedVideoAdOpened() {
-        Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoStarted() {
-        Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoCompleted() {
-        Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
         binding.progressBar.setVisibility(View.GONE)
     }
 

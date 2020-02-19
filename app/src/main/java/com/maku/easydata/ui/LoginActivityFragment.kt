@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,11 @@ import timber.log.Timber
  * A placeholder fragment containing a simple view.
  */
 class LoginActivityFragment : Fragment() {
+
+    //shared preferences
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "pesa"
+
 
     companion object {
         const val SIGN_IN_RESULT_CODE = 1001
@@ -94,7 +100,13 @@ class LoginActivityFragment : Fragment() {
             val response = IdpResponse.fromResultIntent(data)
             if (resultCode == Activity.RESULT_OK) {
                 // User successfully signed in
-                Timber.d("Successfully signed in user ${FirebaseAuth.getInstance().currentUser?.displayName}!")
+                Timber.d("Successfully signed in user ${FirebaseAuth.getInstance().currentUser?.phoneNumber}!")
+
+                val sharedPref = activity?.getSharedPreferences("mapesa", Context.MODE_PRIVATE) ?: return
+                with (sharedPref.edit()) {
+                    putString(getString(R.string.saved_phone_number), FirebaseAuth.getInstance().currentUser?.phoneNumber)
+                    apply()
+                }
                 navController.navigate(R.id.mainFragment)
             } else {
                 // Sign in failed. If response is null the user canceled the

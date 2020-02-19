@@ -1,6 +1,9 @@
 package com.maku.easydata.ui.firstFive
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +11,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.firebase.ui.auth.AuthUI
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
@@ -42,10 +48,13 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
     private lateinit var navController: NavController
 
+    private lateinit var number : String
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +62,13 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_ads, container, false)
+
+        val sharedPref = activity?.getSharedPreferences("mapesa",Context.MODE_PRIVATE)
+         number = sharedPref?.getString(getString(R.string.saved_phone_number), null).toString()
+
+
+        Timber.d("number is.... " + number)
+
 
         binding.progressBar.visibility = View.GONE
         binding.button7.visibility = View.GONE
@@ -80,20 +96,19 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
         //logout
         binding.logout.setOnClickListener { view ->
-            sendAirtime()
             //material dialog
-//            MaterialDialog(requireContext()).show {
-//                title(R.string.your_title)
-//                message(R.string.your_message)
-//                positiveButton(R.string.yes){ dialog ->
-//                    AuthUI.getInstance().signOut(requireContext())
-////                    view.findNavController().navigate(R.id.action_airtimeFragment_to_loginActivityFragment)
-//                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
-//                }
-//                negativeButton(R.string.no){ dialog ->
-//                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
-//                }
-//            }
+            MaterialDialog(requireContext()).show {
+                title(R.string.your_title)
+                message(R.string.your_message)
+                positiveButton(R.string.yes){ dialog ->
+                    AuthUI.getInstance().signOut(requireContext())
+                    view.findNavController().navigate(R.id.action_adsFragment_to_loginActivityFragment)
+                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
+                }
+                negativeButton(R.string.no){ dialog ->
+                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
 
@@ -112,22 +127,31 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
     override fun onRewarded(reward: RewardItem) {
         Timber.d("You have received airtime, check")
-        //reward user with airtime
-//        sendAirtime()
         // Reward the user.
+        sendAirtime()
         Toast.makeText(activity, "Congratulations, you have received 50shs",
+                Toast.LENGTH_SHORT).show()
+        updateUi()
+
+
+    }
+
+    private fun updateUi() {
+        Handler().postDelayed({
+            binding.video.isEnabled = false
+        }, 300000)
+        Toast.makeText(activity, "Button disabled for 5 minutes, start again",
                 Toast.LENGTH_SHORT).show()
         binding.button7.visibility = View.VISIBLE
         binding.goback.visibility = View.GONE
-
     }
 
     override fun onRewardedVideoAdLeftApplication() {
-        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdClosed() {
-        Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
@@ -136,21 +160,21 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
     }
 
     override fun onRewardedVideoAdLoaded() {
-        Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility =  View.GONE
         mRewardedVideoAd.show()
     }
 
     override fun onRewardedVideoAdOpened() {
-        Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoStarted() {
-        Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoCompleted() {
-        Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
         binding.progressBar.setVisibility(View.GONE)
     }
 
@@ -172,38 +196,14 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
     /*start send airtime region*/
     private fun sendAirtime(){
             try {
-                                //object2
-                 // prepare call in Retrofit 2.0
-                val paramObject = JSONObject()
 
-//                //  dprobe json object 1
-//                val data = JsonObject()
-//                data.addProperty("phoneNumber", "+256776203422")
-//                data.addProperty("amount", "UGX 50")
+                //phone number
+                Timber.d("number is " + number)
 
-                //json array
-//                val probes_data = JSONArray()
-//                probes_data.put(data)
-
-//                val rec = probes_data.toString()
-//
-//                //constructing the request
-//                paramObject.put("username", "easyAirtime")
-//                paramObject.put("recipients", probes_data)
-//
-//                //            parse the jso object
-//                val gson: JsonObject
-//                val jsonParser = JsonParser()
-//                gson = jsonParser.parse(paramObject.toString()) as JsonObject
-
-//               val at =  AirtimerRecipient()
-//                at.phoneNumber = "+256776203422"
-//                at.amount = "50"
-
-               val list =  ArrayList<MutableMap<String, String>>()
+                val list =  ArrayList<MutableMap<String, String>>()
                 val Recipient:MutableMap<String,String> = mutableMapOf()
-                Recipient.put("phoneNumber", "+256776203422" )
-                Recipient.put("amount" , "UGX 50")
+                Recipient["phoneNumber"] = number
+                Recipient["amount"] = "UGX 50"
                 list.add(Recipient)
 
                 val json = Gson().toJson(list)
