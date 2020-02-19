@@ -137,11 +137,14 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
     }
 
     private fun updateUi() {
-        Handler().postDelayed({
-            binding.video.isEnabled = false
-        }, 300000)
-        Toast.makeText(activity, "Button disabled for 5 minutes, start again",
+        Toast.makeText(activity, "Congratulations, you have received 50shs",
                 Toast.LENGTH_SHORT).show()
+//        Handler().postDelayed({
+//            Toast.makeText(activity, "Button disabled for 5 minutes, start again",
+//                    Toast.LENGTH_SHORT).show()
+//            binding.video.isEnabled = true
+//        }, 300000)
+        binding.video.visibility = View.GONE
         binding.button7.visibility = View.VISIBLE
         binding.goback.visibility = View.GONE
     }

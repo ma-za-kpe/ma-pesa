@@ -54,9 +54,9 @@
                 android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toEndOf="@+id/video"
-                app:layout_constraintHorizontal_bias="0.554"
+                app:layout_constraintHorizontal_bias="0.516"
                 app:layout_constraintStart_toStartOf="@+id/video"
                 app:layout_constraintTop_toBottomOf="@+id/video" />
 
@@ -65,26 +65,25 @@
                 style="@style/amountButtons"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="196dp"
+                android:layout_marginTop="316dp"
                 android:padding="16dp"
                 android:text="START AGAIN"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/video"
-                app:layout_constraintHorizontal_bias="0.634"
-                app:layout_constraintStart_toStartOf="@+id/video" />
+                app:layout_constraintEnd_toEndOf="@+id/logout"
+                app:layout_constraintStart_toStartOf="@+id/text4"
+                app:layout_constraintTop_toBottomOf="@+id/text4" />
 
             <TextView
                 android:id="@+id/goback"
                 android:layout_width="255dp"
                 android:layout_height="108dp"
-                android:layout_marginBottom="116dp"
+                android:layout_marginBottom="144dp"
                 android:gravity="center"
-                android:text="Watch video FULLY to continue ..."
+                android:text="Watch last video and start again ..."
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/video"
-                app:layout_constraintHorizontal_bias="0.36"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/video" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

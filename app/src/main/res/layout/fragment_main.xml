@@ -47,6 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/titleIntro">
 
                 <LinearLayout
+                    android:background="@drawable/customborder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">

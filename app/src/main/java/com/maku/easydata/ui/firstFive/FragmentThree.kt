@@ -64,7 +64,6 @@ class FragmentThree : Fragment(), RewardedVideoAdListener {
 
         binding.progressBar.visibility = View.GONE
         binding.next.visibility = View.GONE
-        binding.next.visibility = View.GONE
 
         // rewarded ads
         MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
@@ -105,6 +104,7 @@ class FragmentThree : Fragment(), RewardedVideoAdListener {
                 Toast.LENGTH_SHORT).show()
         // Reward the user.
         binding.next.visibility = View.VISIBLE
+        binding.goback.visibility = View.GONE
 
     }
 
