@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_mainFragment_to_fragmentOne"
             app:destination="@id/fragmentOne" />
+        <action
+            android:id="@+id/action_mainFragment_to_stuffActivity"
+            app:destination="@id/stuffActivity" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
@@ -57,4 +60,9 @@
             android:id="@+id/action_fragmentThree_to_adsFragment"
             app:destination="@id/adsFragment" />
     </fragment>
+    <activity
+        android:id="@+id/stuffActivity"
+        android:name="com.maku.easydata.ui.WelcomeActivity"
+        android:label="activity_stuff"
+        tools:layout="@layout/activity_welcome" />
 </navigation>

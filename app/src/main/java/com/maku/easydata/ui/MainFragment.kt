@@ -36,6 +36,11 @@ class MainFragment : Fragment() {
         binding.fiftyBtn.setOnClickListener { view ->
             navController.navigate(R.id.fragmentOne)
         }
+
+        binding.promo.setOnClickListener {
+            navController.navigate(R.id.stuffActivity)
+        }
+
         return binding.root
     }
 
