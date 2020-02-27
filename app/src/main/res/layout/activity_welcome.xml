@@ -16,22 +16,28 @@
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:background="@color/colorPrimaryDark"
+            android:padding="8dp"
+            android:text="@string/get_started"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.569" />
+            app:layout_constraintVertical_bias="0.193" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="304dp"
             android:layout_height="574dp"
             android:layout_marginTop="16dp"
-            android:text="This is a tester page jonah....hahaha"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/sharing_is_caring_so_get_started_n_recieving_n"
+            android:textSize="64sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
