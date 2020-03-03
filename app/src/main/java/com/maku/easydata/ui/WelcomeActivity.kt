@@ -24,6 +24,7 @@ import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R;
 import com.maku.easydata.databinding.ActivitySplashBinding
 import com.maku.easydata.databinding.ActivityWelcomeBinding
+import io.github.inflationx.viewpump.ViewPumpContextWrapper
 import timber.log.Timber
 
 class WelcomeActivity : AppCompatActivity() {
