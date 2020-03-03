@@ -42,12 +42,18 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
 
+    <string name="msg_token_fmt">token generated</string>
+
+    <!--    notifications-->
+    <string name="default_notification_channel_id">channel_id</string>
+    <string name="default_notification_channel_name">channel_name</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click_watch_for_free_airtime"><![CDATA[Click & watch completely for free airtime]]></string>
     <string name="saved_phone_number" />
     <string name="get_started">GET STARTED</string>
-    <string name="sharing_is_caring_so_get_started_n_recieving_n">Sharing is caring, so get started \n recieving \n...</string>
+    <string name="sharing_is_caring_so_get_started_n_recieving_n">Get free Airtime \n...</string>
 
 </resources>

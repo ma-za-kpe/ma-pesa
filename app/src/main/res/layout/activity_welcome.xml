@@ -29,15 +29,15 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="304dp"
-            android:layout_height="574dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="272dp"
+            android:layout_height="333dp"
+            android:layout_marginTop="92dp"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
             android:text="@string/sharing_is_caring_so_get_started_n_recieving_n"
-            android:textSize="64sp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="48sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

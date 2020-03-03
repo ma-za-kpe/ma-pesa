@@ -11,13 +11,13 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="209dp"
-            android:layout_height="266dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="136dp"
             android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.63"
+            app:layout_constraintHorizontal_bias="0.446"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/map" />
@@ -26,7 +26,7 @@
             android:id="@+id/with"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="252dp"
             android:text="with"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.491"
@@ -41,8 +41,10 @@
             android:src="@drawable/love1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/with" />
+            app:layout_constraintTop_toBottomOf="@+id/with"
+            app:layout_constraintVertical_bias="0.048" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

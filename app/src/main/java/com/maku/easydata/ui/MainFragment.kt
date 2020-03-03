@@ -37,8 +37,8 @@ class MainFragment : Fragment() {
             navController.navigate(R.id.fragmentOne)
         }
 
-        binding.promo.setOnClickListener {
-            navController.navigate(R.id.stuffActivity)
+        binding.hundredBtn.setOnClickListener { view ->
+            navController.navigate(R.id.fragmentOne)
         }
 
         return binding.root

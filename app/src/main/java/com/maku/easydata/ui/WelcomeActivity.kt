@@ -39,8 +39,8 @@ class WelcomeActivity : AppCompatActivity() {
 
     // Returns an intent object that you use to check for an update.
     val appUpdateInfoTask = appUpdateManager.appUpdateInfo
-    private val MY_REQUEST_CODE = 20154
 
+    private val MY_REQUEST_CODE = 20154
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

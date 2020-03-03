@@ -12,80 +12,118 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainFragment">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <TextView
-                android:id="@+id/titleIntro"
-                style="@style/TextAppearance.AppCompat"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="FREE AIRTIME"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/fifty"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent">
 
-            <LinearLayout
-                android:id="@+id/fifty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="32dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/titleIntro"
-                app:layout_constraintStart_toStartOf="@+id/titleIntro"
-                app:layout_constraintTop_toBottomOf="@+id/titleIntro">
+                <TextView
+                    android:id="@+id/titleIntro"
+                    style="@style/TextAppearance.AppCompat"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="32dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="FREE AIRTIME"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/fifty"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:background="@drawable/customborder"
+                    android:id="@+id/fifty"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="32dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/titleIntro"
+                    app:layout_constraintStart_toStartOf="@+id/titleIntro"
+                    app:layout_constraintTop_toBottomOf="@+id/titleIntro">
 
-                    <TextView
-                        style="@style/TextAppearance.AppCompat"
+                    <LinearLayout
+                        android:background="@drawable/customborder"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:gravity="center"
-                        android:padding="8dp"
-                        android:text="Watch 4 vidoes for 50Shs"
-                        android:textSize="24sp" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/fiftyBtn"
-                        style="@style/amountButtons"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="START" />
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="Watch 4 vidoes for 50Shs"
+                            android:textSize="24sp" />
+
+                        <Button
+                            android:id="@+id/fiftyBtn"
+                            style="@style/amountButtons"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="START" />
+
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/hundred"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="32dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/fifty"
+                    app:layout_constraintStart_toStartOf="@+id/fifty"
+                    app:layout_constraintTop_toBottomOf="@+id/fifty">
 
-            <Button
-                android:id="@+id/promo"
-                style="@style/amountButtons"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginTop="192dp"
-                android:textSize="16sp"
-                android:text="SHARE The app and get 50shs Airtime"
-                app:layout_constraintEnd_toEndOf="@+id/fifty"
-                app:layout_constraintStart_toStartOf="@+id/fifty"
-                app:layout_constraintTop_toBottomOf="@+id/fifty" />
+                    <LinearLayout
+                        android:background="@drawable/customborder"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="center"
+                            android:padding="8dp"
+                            android:text="Watch 10 short vidoes for 100Shs \n coming  soon."
+                            android:textSize="24sp" />
+
+                        <Button
+                            android:enabled="false"
+                            android:id="@+id/hundredBtn"
+                            style="@style/amountButtons"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:text="START" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </FrameLayout>
 </layout>
