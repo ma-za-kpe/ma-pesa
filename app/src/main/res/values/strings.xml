@@ -72,8 +72,20 @@
 
     <string name="videos_to_g_two">2/4 videos to go.</string>
 
-
     <string name="videos_to_g_one">1/4 videos to go.</string>
+
+    <!-- strings.xml -->
+    <string name="hooray_">Hooray!!</string>
+
+    <!-- strings.xml -->
+    <string name="you_will_no">You have now recieved your\n50ugx airtime.</string>
+
+    <!-- strings.xml -->
+    <string name="start_again">Start Again</string>
+
+
+    <!-- strings.xml -->
+    <string name="view_other_">View other options</string>
 
 </resources>
 

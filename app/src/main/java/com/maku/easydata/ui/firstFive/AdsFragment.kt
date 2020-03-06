@@ -150,20 +150,9 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         sendAirtime()
         Toast.makeText(activity, "Congratulations, you have received 50shs",
                 Toast.LENGTH_SHORT).show()
-        updateUi()
 
-
-    }
-
-    private fun updateUi() {
-        Toast.makeText(activity, "Congratulations, you have received 50shs",
-                Toast.LENGTH_SHORT).show()
-//        Handler().postDelayed({
-//            Toast.makeText(activity, "Button disabled for 5 minutes, start again",
-//                    Toast.LENGTH_SHORT).show()
-//            binding.video.isEnabled = true
-//        }, 300000)
-
+        //move to hooray activity
+        navController.navigate(R.id.hoorayFragment)
     }
 
     override fun onRewardedVideoAdLeftApplication() {

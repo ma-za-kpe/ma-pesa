@@ -18,8 +18,8 @@
         android:label="fragment_ads"
         tools:layout="@layout/fragment_ads" >
         <action
-            android:id="@+id/action_adsFragment_to_loginActivityFragment"
-            app:destination="@id/loginActivityFragment" />
+            android:id="@+id/action_adsFragment_to_hoorayFragment"
+            app:destination="@id/hoorayFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentOne"
@@ -65,4 +65,13 @@
         android:name="com.maku.easydata.ui.WelcomeActivity"
         android:label="activity_stuff"
         tools:layout="@layout/activity_welcome" />
+    <fragment
+        android:id="@+id/hoorayFragment"
+        android:name="com.maku.easydata.ui.firstFive.HoorayFragment"
+        android:label="HoorayFragment"
+        tools:layout="@layout/fragment_hooray">
+        <action
+            android:id="@+id/action_hoorayFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

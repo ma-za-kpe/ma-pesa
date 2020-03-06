@@ -67,7 +67,7 @@
             <TextView
                 android:id="@+id/videos"
                 android:layout_width="143dp"
-                android:layout_height="23dp"
+                android:layout_height="25dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="20dp"
