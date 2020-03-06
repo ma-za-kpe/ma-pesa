@@ -2,8 +2,13 @@ package com.maku.easydata.ui.firstFive
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -71,9 +76,6 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
 
         binding.progressBar.visibility = View.GONE
-        binding.button7.visibility = View.GONE
-        binding.goback.visibility = View.VISIBLE
-
 
         // rewarded ads
         MobileAds.initialize(activity, "ca-app-pub-1222362664019591/1022969060")
@@ -82,44 +84,61 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.video.setOnClickListener { view ->
+        binding.play.setOnClickListener { view ->
             loadRewardedVideoAd()
         }
 
         // start again button
-        binding.button7.setOnClickListener { view ->
-            navController.navigate(R.id.mainFragment)
-            /*start timer region, send time info to the main fragment*/
-
-            /*end timer region*/
-        }
+//        binding.button7.setOnClickListener { view ->
+//            navController.navigate(R.id.mainFragment)
+//            /*start timer region, send time info to the main fragment*/
+//
+//            /*end timer region*/
+//        }
 
         //logout
-        binding.logout.setOnClickListener { view ->
-            //material dialog
-            MaterialDialog(requireContext()).show {
-                title(R.string.your_title)
-                message(R.string.your_message)
-                positiveButton(R.string.yes){ dialog ->
-                    AuthUI.getInstance().signOut(requireContext())
-                    view.findNavController().navigate(R.id.action_adsFragment_to_loginActivityFragment)
-                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
-                }
-                negativeButton(R.string.no){ dialog ->
-                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+//        binding.logout.setOnClickListener { view ->
+//            //material dialog
+//            MaterialDialog(requireContext()).show {
+//                title(R.string.your_title)
+//                message(R.string.your_message)
+//                positiveButton(R.string.yes){ dialog ->
+//                    AuthUI.getInstance().signOut(requireContext())
+//                    view.findNavController().navigate(R.id.action_adsFragment_to_loginActivityFragment)
+//                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
+//                }
+//                negativeButton(R.string.no){ dialog ->
+//                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
 
+        val mystring = resources.getString(R.string.videos_to_g_one);
+
+        val spannable = SpannableString(mystring);
+        spannable.setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.pink)),
+                0, 3,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                0, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.videos.text = spannable
 
         return  binding.root
     }
 
     private fun loadRewardedVideoAd() {
 
+        //live ca-app-pub-1222362664019591/7512224638
+
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/7512224638",
+            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
         }
@@ -144,9 +163,7 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 //                    Toast.LENGTH_SHORT).show()
 //            binding.video.isEnabled = true
 //        }, 300000)
-        binding.video.visibility = View.GONE
-        binding.button7.visibility = View.VISIBLE
-        binding.goback.visibility = View.GONE
+
     }
 
     override fun onRewardedVideoAdLeftApplication() {

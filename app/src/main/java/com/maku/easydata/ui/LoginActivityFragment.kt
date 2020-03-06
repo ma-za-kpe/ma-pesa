@@ -5,10 +5,17 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -55,6 +62,24 @@ class LoginActivityFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_activity, container, false)
 
+         //build the spannable String
+        val mystring = resources.getString(R.string.watch_video);
+//        val mystring = "Watch\\nvideos as\\nshort as 3 seconds\\nfor 100% free airtime."
+
+        val spannable = SpannableString(mystring);
+        spannable.setSpan(
+                 ForegroundColorSpan(resources.getColor(R.color.pink)),
+                44, 57,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        spannable.setSpan(
+                 StyleSpan(Typeface.BOLD),
+                44, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.watchVideo.text = spannable
+
         // TODO Remove the two lines below once observeAuthenticationState is implemented.
         binding.authButton.text = getString(R.string.login_btn)
 
@@ -62,8 +87,11 @@ class LoginActivityFragment : Fragment() {
 
         binding.authButton.setOnClickListener { launchSignInFlow() }
 
+
         return binding.root
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

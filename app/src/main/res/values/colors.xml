@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#de5b70</color>
+    <color name="colorPrimary">#ED88FD</color>
     <color name="colorPrimaryDark">#811cda</color>
-    <color name="colorAccent">#E145AC</color>de5b70
+    <color name="colorAccent">#811cda</color>
+    <color name="pink">#E145AC</color>d
+    <color name="btn">#811cda</color>de5b70
     <color name="white">#ffffff</color>
+    <color name="bckgrd">#f8f8f8</color>
 
     <color name="red_100">#F44336</color>
     <color name="red_300">#3F51B5</color>

@@ -25,15 +25,13 @@
             android:name=".service.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true"></service>
-
         <activity
             android:name=".ui.WelcomeActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">

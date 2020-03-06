@@ -6,7 +6,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.IntentSender.SendIntentException
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -90,8 +95,6 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
                 inflater, R.layout.fragment_fragment_one, container, false)
 
         binding.progressBar.visibility = View.GONE
-        binding.next.visibility = View.GONE
-        binding.goback.visibility = View.VISIBLE
 
         // rewarded ads
         MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
@@ -100,23 +103,41 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.video.setOnClickListener { view ->
+        binding.play.setOnClickListener { view ->
             loadRewardedVideoAd()
         }
 
-        // next button
-        binding.next.setOnClickListener { view ->
-            navController.navigate(R.id.fragmentTwo)
-        }
+//        // next button
+//        binding.next.setOnClickListener { view ->
+//            navController.navigate(R.id.fragmentTwo)
+//        }
+
+        val mystring = resources.getString(R.string.videos_to_g);
+
+        val spannable = SpannableString(mystring);
+        spannable.setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.pink)),
+                0, 3,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                0, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.videos.text = spannable
 
       return  binding.root
     }
 
     private fun loadRewardedVideoAd() {
 
+        //live ca-app-pub-1222362664019591/9386115178
+
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/9386115178",
+            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
         }
@@ -127,9 +148,8 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
 
         Toast.makeText(activity, "3 more videos to go",
                 Toast.LENGTH_SHORT).show()
-        // Reward the user.
-        binding.next.visibility = View.VISIBLE
-        binding.goback.visibility = View.GONE
+        // Reward the user // move to next activity
+        navController.navigate(R.id.fragmentTwo)
 
     }
 
@@ -142,7 +162,7 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
     }
 
     override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
-        Toast.makeText(activity, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "PLEASE CHECK YOUR INTERNET CONNECTION", Toast.LENGTH_LONG).show()
         binding.progressBar.visibility = View.GONE
     }
 
@@ -256,8 +276,10 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
     }
 
 
-
 }
+
+//on back pressed
+
 
 private fun AppUpdateManager.startUpdateFlowForResult(appUpdateInfo: AppUpdateInfo?, installType: Int, mContext: Context, requestCode: Int) {
 

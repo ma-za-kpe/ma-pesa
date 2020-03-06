@@ -12,113 +12,76 @@
         android:layout_height="match_parent"
         tools:context=".ui.MainFragment">
 
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        <ScrollView
+            android:background="@color/bckgrd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@color/bckgrd"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/titleIntro"
-                    style="@style/TextAppearance.AppCompat"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="32dp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:text="FREE AIRTIME"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toTopOf="@+id/fifty"
+                    android:textFontWeight="500"
+                    android:fontFamily="@font/qsb"
+                    android:textColor="@color/btn"
+                    android:id="@+id/ma_pesa"
+                    android:layout_width="103dp"
+                    android:layout_height="31dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="128dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="129dp"
+                    android:gravity="top"
+                    android:text="@string/ma_pesa"
+                    android:textAppearance="@style/ma_pesa"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:id="@+id/fifty"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginEnd="32dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="@+id/titleIntro"
-                    app:layout_constraintStart_toStartOf="@+id/titleIntro"
-                    app:layout_constraintTop_toBottomOf="@+id/titleIntro">
-
-                    <LinearLayout
-                        android:background="@drawable/customborder"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Watch 4 vidoes for 50Shs"
-                            android:textSize="24sp" />
-
-                        <Button
-                            android:id="@+id/fiftyBtn"
-                            style="@style/amountButtons"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:text="START" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="320dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/maincard"
+                    android:elevation="4dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8dp"
+                    app:cardUseCompatPadding="true"
+                    app:elevation="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ma_pesa">
 
 
+                    <TextView
+                        android:id="@+id/watchfour"
+                        android:layout_width="103dp"
+                        android:layout_height="58dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="0dp"
+                        android:gravity="top"
+                        android:textAppearance="@style/watch_4_vid" />
 
-                    </LinearLayout>
+                    <Button
+                        android:layout_height="25dp"
+                        android:id="@+id/fiftyBtn"
+                        style="@style/start"
+                        android:background="@drawable/start"
+                        android:layout_width="120dp"
+                        android:layout_marginStart="92dp"
+                        android:layout_marginTop="90dp"
+                        android:layout_marginEnd="108dp"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="4dp"
+                        android:text="@string/start" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/hundred"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginEnd="32dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="@+id/fifty"
-                    app:layout_constraintStart_toStartOf="@+id/fifty"
-                    app:layout_constraintTop_toBottomOf="@+id/fifty">
-
-                    <LinearLayout
-                        android:background="@drawable/customborder"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat"
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Watch 10 short vidoes for 100Shs \n coming  soon."
-                            android:textSize="24sp" />
-
-                        <Button
-                            android:enabled="false"
-                            android:id="@+id/hundredBtn"
-                            style="@style/amountButtons"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:text="START" />
-
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

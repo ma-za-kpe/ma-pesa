@@ -1,6 +1,11 @@
 package com.maku.easydata.ui
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,9 +42,26 @@ class MainFragment : Fragment() {
             navController.navigate(R.id.fragmentOne)
         }
 
-        binding.hundredBtn.setOnClickListener { view ->
-            navController.navigate(R.id.fragmentOne)
-        }
+//        binding.hundredBtn.setOnClickListener { view ->
+//            navController.navigate(R.id.fragmentOne)
+//        }
+
+        //build the spannable String
+        val mystring = resources.getString(R.string.watch_4_vid);
+
+        val spannable = SpannableString(mystring);
+        spannable.setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.pink)),
+                19, 33,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                19, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.watchfour.text = spannable
 
         return binding.root
     }

@@ -6,6 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/qsr</item>
+
     </style>
 
     <!--    dark theme-->
@@ -37,13 +39,14 @@
         <item name="android:textSize">15sp</item>
         <item name="android:layout_width">155dp</item>
         <item name="android:layout_height">40dp</item>
-        <item name="color">#9345E1</item>
+        <item name="color">@color/btn</item>
         <item name="fontFamily">@font/qsm</item>
         <item name="android:textColor">@color/white</item>
         <item name="paddingEnd">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="paddingStart">5dp</item>
         <item name="android:paddingTop">5dp</item>
+<item name="elevation">12dp</item>
     </style>
 
     <!-- styles.xml -->
@@ -61,4 +64,63 @@
 
     </style>
 
+    <style name="watch_video">
+
+        <item name="android:textSize">
+            30sp
+        </item>
+
+        <item name="fontFamily">@font/qsr</item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <style name="ma_pesa">
+
+        <item name="android:textSize">
+            25sp
+        </item>
+
+    </style>
+
+    <style name="watch_4_vid">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+    <style name="start">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #FFFFFF
+        </item>
+
+    </style>
+
+    <string name="start">start</string>
+
+    <style name="click_and_w">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
 </resources>

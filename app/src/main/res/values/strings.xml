@@ -48,10 +48,32 @@
     <string name="default_notification_channel_id">channel_id</string>
     <string name="default_notification_channel_name">channel_name</string>
 
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click_watch_for_free_airtime"><![CDATA[Click & watch completely for free airtime]]></string>
     <string name="saved_phone_number" />
     <string name="get_started">GET STARTED</string>
-    <string name="get_free_ai">Get \nFree\nAirtime...</string></resources>
+    <string name="get_free_ai">Get \nFree\nAirtime...</string>
+
+    <!-- strings.xml -->
+    <string name="watch_video">Watch\nvideos as\nshort as 3 seconds\nfor 100% free airtime. </string>
+
+    <!-- strings.xml -->
+    <string name="ma_pesa">Ma-Pesa</string>
+    <string name="watch_4_vid">Watch\n4 videos for\n50ugx Airtime.</string>
+
+    <!-- strings.xml -->
+    <string name="click_and_w">Click and watch for free airtime.</string>
+
+    <string name="videos_to_g">4/4 videos to go.</string>
+
+    <string name="videos_to_g_three">3/4 videos to go.</string>
+
+
+    <string name="videos_to_g_two">2/4 videos to go.</string>
+
+
+    <string name="videos_to_g_one">1/4 videos to go.</string>
+
+</resources>
+
