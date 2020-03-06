@@ -15,6 +15,7 @@
         android:xlargeScreens="true" />
 
     <application
+        android:resizeableActivity="true"
         android:name=".EasyDataApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -26,12 +27,30 @@
             android:enabled="true"
             android:exported="true"></service>
         <activity
-            android:name=".ui.WelcomeActivity"
-            android:screenOrientation="portrait"></activity>
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden"
+            android:resizeableActivity="true"
+            android:name=".ui.WelcomeActivity">
+
+                <layout android:defaultHeight="500dp"
+                    android:defaultWidth="600dp"
+                    android:gravity="top|end"
+                    android:minHeight="450dp"
+                    android:minWidth="300dp" />
+
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"></activity>
+            android:configChanges="screenSize|keyboardHidden"
+            android:resizeableActivity="true">
+
+            <layout android:defaultHeight="500dp"
+                android:defaultWidth="600dp"
+                android:gravity="top|end"
+                android:minHeight="450dp"
+                android:minWidth="300dp" />
+
+        </activity>
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">

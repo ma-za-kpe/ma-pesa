@@ -105,10 +105,11 @@ class FragmentThree : Fragment(), RewardedVideoAdListener {
     private fun loadRewardedVideoAd() {
 
         //live ca-app-pub-1222362664019591/6083724058
+        //dev ca-app-pub-3940256099942544/5224354917
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/6083724058",
                     AdRequest.Builder().build())
 
         }
