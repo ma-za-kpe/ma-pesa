@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -56,6 +57,15 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+
+        requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        //Handle back event from any fragment
+                        navController.popBackStack(R.id.mainFragment, false);
+
+                    }
+                })
     }
 
 
@@ -108,7 +118,7 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/1022969060",
+            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
         }

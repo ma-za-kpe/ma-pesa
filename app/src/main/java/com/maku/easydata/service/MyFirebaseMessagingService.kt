@@ -74,8 +74,8 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
                 RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         val notificationBuilder = NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.alert_light_frame)
-                .setContentTitle("Kitenge")
+                .setSmallIcon(R.drawable.mamapesa)
+                .setContentTitle("ma-pesa")
                 .setContentText(notificationMsg)
                 .setSound(notificationSoundUri)
                 .setPriority(NotificationCompat.PRIORITY_MAX)

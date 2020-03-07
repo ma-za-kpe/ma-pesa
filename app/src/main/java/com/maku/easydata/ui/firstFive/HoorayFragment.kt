@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
@@ -26,6 +27,15 @@ class HoorayFragment : Fragment() {
 
         navController = findNavController()
 
+        requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        //Handle back event from any fragment
+                        navController.popBackStack(R.id.mainFragment, false);
+
+                    }
+                })
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +45,10 @@ class HoorayFragment : Fragment() {
                 inflater, R.layout.fragment_hooray, container, false)
 
         binding.rectangle1.setOnClickListener { navController.navigate(R.id.mainFragment) }
+
+        binding.continueE.setOnClickListener{
+            navController.navigate(R.id.fragmentOne)
+        }
 
          return  binding.root
     }

@@ -17,6 +17,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -83,6 +84,14 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+         requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        //Handle back event from any fragment
+                        navController.popBackStack(R.id.mainFragment, false);
+
+                    }
+                })
         //in-app updates
         // Checks that the platform will allow the specified type of update.appUpdate()
         checkForAppUpdate()
@@ -138,7 +147,7 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/9386115178",
+            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
         }

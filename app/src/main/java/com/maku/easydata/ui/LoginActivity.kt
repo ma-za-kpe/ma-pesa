@@ -76,4 +76,9 @@ class LoginActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        Toast.makeText(this, "you will loose all progress", Toast.LENGTH_LONG).show()
+//        startActivity(Intent(this, WelcomeActivity::class.java))
+//    }
 }

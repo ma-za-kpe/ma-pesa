@@ -10,9 +10,11 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -60,6 +62,14 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
         navController = findNavController()
 
+        requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        //Handle back event from any fragment
+                        navController.popBackStack(R.id.mainFragment, false);
+
+                    }
+                })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -67,6 +77,8 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_ads, container, false)
+
+        //onback pressed
 
         val sharedPref = activity?.getSharedPreferences("mapesa",Context.MODE_PRIVATE)
          number = sharedPref?.getString(getString(R.string.saved_phone_number), null).toString()
@@ -139,7 +151,7 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/7512224638",
+            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                     AdRequest.Builder().build())
 
         }
@@ -256,4 +268,6 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         }
     /*end send airtime region*/
 
-  }
+    //on back pressed
+
+}

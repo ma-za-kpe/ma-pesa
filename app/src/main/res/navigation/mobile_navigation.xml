@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_adsFragment_to_hoorayFragment"
             app:destination="@id/hoorayFragment" />
+        <action
+            android:id="@+id/action_adsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentOne"
@@ -29,6 +32,9 @@
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
             app:destination="@id/fragmentTwo" />
+        <action
+            android:id="@+id/action_fragmentOne_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -41,6 +47,9 @@
         <action
             android:id="@+id/action_mainFragment_to_stuffActivity"
             app:destination="@id/stuffActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_stuffActivity2"
+            app:destination="@id/stuffActivity" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
@@ -50,6 +59,9 @@
         <action
             android:id="@+id/action_fragmentTwo_to_fragmentThree"
             app:destination="@id/fragmentThree" />
+        <action
+            android:id="@+id/action_fragmentTwo_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentThree"
@@ -59,6 +71,9 @@
         <action
             android:id="@+id/action_fragmentThree_to_adsFragment"
             app:destination="@id/adsFragment" />
+        <action
+            android:id="@+id/action_fragmentThree_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <activity
         android:id="@+id/stuffActivity"
@@ -73,5 +88,8 @@
         <action
             android:id="@+id/action_hoorayFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_hoorayFragment_to_fragmentOne"
+            app:destination="@id/fragmentOne" />
     </fragment>
 </navigation>
