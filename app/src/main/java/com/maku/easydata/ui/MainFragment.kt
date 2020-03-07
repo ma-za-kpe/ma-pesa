@@ -46,7 +46,7 @@ class MainFragment : Fragment() {
 //            navController.navigate(R.id.fragmentOne)
 //        }
 
-        //build the spannable String
+        //build the spannable String for 50 shillings
         val mystring = resources.getString(R.string.watch_4_vid);
 
         val spannable = SpannableString(mystring);
@@ -62,6 +62,24 @@ class MainFragment : Fragment() {
         );
 
         binding.watchfour.text = spannable
+
+        //build the spannable String for 100 shillings
+        val nine = resources.getString(R.string.watch_9_vid);
+
+        val one = SpannableString(nine);
+        one.setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.pink)),
+                19, 33,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        one.setSpan(
+                StyleSpan(Typeface.BOLD),
+                19, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.watchnine.text = one
 
         return binding.root
     }
