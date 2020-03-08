@@ -83,12 +83,33 @@
     <!-- strings.xml -->
     <string name="you_will_no">You have now recieved your\n50ugx airtime.</string>
 
+    <string name="you_will_now_one">You have now recieved your\n100ugx airtime.</string>
+
     <!-- strings.xml -->
     <string name="start_again">Start Again</string>
 
 
     <!-- strings.xml -->
     <string name="view_other_">Continue earning</string>
+
+    <string name="videos_to_g_nine">9/9 videos to go.</string>
+
+    <string name="videos_to_g_eight">8/9 videos to go.</string>
+
+    <string name="videos_to_g_seven">7/9 videos to go.</string>
+
+    <string name="videos_to_g_six">6/9 videos to go.</string>
+
+    <string name="videos_to_g_five">5/9 videos to go.</string>
+
+    <string name="videos_to_g_ten_four">4/9 videos to go.</string>
+
+    <string name="videos_to_g_ten_three">3/9 videos to go.</string>
+
+    <string name="videos_to_g_ten_two">2/9 videos to go.</string>
+
+    <string name="videos_to_g_ten_one">1/9 videos to go.</string>
+
 
 </resources>
 

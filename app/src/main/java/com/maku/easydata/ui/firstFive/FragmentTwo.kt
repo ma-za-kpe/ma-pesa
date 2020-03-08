@@ -118,7 +118,7 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/1022969060",
                     AdRequest.Builder().build())
 
         }

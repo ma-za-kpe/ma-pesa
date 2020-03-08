@@ -42,9 +42,9 @@ class MainFragment : Fragment() {
             navController.navigate(R.id.fragmentOne)
         }
 
-//        binding.hundredBtn.setOnClickListener { view ->
-//            navController.navigate(R.id.fragmentOne)
-//        }
+        binding.onehundredBtn.setOnClickListener { view ->
+            navController.navigate(R.id.tenOneFragment)
+        }
 
         //build the spannable String for 50 shillings
         val mystring = resources.getString(R.string.watch_4_vid);
