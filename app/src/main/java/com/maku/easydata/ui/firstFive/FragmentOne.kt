@@ -42,7 +42,6 @@ import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentFragmentOneBinding
-import com.maku.easydata.model.SendAirtime
 import com.maku.easydata.network.MyApi
 import org.json.JSONArray
 import org.json.JSONObject
@@ -121,7 +120,7 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
 //            navController.navigate(R.id.fragmentTwo)
 //        }
 
-        val mystring = resources.getString(R.string.videos_to_g);
+        val mystring = resources.getString(R.string.videos_to_five);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -156,7 +155,7 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "3 more videos to go",
+        Toast.makeText(activity, "4 more videos to go",
                 Toast.LENGTH_SHORT).show()
         // Reward the user // move to next activity
         navController.navigate(R.id.fragmentTwo)

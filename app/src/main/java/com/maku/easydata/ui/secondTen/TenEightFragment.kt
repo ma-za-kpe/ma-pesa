@@ -79,7 +79,7 @@ class TenEightFragment : Fragment(), RewardedVideoAdListener {
             loadRewardedVideoAd()
         }
 
-        val mystring = resources.getString(R.string.videos_to_g_ten_two);
+        val mystring = resources.getString(R.string.videos_to_g_ten_four);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -114,7 +114,7 @@ class TenEightFragment : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "1 more videos to go",
+        Toast.makeText(activity, "3 more videos to go",
                 Toast.LENGTH_SHORT).show()
         // Reward the user // move to next activity
         navController.navigate(R.id.tenNineFragment)

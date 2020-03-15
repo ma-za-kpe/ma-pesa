@@ -21,22 +21,32 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
+import com.google.gson.Gson
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
-import com.maku.easydata.databinding.FragmentTenFourBinding
-import com.maku.easydata.databinding.FragmentTenThreeBinding
+import com.maku.easydata.databinding.FragmentTenElevenBinding
+import com.maku.easydata.databinding.FragmentTenNineBinding
+import com.maku.easydata.model.SendAirtime
+import com.maku.easydata.network.MyApiClient
+import org.json.JSONException
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
-class TenFourFragment : Fragment(), RewardedVideoAdListener {
+class TenElevenFragment : Fragment(), RewardedVideoAdListener {
+
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-    private lateinit var binding: FragmentTenFourBinding
+    private lateinit var binding: FragmentTenElevenBinding
 
     private lateinit var navController: NavController
+
+    private lateinit var number : String
 
     val mContext: Context =
             EasyDataApplication.applicationContext()
@@ -64,7 +74,13 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_ten_four, container, false)
+                inflater, R.layout.fragment_ten_eleven, container, false)
+        val sharedPref = activity?.getSharedPreferences("mapesa",Context.MODE_PRIVATE)
+        number = sharedPref?.getString(getString(R.string.saved_phone_number), null).toString()
+
+
+        Timber.d("number is.... " + number)
+
 
         binding.progressBar.visibility = View.GONE
 
@@ -79,7 +95,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
             loadRewardedVideoAd()
         }
 
-        val mystring = resources.getString(R.string.videos_to_g_eight);
+        val mystring = resources.getString(R.string.videos_to_g_ten_one);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -95,17 +111,18 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
 
         binding.videos.text = spannable
 
+
         return binding.root
     }
 
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/2771165004
+        //live ca-app-pub-1222362664019591/6083724058
         //dev ca-app-pub-3940256099942544/5224354917
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/2771165004",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/6083724058",
                     AdRequest.Builder().build())
 
         }
@@ -113,11 +130,12 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
 
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
-
-        Toast.makeText(activity, "7 more videos to go",
+        // Reward the user.
+        sendAirtime()
+        Toast.makeText(activity, "Congratulations, you have received 100shs",
                 Toast.LENGTH_SHORT).show()
         // Reward the user // move to next activity
-        navController.navigate(R.id.tenFiveFragment)
+        navController.navigate(R.id.horrayTenFragment)
 
     }
 
@@ -163,5 +181,57 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.destroy(activity)
     }
 
+    /*start send airtime region*/
+    private fun sendAirtime(){
+        try {
+
+            //phone number
+            Timber.d("number is " + number)
+
+            val list =  ArrayList<MutableMap<String, String>>()
+            val Recipient:MutableMap<String,String> = mutableMapOf()
+            Recipient["phoneNumber"] = number
+            Recipient["amount"] = "UGX 100"
+            list.add(Recipient)
+
+            val json = Gson().toJson(list)
+
+            Timber.d("example ..." + json)
+
+            MyApiClient().doAtSending("3ad6c981292c48f6af8db491af1fc0de34a8873a67afba9864e0a9ffc1df9ab4","easyAirtime", json)?.enqueue(object : Callback<SendAirtime?> {
+
+                override fun onFailure(call: Call<SendAirtime?>, t: Throwable) {
+
+                    Timber.d("send airtime onFailure throwable " + t.message)
+
+                }
+
+                override fun onResponse(call: Call<SendAirtime?>, response: Response<SendAirtime?>) {
+                    Timber.d("this is the one that run 1 ...")
+                    if (response.isSuccessful){
+                        Timber.d("this is the one that run 2 ...")
+                        response.body()
+
+                    } else {
+                        Timber.d("this is the one that run 3...")
+
+                        try {
+//                                     val jObjError = JSONObject(response.errorBody()?.string())
+                            Toast.makeText(context, response.errorBody()?.string(), Toast.LENGTH_LONG).show()
+                            Timber.d("send at " + response.errorBody())
+                        } catch (e : Exception) {
+                            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+                            Timber.d("send error"  + e.message)
+                        }
+
+                    }
+                }
+            })
+
+        } catch (e: JSONException){
+            e.printStackTrace()
+        }
+    }
+    /*end send airtime region*/
 
 }

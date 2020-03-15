@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.firstFive.FragmentThree">
+        tools:context=".ui.secondTen.TenFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="match_parent"
+                android:layout_width="320dp"
                 android:layout_height="140dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
@@ -77,7 +77,6 @@
                 android:layout_marginTop="21dp"
                 android:layout_marginEnd="197dp"
                 android:gravity="top"
-                android:text="@string/videos_to_g_three"
                 android:textAppearance="@style/click_and_w"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,6 +98,7 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </FrameLayout>
 </layout>

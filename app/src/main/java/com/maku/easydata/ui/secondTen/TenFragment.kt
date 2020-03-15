@@ -24,17 +24,18 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
-import com.maku.easydata.databinding.FragmentTenFourBinding
-import com.maku.easydata.databinding.FragmentTenThreeBinding
+import com.maku.easydata.databinding.FragmentTenBinding
+import com.maku.easydata.databinding.FragmentTenNineBinding
 import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
-class TenFourFragment : Fragment(), RewardedVideoAdListener {
+class TenFragment : Fragment(), RewardedVideoAdListener {
+
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-    private lateinit var binding: FragmentTenFourBinding
+    private lateinit var binding: FragmentTenBinding
 
     private lateinit var navController: NavController
 
@@ -64,7 +65,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_ten_four, container, false)
+                inflater, R.layout.fragment_ten, container, false)
 
         binding.progressBar.visibility = View.GONE
 
@@ -79,7 +80,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
             loadRewardedVideoAd()
         }
 
-        val mystring = resources.getString(R.string.videos_to_g_eight);
+        val mystring = resources.getString(R.string.videos_to_g_ten_two);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -100,12 +101,12 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
 
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/2771165004
+        //live ca-app-pub-1222362664019591/1022969060
         //dev ca-app-pub-3940256099942544/5224354917
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/2771165004",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/1022969060",
                     AdRequest.Builder().build())
 
         }
@@ -114,10 +115,10 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "7 more videos to go",
+        Toast.makeText(activity, "1 more videos to go",
                 Toast.LENGTH_SHORT).show()
         // Reward the user // move to next activity
-        navController.navigate(R.id.tenFiveFragment)
+        navController.navigate(R.id.tenElevenFragment)
 
     }
 

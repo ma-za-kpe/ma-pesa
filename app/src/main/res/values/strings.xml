@@ -60,7 +60,7 @@
 
     <!-- strings.xml -->
     <string name="ma_pesa">Ma-Pesa</string>
-    <string name="watch_4_vid">Watch\n4 videos for\n50ugx Airtime.</string>
+    <string name="watch_4_vid">Watch\n5 videos for\n50ugx Airtime.</string>
 
     <string name="watch_9_vid">Watch\n9 videos for\n100ugx Airtime.</string>
 
@@ -68,14 +68,16 @@
     <!-- strings.xml -->
     <string name="click_and_w">Click and watch for free airtime.</string>
 
-    <string name="videos_to_g">4/4 videos to go.</string>
+    <string name="videos_to_five">5/5 videos to go.</string>
 
-    <string name="videos_to_g_three">3/4 videos to go.</string>
+    <string name="videos_to_g_fourr">4/5 videos to go.</string>
+
+    <string name="videos_to_g_three">3/5 videos to go.</string>
 
 
-    <string name="videos_to_g_two">2/4 videos to go.</string>
+    <string name="videos_to_g_two">2/5 videos to go.</string>
 
-    <string name="videos_to_g_one">1/4 videos to go.</string>
+    <string name="videos_to_g_one">1/5 videos to go.</string>
 
     <!-- strings.xml -->
     <string name="hooray_">Hooray!!</string>
@@ -92,23 +94,27 @@
     <!-- strings.xml -->
     <string name="view_other_">Continue earning</string>
 
-    <string name="videos_to_g_nine">9/9 videos to go.</string>
+    <string name="videos_to_g_nine_eleven">11/11 videos to go.</string>
 
-    <string name="videos_to_g_eight">8/9 videos to go.</string>
+    <string name="videos_to_g_nine_ten">10/11 videos to go.</string>
 
-    <string name="videos_to_g_seven">7/9 videos to go.</string>
+    <string name="videos_to_g_nine">9/11 videos to go.</string>
 
-    <string name="videos_to_g_six">6/9 videos to go.</string>
+    <string name="videos_to_g_eight">8/11 videos to go.</string>
 
-    <string name="videos_to_g_five">5/9 videos to go.</string>
+    <string name="videos_to_g_seven">7/11 videos to go.</string>
 
-    <string name="videos_to_g_ten_four">4/9 videos to go.</string>
+    <string name="videos_to_g_six">6/11 videos to go.</string>
 
-    <string name="videos_to_g_ten_three">3/9 videos to go.</string>
+    <string name="videos_to_g_five">5/11 videos to go.</string>
 
-    <string name="videos_to_g_ten_two">2/9 videos to go.</string>
+    <string name="videos_to_g_ten_four">4/11 videos to go.</string>
 
-    <string name="videos_to_g_ten_one">1/9 videos to go.</string>
+    <string name="videos_to_g_ten_three">3/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_two">2/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_one">1/11 videos to go.</string>
 
 
 </resources>

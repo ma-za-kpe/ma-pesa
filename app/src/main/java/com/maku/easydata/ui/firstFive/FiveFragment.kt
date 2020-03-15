@@ -1,4 +1,4 @@
-package com.maku.easydata.ui.secondTen
+package com.maku.easydata.ui.firstFive
 
 import android.content.Context
 import android.graphics.Typeface
@@ -24,17 +24,19 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
-import com.maku.easydata.databinding.FragmentTenFourBinding
-import com.maku.easydata.databinding.FragmentTenThreeBinding
+import com.maku.easydata.databinding.FragmentFiveBinding
+import com.maku.easydata.databinding.FragmentFragmentThreeBinding
 import timber.log.Timber
 
 /**
  * A simple [Fragment] subclass.
  */
-class TenFourFragment : Fragment(), RewardedVideoAdListener {
+class FiveFragment : Fragment(), RewardedVideoAdListener {
+
+
     private lateinit var mRewardedVideoAd: RewardedVideoAd
 
-    private lateinit var binding: FragmentTenFourBinding
+    private lateinit var binding: FragmentFiveBinding
 
     private lateinit var navController: NavController
 
@@ -55,8 +57,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
 
                     }
                 })
-        //in-app updates
-        // Checks that the platform will allow the specified type of update.appUpdate()
+
     }
 
 
@@ -64,7 +65,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_ten_four, container, false)
+                inflater, R.layout.fragment_five, container, false)
 
         binding.progressBar.visibility = View.GONE
 
@@ -79,7 +80,7 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
             loadRewardedVideoAd()
         }
 
-        val mystring = resources.getString(R.string.videos_to_g_eight);
+        val mystring = resources.getString(R.string.videos_to_g_two);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -95,17 +96,20 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
 
         binding.videos.text = spannable
 
+
         return binding.root
     }
 
+    /* start rewarded ads*/
+
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/2771165004
+        //live ca-app-pub-1222362664019591/6083724058
         //dev ca-app-pub-3940256099942544/5224354917
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/2771165004",
+            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/6083724058",
                     AdRequest.Builder().build())
 
         }
@@ -114,42 +118,44 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "7 more videos to go",
+        Toast.makeText(activity, "1 more video to go",
                 Toast.LENGTH_SHORT).show()
-        // Reward the user // move to next activity
-        navController.navigate(R.id.tenFiveFragment)
+        // Reward the user.
+        navController.navigate(R.id.adsFragment)
 
     }
 
     override fun onRewardedVideoAdLeftApplication() {
-//        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdClosed() {
-//        Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
+        // Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
-        Toast.makeText(activity, "PLEASE CHECK YOUR INTERNET CONNECTION", Toast.LENGTH_LONG).show()
+
+        Toast.makeText(activity, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility = View.GONE
+
     }
 
     override fun onRewardedVideoAdLoaded() {
-        // Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility =  View.GONE
         mRewardedVideoAd.show()
     }
 
     override fun onRewardedVideoAdOpened() {
-//        Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoStarted() {
-//        Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoCompleted() {
-//        Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
         binding.progressBar.setVisibility(View.GONE)
     }
 
@@ -162,6 +168,8 @@ class TenFourFragment : Fragment(), RewardedVideoAdListener {
         super.onDestroy()
         mRewardedVideoAd.destroy(activity)
     }
+
+    /*end rewarded ads*/
 
 
 }

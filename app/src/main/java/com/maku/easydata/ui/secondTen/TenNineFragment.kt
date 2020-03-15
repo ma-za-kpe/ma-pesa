@@ -96,7 +96,7 @@ class TenNineFragment : Fragment(), RewardedVideoAdListener {
             loadRewardedVideoAd()
         }
 
-        val mystring = resources.getString(R.string.videos_to_g_ten_one);
+        val mystring = resources.getString(R.string.videos_to_g_ten_three);
 
         val spannable = SpannableString(mystring);
         spannable.setSpan(
@@ -131,11 +131,10 @@ class TenNineFragment : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
         // Reward the user.
-        sendAirtime()
-        Toast.makeText(activity, "Congratulations, you have received 100shs",
+        Toast.makeText(activity, "2 more videos to go",
                 Toast.LENGTH_SHORT).show()
         // Reward the user // move to next activity
-        navController.navigate(R.id.horrayTenFragment)
+        navController.navigate(R.id.tenFragment)
 
     }
 
@@ -180,58 +179,5 @@ class TenNineFragment : Fragment(), RewardedVideoAdListener {
         super.onDestroy()
         mRewardedVideoAd.destroy(activity)
     }
-
-    /*start send airtime region*/
-    private fun sendAirtime(){
-        try {
-
-            //phone number
-            Timber.d("number is " + number)
-
-            val list =  ArrayList<MutableMap<String, String>>()
-            val Recipient:MutableMap<String,String> = mutableMapOf()
-            Recipient["phoneNumber"] = number
-            Recipient["amount"] = "UGX 100"
-            list.add(Recipient)
-
-            val json = Gson().toJson(list)
-
-            Timber.d("example ..." + json)
-
-            MyApiClient().doAtSending("3ad6c981292c48f6af8db491af1fc0de34a8873a67afba9864e0a9ffc1df9ab4","easyAirtime", json)?.enqueue(object : Callback<SendAirtime?> {
-
-                override fun onFailure(call: Call<SendAirtime?>, t: Throwable) {
-
-                    Timber.d("send airtime onFailure throwable " + t.message)
-
-                }
-
-                override fun onResponse(call: Call<SendAirtime?>, response: Response<SendAirtime?>) {
-                    Timber.d("this is the one that run 1 ...")
-                    if (response.isSuccessful){
-                        Timber.d("this is the one that run 2 ...")
-                        response.body()
-
-                    } else {
-                        Timber.d("this is the one that run 3...")
-
-                        try {
-//                                     val jObjError = JSONObject(response.errorBody()?.string())
-                            Toast.makeText(context, response.errorBody()?.string(), Toast.LENGTH_LONG).show()
-                            Timber.d("send at " + response.errorBody())
-                        } catch (e : Exception) {
-                            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-                            Timber.d("send error"  + e.message)
-                        }
-
-                    }
-                }
-            })
-
-        } catch (e: JSONException){
-            e.printStackTrace()
-        }
-    }
-    /*end send airtime region*/
 
 }
