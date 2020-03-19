@@ -16,7 +16,17 @@
         android:id="@+id/adsFragment"
         android:name="com.maku.easydata.ui.firstFive.AdsFragment"
         android:label="fragment_ads"
-        tools:layout="@layout/fragment_ads" />
+        tools:layout="@layout/fragment_ads" >
+        <action
+            android:id="@+id/action_adsFragment_to_hoorayFragment"
+            app:destination="@id/hoorayFragment" />
+        <action
+            android:id="@+id/action_adsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_adsFragment_to_mainFragment3"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentOne"
         android:name="com.maku.easydata.ui.firstFive.FragmentOne"
@@ -25,6 +35,9 @@
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
             app:destination="@id/fragmentTwo" />
+        <action
+            android:id="@+id/action_fragmentOne_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -34,6 +47,15 @@
         <action
             android:id="@+id/action_mainFragment_to_fragmentOne"
             app:destination="@id/fragmentOne" />
+        <action
+            android:id="@+id/action_mainFragment_to_stuffActivity"
+            app:destination="@id/stuffActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_stuffActivity2"
+            app:destination="@id/stuffActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_tenOneFragment"
+            app:destination="@id/tenOneFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
@@ -43,6 +65,9 @@
         <action
             android:id="@+id/action_fragmentTwo_to_fragmentThree"
             app:destination="@id/fragmentThree" />
+        <action
+            android:id="@+id/action_fragmentTwo_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentThree"
@@ -50,7 +75,183 @@
         android:label="FragmentThree"
         tools:layout="@layout/fragment_fragment_three"  >
         <action
-            android:id="@+id/action_fragmentThree_to_adsFragment"
+            android:id="@+id/action_fragmentThree_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_fragmentThree_to_fiveFragment3"
+            app:destination="@id/fiveFragment3" />
+    </fragment>
+    <activity
+        android:id="@+id/stuffActivity"
+        android:name="com.maku.easydata.ui.WelcomeActivity"
+        android:label="activity_stuff"
+        tools:layout="@layout/activity_welcome" />
+    <fragment
+        android:id="@+id/hoorayFragment"
+        android:name="com.maku.easydata.ui.firstFive.HoorayFragment"
+        android:label="HoorayFragment"
+        tools:layout="@layout/fragment_hooray">
+        <action
+            android:id="@+id/action_hoorayFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_hoorayFragment_to_fragmentOne"
+            app:destination="@id/fragmentOne" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenOneFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenOneFragment"
+        android:label="fragment_ten_one"
+        tools:layout="@layout/fragment_ten_one" >
+        <action
+            android:id="@+id/action_tenOneFragment_to_tenTwoFragment"
+            app:destination="@id/tenTwoFragment" />
+        <action
+            android:id="@+id/action_tenOneFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenTwoFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenTwoFragment"
+        android:label="fragment_ten_two"
+        tools:layout="@layout/fragment_ten_two" >
+        <action
+            android:id="@+id/action_tenTwoFragment_to_tenThreeFragment"
+            app:destination="@id/tenThreeFragment" />
+        <action
+            android:id="@+id/action_tenTwoFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenThreeFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenThreeFragment"
+        android:label="fragment_ten_three"
+        tools:layout="@layout/fragment_ten_three" >
+        <action
+            android:id="@+id/action_tenThreeFragment_to_tenFourFragment"
+            app:destination="@id/tenFourFragment" />
+        <action
+            android:id="@+id/action_tenThreeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenFourFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenFourFragment"
+        android:label="fragment_ten_four"
+        tools:layout="@layout/fragment_ten_four" >
+        <action
+            android:id="@+id/action_tenFourFragment_to_tenFiveFragment"
+            app:destination="@id/tenFiveFragment" />
+        <action
+            android:id="@+id/action_tenFourFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenFiveFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenFiveFragment"
+        android:label="fragment_ten_five"
+        tools:layout="@layout/fragment_ten_five" >
+        <action
+            android:id="@+id/action_tenFiveFragment_to_tenSixFragment"
+            app:destination="@id/tenSixFragment" />
+        <action
+            android:id="@+id/action_tenFiveFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenSevenFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenSevenFragment"
+        android:label="fragment_ten_seven"
+        tools:layout="@layout/fragment_ten_seven" >
+        <action
+            android:id="@+id/action_tenSevenFragment_to_tenEightFragment"
+            app:destination="@id/tenEightFragment" />
+        <action
+            android:id="@+id/action_tenSevenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenSixFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenSixFragment"
+        android:label="fragment_ten_six"
+        tools:layout="@layout/fragment_ten_six" >
+        <action
+            android:id="@+id/action_tenSixFragment_to_tenSevenFragment"
+            app:destination="@id/tenSevenFragment" />
+        <action
+            android:id="@+id/action_tenSixFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenEightFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenEightFragment"
+        android:label="fragment_ten_eight"
+        tools:layout="@layout/fragment_ten_eight" >
+        <action
+            android:id="@+id/action_tenEightFragment_to_tenNineFragment"
+            app:destination="@id/tenNineFragment" />
+        <action
+            android:id="@+id/action_tenEightFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenNineFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenNineFragment"
+        android:label="fragment_ten_nine"
+        tools:layout="@layout/fragment_ten_nine" >
+        <action
+            android:id="@+id/action_tenNineFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_tenNineFragment_to_tenFragment"
+            app:destination="@id/tenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/horrayTenFragment"
+        android:name="com.maku.easydata.ui.secondTen.HorrayTenFragment"
+        android:label="fragment_horray_ten"
+        tools:layout="@layout/fragment_horray_ten" >
+        <action
+            android:id="@+id/action_horrayTenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_horrayTenFragment_to_tenOneFragment"
+            app:destination="@id/tenOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fiveFragment3"
+        android:name="com.maku.easydata.ui.firstFive.FiveFragment"
+        android:label="FiveFragment"
+        tools:layout="@layout/fragment_five">
+        <action
+            android:id="@+id/action_fiveFragment3_to_adsFragment"
             app:destination="@id/adsFragment" />
+        <action
+            android:id="@+id/action_fiveFragment3_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenFragment"
+        android:label="fragment_ten"
+        tools:layout="@layout/fragment_ten" >
+        <action
+            android:id="@+id/action_tenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_tenFragment_to_tenElevenFragment"
+            app:destination="@id/tenElevenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tenElevenFragment"
+        android:name="com.maku.easydata.ui.secondTen.TenElevenFragment"
+        android:label="fragment_ten_eleven"
+        tools:layout="@layout/fragment_ten_eleven" >
+        <action
+            android:id="@+id/action_tenElevenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_tenElevenFragment_to_horrayTenFragment"
+            app:destination="@id/horrayTenFragment" />
     </fragment>
 </navigation>

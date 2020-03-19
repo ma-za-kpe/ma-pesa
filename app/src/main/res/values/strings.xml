@@ -42,9 +42,80 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
 
+    <string name="msg_token_fmt">token generated</string>
+
+    <!--    notifications-->
+    <string name="default_notification_channel_id">channel_id</string>
+    <string name="default_notification_channel_name">channel_name</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="click_watch_for_free_airtime"><![CDATA[Click & watch completely for free airtime]]></string>
+    <string name="saved_phone_number" />
+    <string name="get_started">GET STARTED</string>
+    <string name="get_free_ai">Get \nFree\nAirtime...</string>
+
+    <!-- strings.xml -->
+    <string name="watch_video">Watch\nvideos as\nshort as 3 seconds\nfor 100% free airtime. </string>
+
+    <!-- strings.xml -->
+    <string name="ma_pesa">Ma-Pesa</string>
+    <string name="watch_4_vid">Watch\n5 videos for\n50ugx Airtime.</string>
+
+    <string name="watch_9_vid">Watch\n11 videos for\n100ugx Airtime.</string>
+
+
+    <!-- strings.xml -->
+    <string name="click_and_w">Click and watch for free airtime.</string>
+
+    <string name="videos_to_five">5/5 videos to go.</string>
+
+    <string name="videos_to_g_fourr">4/5 videos to go.</string>
+
+    <string name="videos_to_g_three">3/5 videos to go.</string>
+
+
+    <string name="videos_to_g_two">2/5 videos to go.</string>
+
+    <string name="videos_to_g_one">1/5 videos to go.</string>
+
+    <!-- strings.xml -->
+    <string name="hooray_">Hooray!!</string>
+
+    <!-- strings.xml -->
+    <string name="you_will_no">You have now recieved your\n50ugx airtime.</string>
+
+    <string name="you_will_now_one">You have now recieved your\n100ugx airtime.</string>
+
+    <!-- strings.xml -->
+    <string name="start_again">Start Again</string>
+
+
+    <!-- strings.xml -->
+    <string name="view_other_">Continue earning</string>
+
+    <string name="videos_to_g_nine_eleven">11/11 videos to go.</string>
+
+    <string name="videos_to_g_nine_ten">10/11 videos to go.</string>
+
+    <string name="videos_to_g_nine">9/11 videos to go.</string>
+
+    <string name="videos_to_g_eight">8/11 videos to go.</string>
+
+    <string name="videos_to_g_seven">7/11 videos to go.</string>
+
+    <string name="videos_to_g_six">6/11 videos to go.</string>
+
+    <string name="videos_to_g_five">5/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_four">4/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_three">3/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_two">2/11 videos to go.</string>
+
+    <string name="videos_to_g_ten_one">1/11 videos to go.</string>
+
 
 </resources>
+

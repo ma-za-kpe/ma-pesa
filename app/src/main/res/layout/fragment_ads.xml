@@ -14,30 +14,55 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/text4"
-                android:layout_width="239dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:gravity="center"
-                android:text="click and watch for free airtime ..."
-                android:textSize="24sp"
+                android:textStyle="bold"
+                android:lineHeight="22sp"
+                android:fontFamily="@font/qsb"
+                android:id="@+id/click_and_w"
+                android:layout_width="273dp"
+                android:layout_height="23dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="67dp"
+                android:gravity="top"
+                android:text="@string/click_and_w"
+                android:textAppearance="@style/click_and_w"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <at.markushi.ui.CircleButton
-                android:id="@+id/logout"
-                android:layout_width="64dip"
-                android:layout_height="64dip"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:src="@drawable/ic_action_logout"
-                app:cb_color="@color/white"
-                app:cb_pressedRingWidth="8dip"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/maincard"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardUseCompatPadding="true"
+                app:elevation="9dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/text4"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/click_and_w">
 
+                <ImageView
+                    android:id="@+id/play"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="115dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="115dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/play_ad" />
+
+<<<<<<< HEAD
             <ImageButton
                 android:id="@+id/video"
                 android:layout_width="230dp"
@@ -49,9 +74,34 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/text4"
                 app:layout_constraintTop_toBottomOf="@+id/text4" />
+=======
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/videos"
+                android:layout_width="143dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginEnd="197dp"
+                android:gravity="top"
+                android:text="@string/videos_to_g_one"
+                android:textAppearance="@style/click_and_w"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+>>>>>>> onePage
 
             <ProgressBar
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                android:max="100"
+                android:progress="10"
+                android:secondaryProgress="25"
                 android:id="@+id/progressBar"
+<<<<<<< HEAD
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
@@ -86,7 +136,18 @@
                 app:layout_constraintEnd_toEndOf="@+id/video"
                 app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/video" />
+=======
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/videos" />
+
+>>>>>>> onePage
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </FrameLayout>
 </layout>

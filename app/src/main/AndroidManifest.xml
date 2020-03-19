@@ -15,24 +15,45 @@
         android:xlargeScreens="true" />
 
     <application
+        android:resizeableActivity="true"
         android:name=".EasyDataApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@drawable/mamapesa"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.BaseUpdateCheckActivity"></activity>
-        <activity android:name=".ui.AdsActivity" />
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <activity
+            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation|keyboardHidden"
+            android:resizeableActivity="true"
+            android:name=".ui.WelcomeActivity">
+
+                <layout android:defaultHeight="500dp"
+                    android:defaultWidth="600dp"
+                    android:gravity="top|end"
+                    android:minHeight="450dp"
+                    android:minWidth="300dp" />
+
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
+            android:configChanges="screenSize|keyboardHidden"
+            android:resizeableActivity="true">
+
+            <layout android:defaultHeight="500dp"
+                android:defaultWidth="600dp"
+                android:gravity="top|end"
+                android:minHeight="450dp"
+                android:minWidth="300dp" />
+
         </activity>
-        <activity android:name=".ui.SplashActivity">
+        <activity
+            android:name=".ui.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,6 +63,7 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-1222362664019591~8722623706" />
+
     </application>
 
 </manifest>

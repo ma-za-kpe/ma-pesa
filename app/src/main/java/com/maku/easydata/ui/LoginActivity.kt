@@ -1,9 +1,11 @@
 package com.maku.easydata.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,24 +18,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import com.afollestad.materialdialogs.MaterialDialog
-import com.firebase.ui.auth.AuthUI
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.play.core.appupdate.AppUpdateInfo
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.install.InstallStateUpdatedListener
-import com.google.android.play.core.install.model.ActivityResult
-import com.google.android.play.core.install.model.ActivityResult.RESULT_IN_APP_UPDATE_FAILED
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.InstallStatus
-import com.google.android.play.core.install.model.UpdateAvailability
-import com.maku.easydata.EasyDataApplication
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.maku.easydata.R
 import com.maku.easydata.databinding.ActivityLoginBinding
-import kotlinx.android.synthetic.main.content_login.*
 import timber.log.Timber
 
 
@@ -49,6 +39,30 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login )
 
+        createNotificationChannel()
+
+    }
+
+
+    /*create notification*/
+    @SuppressLint("StringFormatInvalid")
+    private fun createNotificationChannel() {
+        //retrieve current registration token
+        FirebaseInstanceId.getInstance().instanceId
+                .addOnCompleteListener(OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Timber.w("getInstanceId failed "+ task.exception)
+                        return@OnCompleteListener
+                    }
+
+                    // Get new Instance ID token
+                    val token = task.result?.token
+
+                    // Log and toast
+                    val msg = getString(R.string.msg_token_fmt, token)
+                    Timber.d("token message " + msg + " "+ token)
+//                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -62,4 +76,9 @@ class LoginActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        Toast.makeText(this, "you will loose all progress", Toast.LENGTH_LONG).show()
+//        startActivity(Intent(this, WelcomeActivity::class.java))
+//    }
 }

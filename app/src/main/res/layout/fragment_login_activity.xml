@@ -13,37 +13,33 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/animation_view"
-                android:layout_width="0dp"
-                android:layout_height="500dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                android:scaleType="centerCrop"
+            <TextView
+                android:id="@+id/watch_video"
+                android:layout_width="305dp"
+                android:layout_height="152dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="top"
+                android:textAppearance="@style/watch_video"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/l" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/authButton"
-                style="@style/todoButtons"
-                android:layout_width="0dp"
-                android:textSize="30sp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:text="@string/login_btn"
+                style="@style/style_btn"
+                android:layout_marginStart="103dp"
+                android:layout_marginTop="353dp"
+                android:layout_marginEnd="101dp"
+                android:layout_marginBottom="55dp"
+                android:text="@string/get_started"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/animation_view" />
-
+                app:layout_constraintTop_toBottomOf="@+id/watch_video" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

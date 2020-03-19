@@ -6,12 +6,18 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.IntentSender.SendIntentException
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -32,11 +38,11 @@ import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.maku.easydata.BuildConfig
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentFragmentOneBinding
-import com.maku.easydata.model.SendAirtime
 import com.maku.easydata.network.MyApi
 import org.json.JSONArray
 import org.json.JSONObject
@@ -78,6 +84,14 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         super.onViewCreated(view, savedInstanceState)
 
         navController = findNavController()
+         requireActivity().onBackPressedDispatcher
+                .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true) {
+                    override fun handleOnBackPressed() {
+                        //Handle back event from any fragment
+                        navController.popBackStack(R.id.mainFragment, false);
+
+                    }
+                })
         //in-app updates
         // Checks that the platform will allow the specified type of update.appUpdate()
         checkForAppUpdate()
@@ -90,33 +104,50 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
                 inflater, R.layout.fragment_fragment_one, container, false)
 
         binding.progressBar.visibility = View.GONE
-        binding.next.visibility = View.GONE
-        binding.goback.visibility = View.VISIBLE
 
         // rewarded ads
-        MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
+        MobileAds.initialize(activity, BuildConfig.APP_ID)
         // Use an activity context to get the rewarded video instance.
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity)
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.video.setOnClickListener { view ->
+        binding.play.setOnClickListener { view ->
             loadRewardedVideoAd()
         }
 
-        // next button
-        binding.next.setOnClickListener { view ->
-            navController.navigate(R.id.fragmentTwo)
-        }
+//        // next button
+//        binding.next.setOnClickListener { view ->
+//            navController.navigate(R.id.fragmentTwo)
+//        }
+
+        val mystring = resources.getString(R.string.videos_to_five);
+
+        val spannable = SpannableString(mystring);
+        spannable.setSpan(
+                ForegroundColorSpan(resources.getColor(R.color.pink)),
+                0, 3,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        spannable.setSpan(
+                StyleSpan(Typeface.BOLD),
+                0, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        binding.videos.text = spannable
 
       return  binding.root
     }
 
     private fun loadRewardedVideoAd() {
 
+        //live BuildConfig.AD_1
+        //dev BuildConfig.TESTING_AD_UNIT
+
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/7512224638",
+            mRewardedVideoAd.loadAd(BuildConfig.TESTING_AD_UNIT,
                     AdRequest.Builder().build())
 
         }
@@ -125,43 +156,42 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
     override fun onRewarded(reward: RewardItem) {
         Timber.d("person has been rewarded ...")
 
-        Toast.makeText(activity, "watch 3 more videos to redeem the 50shs",
+        Toast.makeText(activity, "4 more videos to go",
                 Toast.LENGTH_SHORT).show()
-        // Reward the user.
-        binding.next.visibility = View.VISIBLE
-        binding.goback.visibility = View.GONE
+        // Reward the user // move to next activity
+        navController.navigate(R.id.fragmentTwo)
 
     }
 
     override fun onRewardedVideoAdLeftApplication() {
-        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoAdLeftApplication", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdClosed() {
-        Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoAdClosed", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoAdFailedToLoad(errorCode: Int) {
-        Toast.makeText(activity, "onRewardedVideoAdFailedToLoad", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "PLEASE CHECK YOUR INTERNET CONNECTION", Toast.LENGTH_LONG).show()
         binding.progressBar.visibility = View.GONE
     }
 
     override fun onRewardedVideoAdLoaded() {
-        Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
+       // Toast.makeText(activity, "onRewardedVideoAdLoaded", Toast.LENGTH_SHORT).show()
         binding.progressBar.visibility =  View.GONE
         mRewardedVideoAd.show()
     }
 
     override fun onRewardedVideoAdOpened() {
-        Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoAdOpened", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoStarted() {
-        Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoStarted", Toast.LENGTH_SHORT).show()
     }
 
     override fun onRewardedVideoCompleted() {
-        Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "onRewardedVideoCompleted", Toast.LENGTH_SHORT).show()
         binding.progressBar.setVisibility(View.GONE)
     }
 
@@ -256,8 +286,10 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
     }
 
 
-
 }
+
+//on back pressed
+
 
 private fun AppUpdateManager.startUpdateFlowForResult(appUpdateInfo: AppUpdateInfo?, installType: Int, mContext: Context, requestCode: Int) {
 
