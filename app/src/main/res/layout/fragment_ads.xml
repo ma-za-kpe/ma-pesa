@@ -62,7 +62,6 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/play_ad" />
 
-<<<<<<< HEAD
             <ImageButton
                 android:id="@+id/video"
                 android:layout_width="230dp"
@@ -74,7 +73,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/text4"
                 app:layout_constraintTop_toBottomOf="@+id/text4" />
-=======
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -92,7 +90,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
->>>>>>> onePage
 
             <ProgressBar
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
@@ -101,7 +98,6 @@
                 android:progress="10"
                 android:secondaryProgress="25"
                 android:id="@+id/progressBar"
-<<<<<<< HEAD
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
@@ -136,15 +132,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/video"
                 app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="@+id/video" />
-=======
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/videos" />
 
->>>>>>> onePage
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
