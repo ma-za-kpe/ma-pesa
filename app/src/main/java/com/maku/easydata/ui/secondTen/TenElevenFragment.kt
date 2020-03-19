@@ -22,6 +22,7 @@ import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.google.gson.Gson
+import com.maku.easydata.BuildConfig
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
@@ -85,7 +86,7 @@ class TenElevenFragment : Fragment(), RewardedVideoAdListener {
         binding.progressBar.visibility = View.GONE
 
         // rewarded ads
-        MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
+        MobileAds.initialize(activity, BuildConfig.APP_ID)
         // Use an activity context to get the rewarded video instance.
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity)
         mRewardedVideoAd.rewardedVideoAdListener = this
@@ -100,7 +101,7 @@ class TenElevenFragment : Fragment(), RewardedVideoAdListener {
         val spannable = SpannableString(mystring);
         spannable.setSpan(
                 ForegroundColorSpan(resources.getColor(R.color.pink)),
-                0, 3,
+                0, 4,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         );
         spannable.setSpan(
@@ -117,12 +118,12 @@ class TenElevenFragment : Fragment(), RewardedVideoAdListener {
 
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/6083724058
-        //dev ca-app-pub-3940256099942544/5224354917
+        //live BuildConfig.AD_1
+        //dev BuildConfig.TESTING_AD_UNIT
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/6083724058",
+            mRewardedVideoAd.loadAd(BuildConfig.TESTING_AD_UNIT,
                     AdRequest.Builder().build())
 
         }
@@ -198,7 +199,7 @@ class TenElevenFragment : Fragment(), RewardedVideoAdListener {
 
             Timber.d("example ..." + json)
 
-            MyApiClient().doAtSending("3ad6c981292c48f6af8db491af1fc0de34a8873a67afba9864e0a9ffc1df9ab4","easyAirtime", json)?.enqueue(object : Callback<SendAirtime?> {
+            MyApiClient().doAtSending(BuildConfig.API_KEY,BuildConfig.USERNAME, json)?.enqueue(object : Callback<SendAirtime?> {
 
                 override fun onFailure(call: Call<SendAirtime?>, t: Throwable) {
 

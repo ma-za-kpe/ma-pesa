@@ -24,6 +24,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.maku.easydata.BuildConfig
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
@@ -79,7 +80,7 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
         binding.progressBar.visibility = View.GONE
 
         // rewarded ads
-        MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
+        MobileAds.initialize(activity, BuildConfig.APP_ID)
         // Use an activity context to get the rewarded video instance.
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity)
         mRewardedVideoAd.rewardedVideoAdListener = this
@@ -112,12 +113,12 @@ class FragmentTwo : Fragment(), RewardedVideoAdListener {
 
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/1022969060
-        //dev ca-app-pub-3940256099942544/5224354917
+        //live BuildConfig.AD_2
+        //dev BuildConfig.TESTING_AD_UNIT
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/1022969060",
+            mRewardedVideoAd.loadAd(BuildConfig.TESTING_AD_UNIT,
                     AdRequest.Builder().build())
 
         }

@@ -16,18 +16,40 @@ android {
         applicationId "com.maku.easydata"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 45
-        versionName "ugAdLive45"
+        versionCode 46
+        versionName "ugAdLive46"
         ndk.abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // Enabling multidex support.
         multiDexEnabled true
+
+        buildConfigField("String", "API_KEY", API_KEY)
+        buildConfigField("String", "USERNAME", USERNAME)
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'API_KEY', API_KEY
+        it.buildConfigField 'String', 'USERNAME', USERNAME
+
+        it.buildConfigField 'String', 'AD_1', AD_1
+        it.buildConfigField 'String', 'AD_2', AD_2
+        it.buildConfigField 'String', 'AD_3', AD_3
+        it.buildConfigField 'String', 'AD_4', AD_4
+        it.buildConfigField 'String', 'AD_5', AD_5
+        it.buildConfigField 'String', 'AD_6', AD_6
+        it.buildConfigField 'String', 'AD_7', AD_7
+        it.buildConfigField 'String', 'AD_8', AD_8
+        it.buildConfigField 'String', 'AD_9', AD_9
+        it.buildConfigField 'String', 'AD_10', AD_10
+        it.buildConfigField 'String', 'EASY_MONEY', EASY_MONEY
+        it.buildConfigField 'String', 'TESTING_AD_UNIT', TESTING_AD_UNIT
+        it.buildConfigField 'String', 'APP_ID', APP_ID
     }
 
     compileOptions {

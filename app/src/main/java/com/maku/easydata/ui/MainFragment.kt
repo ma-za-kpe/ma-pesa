@@ -1,21 +1,25 @@
 package com.maku.easydata.ui
 
+import android.R.attr.endColor
+import android.R.attr.startColor
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentMainBinding
+
 
 class MainFragment : Fragment() {
 
@@ -69,7 +73,7 @@ class MainFragment : Fragment() {
         val one = SpannableString(nine);
         one.setSpan(
                 ForegroundColorSpan(resources.getColor(R.color.pink)),
-                19, 33,
+                19, 34,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         );
 

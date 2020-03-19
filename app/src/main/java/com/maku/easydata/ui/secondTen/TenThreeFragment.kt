@@ -21,6 +21,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAd
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
+import com.maku.easydata.BuildConfig
 import com.maku.easydata.EasyDataApplication
 
 import com.maku.easydata.R
@@ -69,7 +70,7 @@ class TenThreeFragment : Fragment(), RewardedVideoAdListener {
         binding.progressBar.visibility = View.GONE
 
         // rewarded ads
-        MobileAds.initialize(activity, "ca-app-pub-1222362664019591~8722623706")
+        MobileAds.initialize(activity, BuildConfig.APP_ID)
         // Use an activity context to get the rewarded video instance.
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity)
         mRewardedVideoAd.rewardedVideoAdListener = this
@@ -84,7 +85,7 @@ class TenThreeFragment : Fragment(), RewardedVideoAdListener {
         val spannable = SpannableString(mystring);
         spannable.setSpan(
                 ForegroundColorSpan(resources.getColor(R.color.pink)),
-                0, 3,
+                0, 4,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         );
         spannable.setSpan(
@@ -100,12 +101,12 @@ class TenThreeFragment : Fragment(), RewardedVideoAdListener {
 
     private fun loadRewardedVideoAd() {
 
-        //live ca-app-pub-1222362664019591/2679025038
-        //dev ca-app-pub-3940256099942544/5224354917
+        //live BuildConfig.AD_3
+        //dev BuildConfig.TESTING_AD_UNIT
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd("ca-app-pub-1222362664019591/2679025038",
+            mRewardedVideoAd.loadAd(BuildConfig.TESTING_AD_UNIT,
                     AdRequest.Builder().build())
 
         }
