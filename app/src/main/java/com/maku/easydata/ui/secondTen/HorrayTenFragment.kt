@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentHoorayBinding
 import com.maku.easydata.databinding.FragmentHorrayTenBinding
+import com.thekhaeng.pushdownanim.PushDownAnim
 
 /**
  * A simple [Fragment] subclass.
@@ -44,12 +45,22 @@ class HorrayTenFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_horray_ten, container, false)
+        PushDownAnim.setPushDownAnimTo(   binding.rectangle1 )
+                .setOnClickListener{ view ->
+                    navController.navigate(R.id.mainFragment)
+                };
 
-        binding.rectangle1.setOnClickListener { navController.navigate(R.id.mainFragment) }
+        PushDownAnim.setPushDownAnimTo(   binding.rectangle1 )
+                .setOnClickListener{ view ->
+                    navController.navigate(R.id.tenOneFragment)
+                };
 
-        binding.continueE.setOnClickListener{
-            navController.navigate(R.id.tenOneFragment)
-        }
+
+//        binding.rectangle1.setOnClickListener { navController.navigate(R.id.mainFragment) }
+//
+//        binding.continueE.setOnClickListener{
+//            navController.navigate(R.id.tenOneFragment)
+//        }
         return binding.root
     }
 

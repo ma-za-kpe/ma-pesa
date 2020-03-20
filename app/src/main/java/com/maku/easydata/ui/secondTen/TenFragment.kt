@@ -27,6 +27,7 @@ import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentTenBinding
 import com.maku.easydata.databinding.FragmentTenNineBinding
+import com.thekhaeng.pushdownanim.PushDownAnim
 import timber.log.Timber
 
 /**
@@ -77,9 +78,10 @@ class TenFragment : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.play.setOnClickListener { view ->
-            loadRewardedVideoAd()
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.play )
+                .setOnClickListener{ view ->
+                    loadRewardedVideoAd()
+                };
 
         val mystring = resources.getString(R.string.videos_to_g_ten_two);
 
@@ -157,12 +159,17 @@ class TenFragment : Fragment(), RewardedVideoAdListener {
 
     override fun onPause() {
         super.onPause()
-        mRewardedVideoAd.pause(activity)
+        mRewardedVideoAd.pause(mContext)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mRewardedVideoAd.destroy(activity)
+        mRewardedVideoAd.destroy(mContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mRewardedVideoAd.resume(mContext)
     }
 
 

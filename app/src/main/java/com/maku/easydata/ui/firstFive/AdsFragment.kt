@@ -1,17 +1,14 @@
 package com.maku.easydata.ui.firstFive
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
-<<<<<<< HEAD
-=======
+
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
->>>>>>> onePage
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -34,12 +31,14 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.maku.easydata.BuildConfig
+import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentAdsBinding
 import com.maku.easydata.model.AirtimerRecipient
 import com.maku.easydata.model.SendAirtime
 import com.maku.easydata.network.MyApi
 import com.maku.easydata.network.MyApiClient
+import com.thekhaeng.pushdownanim.PushDownAnim
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -60,6 +59,10 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
     private lateinit var navController: NavController
 
     private lateinit var number : String
+
+    val mContext: Context =
+            EasyDataApplication.applicationContext()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,9 +103,10 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.play.setOnClickListener { view ->
-            loadRewardedVideoAd()
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.play )
+                .setOnClickListener{ view ->
+                    loadRewardedVideoAd()
+                };
 
         // start again button
 //        binding.button7.setOnClickListener { view ->
@@ -113,23 +117,7 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 //        }
 
         //logout
-<<<<<<< HEAD
-        binding.logout.setOnClickListener { view ->
-            //material dialog
-            MaterialDialog(requireContext()).show {
-                title(R.string.your_title)
-                message(R.string.your_message)
-                positiveButton(R.string.yes){ dialog ->
-                    AuthUI.getInstance().signOut(requireContext())
-//                    view.findNavController().navigate(R.id.action_airtimeFragment_to_loginActivityFragment)
-                    Toast.makeText(requireContext(), "Bye ...", Toast.LENGTH_SHORT).show()
-                }
-                negativeButton(R.string.no){ dialog ->
-                    Toast.makeText(requireContext(), "Keep going strong ...", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-=======
+
 //        binding.logout.setOnClickListener { view ->
 //            //material dialog
 //            MaterialDialog(requireContext()).show {
@@ -145,7 +133,6 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 //                }
 //            }
 //        }
->>>>>>> onePage
 
         val mystring = resources.getString(R.string.videos_to_g_one);
 
@@ -186,23 +173,6 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
         Toast.makeText(activity, "Congratulations, you have received 50shs",
                 Toast.LENGTH_SHORT).show()
 
-<<<<<<< HEAD
-        updateViews()
-
-    }
-
-    private fun updateViews() {
-        //disable button for 5 minutes
-        Handler().postDelayed({
-            binding.video.isEnabled = false
-        }, 1000)
-
-        binding.button7.visibility = View.VISIBLE
-        binding.goback.visibility = View.GONE
-=======
-        //move to hooray activity
-        navController.navigate(R.id.hoorayFragment)
->>>>>>> onePage
     }
 
     override fun onRewardedVideoAdLeftApplication() {
@@ -239,17 +209,17 @@ class AdsFragment : Fragment(), RewardedVideoAdListener {
 
     override fun onPause() {
         super.onPause()
-        mRewardedVideoAd.pause(activity)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        mRewardedVideoAd.resume(activity)
+        mRewardedVideoAd.pause(mContext)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mRewardedVideoAd.destroy(activity)
+        mRewardedVideoAd.destroy(mContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mRewardedVideoAd.resume(mContext)
     }
 
     /*start send airtime region*/

@@ -30,6 +30,7 @@ import com.maku.easydata.databinding.FragmentTenEightBinding
 import com.maku.easydata.databinding.FragmentTenNineBinding
 import com.maku.easydata.model.SendAirtime
 import com.maku.easydata.network.MyApiClient
+import com.thekhaeng.pushdownanim.PushDownAnim
 import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
@@ -93,9 +94,10 @@ class TenNineFragment : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.play.setOnClickListener { view ->
-            loadRewardedVideoAd()
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.play )
+                .setOnClickListener{ view ->
+                    loadRewardedVideoAd()
+                };
 
         val mystring = resources.getString(R.string.videos_to_g_ten_three);
 
@@ -173,12 +175,17 @@ class TenNineFragment : Fragment(), RewardedVideoAdListener {
 
     override fun onPause() {
         super.onPause()
-        mRewardedVideoAd.pause(activity)
+        mRewardedVideoAd.pause(mContext)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mRewardedVideoAd.destroy(activity)
+        mRewardedVideoAd.destroy(mContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mRewardedVideoAd.resume(mContext)
     }
 
 }

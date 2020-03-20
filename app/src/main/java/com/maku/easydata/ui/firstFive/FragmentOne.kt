@@ -44,6 +44,7 @@ import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentFragmentOneBinding
 import com.maku.easydata.network.MyApi
+import com.thekhaeng.pushdownanim.PushDownAnim
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -112,9 +113,10 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.play.setOnClickListener { view ->
-            loadRewardedVideoAd()
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.play )
+                .setOnClickListener{ view ->
+                    loadRewardedVideoAd()
+                };
 
 //        // next button
 //        binding.next.setOnClickListener { view ->
@@ -195,15 +197,7 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         binding.progressBar.setVisibility(View.GONE)
     }
 
-    override fun onPause() {
-        super.onPause()
-        mRewardedVideoAd.pause(activity)
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mRewardedVideoAd.destroy(activity)
-    }
 
     private fun checkForAppUpdate() {
         // Returns an intent object that you use to check for an update.
@@ -256,8 +250,18 @@ class FragmentOne : Fragment(), RewardedVideoAdListener {
         snackbar.show()
     }
 
+    override fun onPause() {
+        mRewardedVideoAd.pause(mContext)
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        mRewardedVideoAd.destroy(mContext)
+        super.onDestroy()
+    }
 
     override fun onResume() {
+        mRewardedVideoAd.resume(mContext)
         super.onResume()
         appUpdateManager
                 .appUpdateInfo

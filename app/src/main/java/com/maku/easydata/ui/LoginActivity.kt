@@ -21,9 +21,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.google.firebase.iid.FirebaseInstanceId
 import com.maku.easydata.R
 import com.maku.easydata.databinding.ActivityLoginBinding
+import com.thekhaeng.pushdownanim.PushDownAnim
 import timber.log.Timber
 
 
@@ -40,6 +42,31 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login )
 
         createNotificationChannel()
+
+    }
+
+    private fun createDynamicLinks() {
+
+//        Firebase.dynamicLinks
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(intent)
+                .addOnSuccessListener(this) { pendingDynamicLinkData ->
+                    // Get deep link from result (may be null if no link is found)
+                    var deepLink: Uri? = null
+                    if (pendingDynamicLinkData != null) {
+                        deepLink = pendingDynamicLinkData.link
+                    }
+
+                    // Handle the deep link. For example, open the linked
+                    // content, or apply promotional credit to the user's
+                    // account.
+                    // ...
+                    if (deepLink != null){
+                        Timber.d("deep link is " + deepLink.toString())
+                    }
+                    // ...
+                }
+                .addOnFailureListener(this) { e -> Timber.d( "getDynamicLink:onFailure" +  e) }
 
     }
 

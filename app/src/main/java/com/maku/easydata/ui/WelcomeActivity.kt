@@ -24,7 +24,10 @@ import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R;
 import com.maku.easydata.databinding.ActivitySplashBinding
 import com.maku.easydata.databinding.ActivityWelcomeBinding
+import com.maku.easydata.utils.MapesaUtils
+import com.thekhaeng.pushdownanim.PushDownAnim
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
+import kotlinx.android.synthetic.main.airtime_fragment.*
 import timber.log.Timber
 
 class WelcomeActivity : AppCompatActivity() {
@@ -50,9 +53,15 @@ class WelcomeActivity : AppCompatActivity() {
         startInAppUpdate()
 
         // videos button
-        binding.welcome.setOnClickListener { view ->
+        PushDownAnim.setPushDownAnimTo( binding.welcome )
+        .setOnClickListener{ view ->
             startActivity(Intent(this, LoginActivity::class.java))
-        }
+        };
+
+//        binding.welcome.setOnClickListener { view ->
+//            MapesaUtils.buttonEffect(binding.welcome)
+//            startActivity(Intent(this, LoginActivity::class.java))
+//        }
     }
 
     private fun startInAppUpdate() {

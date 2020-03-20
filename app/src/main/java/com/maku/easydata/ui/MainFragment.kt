@@ -2,9 +2,11 @@ package com.maku.easydata.ui
 
 import android.R.attr.endColor
 import android.R.attr.startColor
+import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -17,8 +19,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.dynamiclinks.DynamicLink
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentMainBinding
+import com.thekhaeng.pushdownanim.PushDownAnim
+import timber.log.Timber
 
 
 class MainFragment : Fragment() {
@@ -40,15 +46,26 @@ class MainFragment : Fragment() {
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_main, container, false)
 
+//        createDynamicLinks()
+
+        //share app
+        PushDownAnim.setPushDownAnimTo( binding.share )
+                .setOnClickListener{ view ->
+                    onShareClicked()
+                }
+
         //onclick
         // start again button
-        binding.fiftyBtn.setOnClickListener { view ->
-            navController.navigate(R.id.fragmentOne)
-        }
+        PushDownAnim.setPushDownAnimTo( binding.fiftyBtn )
+                .setOnClickListener{ view ->
+                    navController.navigate(R.id.fragmentOne)
+                };
 
-        binding.onehundredBtn.setOnClickListener { view ->
-            navController.navigate(R.id.tenOneFragment)
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.onehundredBtn )
+                .setOnClickListener{ view ->
+                    navController.navigate(R.id.tenOneFragment)
+                };
+
 
         //build the spannable String for 50 shillings
         val mystring = resources.getString(R.string.watch_4_vid);
@@ -87,6 +104,56 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
+
+
+        fun generateContentLink(): Uri {
+            val baseUrl = Uri.parse("https://www.example.com/?curPage=1")
+            val domain = "https://easydata.page.link/freeairtime"
+
+            val link = FirebaseDynamicLinks.getInstance()
+                    .createDynamicLink()
+                    .setLink(baseUrl)
+                    .setDomainUriPrefix(domain)
+                    .setAndroidParameters(DynamicLink.AndroidParameters.Builder("com.your.easydata").build())
+                    .buildDynamicLink()
+
+            return link.uri
+        }
+
+    private fun onShareClicked() {
+        val link = generateContentLink()
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, link.toString())
+
+        startActivity(Intent.createChooser(intent, "Share Link"))
+    }
+
+//    private fun createDynamicLinks() {
+//
+////        Firebase.dynamicLinks
+//        FirebaseDynamicLinks.getInstance()
+//                .getDynamicLink(intent)
+//                .addOnSuccessListener(this) { pendingDynamicLinkData ->
+//                    // Get deep link from result (may be null if no link is found)
+//                    var deepLink: Uri? = null
+//                    if (pendingDynamicLinkData != null) {
+//                        deepLink = pendingDynamicLinkData.link
+//                    }
+//
+//                    // Handle the deep link. For example, open the linked
+//                    // content, or apply promotional credit to the user's
+//                    // account.
+//                    // ...
+//                    if (deepLink != null){
+//                        Timber.d("deep link is " + deepLink.toString())
+//                    }
+//                    // ...
+//                }
+//                .addOnFailureListener(this) { e -> Timber.d( "getDynamicLink:onFailure" +  e) }
+//
+//    }
 
 
 }

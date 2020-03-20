@@ -31,6 +31,7 @@ import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentFragmentThreeBinding
 import com.maku.easydata.databinding.FragmentFragmentTwoBinding
 import com.maku.easydata.network.MyApi
+import com.thekhaeng.pushdownanim.PushDownAnim
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -86,9 +87,10 @@ class FragmentThree : Fragment(), RewardedVideoAdListener {
         mRewardedVideoAd.rewardedVideoAdListener = this
 
         // videos button
-        binding.play.setOnClickListener { view ->
-            loadRewardedVideoAd()
-        }
+        PushDownAnim.setPushDownAnimTo(  binding.play )
+                .setOnClickListener{ view ->
+                    loadRewardedVideoAd()
+                };
 
         val mystring = resources.getString(R.string.videos_to_g_three);
 
@@ -171,12 +173,17 @@ class FragmentThree : Fragment(), RewardedVideoAdListener {
 
     override fun onPause() {
         super.onPause()
-        mRewardedVideoAd.pause(activity)
+        mRewardedVideoAd.pause(mContext)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mRewardedVideoAd.destroy(activity)
+        mRewardedVideoAd.destroy(mContext)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mRewardedVideoAd.resume(mContext)
     }
 
     /*end rewarded ads*/

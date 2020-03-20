@@ -34,6 +34,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.maku.easydata.EasyDataApplication
 import com.maku.easydata.R
 import com.maku.easydata.databinding.FragmentLoginActivityBinding
+import com.thekhaeng.pushdownanim.PushDownAnim
 import timber.log.Timber
 
 
@@ -85,7 +86,12 @@ class LoginActivityFragment : Fragment() {
 
         observeAuthenticationState()
 
-        binding.authButton.setOnClickListener { launchSignInFlow() }
+        PushDownAnim.setPushDownAnimTo(  binding.authButton )
+                .setOnClickListener{ view ->
+                    launchSignInFlow()
+                };
+
+//        binding.authButton.setOnClickListener { launchSignInFlow() }
 
 
         return binding.root
