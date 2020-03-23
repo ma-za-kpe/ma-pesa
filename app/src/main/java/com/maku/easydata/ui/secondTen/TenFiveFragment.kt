@@ -109,7 +109,7 @@ class TenFiveFragment : Fragment(), RewardedVideoAdListener {
 
         if (!(::mRewardedVideoAd.isInitialized) || !mRewardedVideoAd.isLoaded) {
             binding.progressBar.setVisibility(View.VISIBLE)
-            mRewardedVideoAd.loadAd(BuildConfig.TESTING_AD_UNIT,
+            mRewardedVideoAd.loadAd(BuildConfig.AD_5,
                     AdRequest.Builder().build())
 
         }
