@@ -3,6 +3,7 @@
 
 ## About
  An app that gives users free airtime for watching google ADS. Using Africa's Talking Airtime API.
+ - [Playstore](https://play.google.com/store/apps/details?id=com.maku.easydata) - Download and test it.
 
 *Africa's Talking Airtime API used in this app can be found [here](https://africastalking.com/)*.
 
@@ -10,7 +11,7 @@
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [ViewBinding](https://developer.android.com/topic/libraries/view-binding) - Generates a binding class for each XML layout file present in that module and allows you to more easily write code that interacts with views.
 - [Retrofit](https://square.github.io/retrofit/) - A type-safe HTTP client for Android and Java.
-- [Google Admob]()https://admob.google.com/home/ - lets you show ads from google
+- [Google Admob](https://admob.google.com/home/) - lets you show ads from google
 - [Firebase](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwj80qes2djoAhWIse0KHVaNCxcYABAAGgJkZw&ohost=www.google.com&cid=CAESQeD2EgruEoXXKi17yB0SsKnsXyLZlgFF-2n7hn8qZ6PBYwkqIvNl2QWqk2pz2fLH2pO5IDaMWgWKXUgw0bqB5-s2&sig=AOD64_36dXngwifIMuG83n5r97uDJx1JmQ&q=&ved=2ahUKEwio-J-s2djoAhWSSxUIHUH7ARYQ0Qx6BAgbEAE&adurl=)
 
 ### FIREBASE FEATURES HEAVILY USED IN THIS PROJECT
