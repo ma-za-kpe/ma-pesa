@@ -17,13 +17,13 @@
 ## Contact
 If you need any help, you can connect with me.
 
-Visit:- [shreyaspatil.dev](https://shreyaspatil.dev)
+Visit:- [maku](https://www.linkedin.com/in/maku-mazakpe-700a3a165/)
 
 ## License
 ```
 MIT License
 
-Copyright (c) 2020 Shreyas Patil
+Copyright (c) 2020 Maku Pauline Mazakpe
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
